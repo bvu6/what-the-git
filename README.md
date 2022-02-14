@@ -47,17 +47,18 @@ Each sprint will last a week (it's ok to have the dates overlap, since we will f
 ### Built With 
 [![Python 3.9](https://img.shields.io/badge/python-3.9-red.svg?style=for-the-badge&logo=appveyor)](https://www.python.org/downloads/release/python-360/)
 
-<div align="center">
-    Made with ❤️ by thicc-juice 🧃
-</div>
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+<div align="center">
+    Made with ❤️ by thicc-juice 🧃
+</div>
+
+
+
 
 [logo_wtg]: media/logo.png
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge

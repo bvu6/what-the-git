@@ -66,7 +66,7 @@ cd edu-tool-group-project-thicc-juice
 2) Create a virtual environment and activate
 ```
 python3 -m venv venv
-source venv/bin/activate (macos)
+source venv/bin/activate (macOS)
 venv\Scripts\activate (Windows)
 ```
 
@@ -92,11 +92,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 * [Choosing an Open Source License](https://choosealicense.com)
 * [Img Shields](https://shields.io)
 * [Installing PyQT5 Designer For Mac](https://www.youtube.com/watch?v=eR9dNRvcseU)
-* [Installing PyQt5 on M1 Mac](https://stackoverflow.com/questions/65901162/how-can-i-run-pyqt5-on-my-mac-with-m1chip)
+* [Installing PyQt5 on a M1 Mac](https://stackoverflow.com/questions/65901162/how-can-i-run-pyqt5-on-my-mac-with-m1chip)
 * [Inspired by Oh My Git!](https://ohmygit.org)
 * [Managing Multiple Python Versions With pyenv](https://realpython.com/intro-to-pyenv/)
 * [Pixelmator for Designing Graphics & Logos](https://www.pixelmator.com/pro/)
-* [PyEnv BUILD FAILED installing Python on MacOS](https://stackoverflow.com/questions/51551557/pyenv-build-failed-installing-python-on-macos/58712552#58712552)
+* [PyEnv BUILD FAILED installing Python on macOS](https://stackoverflow.com/questions/51551557/pyenv-build-failed-installing-python-on-macos/58712552#58712552)
 * [PyQt5 Tutorial (Code)](https://www.youtube.com/watch?v=rZcdhles6vQ)
 * [PyQt5 Tutorial - How to Use Qt Designer](https://www.youtube.com/watch?v=FVpho_UiDAY)
 * [Python](https://www.python.org/)

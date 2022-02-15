@@ -29,7 +29,9 @@
 ## About The Project
 
 <div align="center">
-  <img src="media/logo_octocat.png" width=700 height=450>
+  <br>
+  <img src="media/logo_octocat.png" width=500 height=350>
+  <br>
  </div>
  
 What The Git! is a simple Git education tool that teaches users the basics of git via an interactive medium. Users will be able to go through various chapters or levels that teaches the user how to perform git-related tasks. Users can then execute git commands either by clicking the respective cards that execute a certain git command or by directly typing in commands to a simulated command line interface. Users will also have the ability to modify text files for the purposes of the game. As the user progresses through a chapter, the various commits and branches are visualized to ensure better understanding.

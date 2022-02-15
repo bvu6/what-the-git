@@ -47,20 +47,67 @@ Each sprint will last a week (it's ok to have the dates overlap, since we will f
 
 
 ### Built With 
-[![Python 3.9](https://img.shields.io/badge/python-3.9-red.svg?style=for-the-badge&logo=appveyor)](https://www.python.org/downloads/release/python-360/)
+- [![Python 3.9.10](https://img.shields.io/badge/python-3.9.10-red.svg?style=for-the-badge&logo=appveyor)](https://www.python.org/downloads/release/python-360/)
+- PyQt5
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+### Prerequsite
+
+[![Python 3.9.10](https://img.shields.io/badge/python-3.9.10-red.svg?style=for-the-badge&logo=appveyor)](https://www.python.org/downloads/release/python-360/)
+
+### Setup
+1) Change to the project directory
+```
+cd edu-tool-group-project-thicc-juice
+```
+
+2) Create a virtual environment and activate
+```
+python3 -m venv venv
+source venv/bin/activate (macos)
+venv\Scripts\activate (Windows)
+```
+
+3) Install all the dependencies
+```
+pip install -r requirements.txt
+```
+
+4) Run!
+```
+./wtg_run.py
+```
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<!-- Acknowledgments -->
+## Acknowledgments
+
+* [Guide to Python’s Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54)
+* [Choosing an Open Source License](https://choosealicense.com)
+* [Img Shields](https://shields.io)
+* [Installing PyQT5 Designer For Mac](https://www.youtube.com/watch?v=eR9dNRvcseU)
+* [Installing PyQt5 on M1 Mac](https://stackoverflow.com/questions/65901162/how-can-i-run-pyqt5-on-my-mac-with-m1chip)
+* [Inspired by Oh My Git!](https://ohmygit.org)
+* [Managing Multiple Python Versions With pyenv](https://realpython.com/intro-to-pyenv/)
+* [Pixelmator for Designing Graphics & Logos](https://www.pixelmator.com/pro/)
+* [PyEnv BUILD FAILED installing Python on MacOS](https://stackoverflow.com/questions/51551557/pyenv-build-failed-installing-python-on-macos/58712552#58712552)
+* [PyQt5 Tutorial (Code)](https://www.youtube.com/watch?v=rZcdhles6vQ)
+* [PyQt5 Tutorial - How to Use Qt Designer](https://www.youtube.com/watch?v=FVpho_UiDAY)
+* [Python](https://www.python.org/)
+* [The right and wrong way to set Python 3 as default on a Mac](https://opensource.com/article/19/5/python-3-default-mac)
+* [.gitignore for venv](https://stackoverflow.com/questions/42306410/gitignore-syntax-how-to-exclude-virtualenv-sub-directories)
+* [virtualenv](https://virtualenv.pypa.io/en/latest/#using-virtualenv-without-bin-python)
+
 <div align="center">
+    <br><br>
     Made with ❤️ by thicc-juice 🧃
 </div>
-
-
-
 
 [logo_wtg]: media/logo.png
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge

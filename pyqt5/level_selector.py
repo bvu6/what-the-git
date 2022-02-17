@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 591)
-        MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class LevelWindow(object):
+    def setupUi(self, LevelWindow):
+        LevelWindow.setObjectName("Level_Window")
+        LevelWindow.resize(800, 591)
+        LevelWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
+        self.centralwidget = QtWidgets.QWidget(LevelWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.playButton = QtWidgets.QPushButton(self.centralwidget)
         self.playButton.setGeometry(QtCore.QRect(300, 170, 171, 41))
@@ -65,32 +65,32 @@ class Ui_MainWindow(object):
         self.title.setStyleSheet("font: 36pt \"Georgia\";\n"
 "color: rgb(255, 255, 255);")
         self.title.setObjectName("title")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        LevelWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(LevelWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        LevelWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(LevelWindow)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        LevelWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(LevelWindow)
+        QtCore.QMetaObject.connectSlotsByName(LevelWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, LevelWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.playButton.setText(_translate("MainWindow", "Level 1"))
-        self.settingButton.setText(_translate("MainWindow", "Level 2"))
-        self.settingButton_2.setText(_translate("MainWindow", "Level 3"))
-        self.title.setText(_translate("MainWindow", "Level Selector"))
+        LevelWindow.setWindowTitle(_translate("LevelWindow", "LevelWindow"))
+        self.playButton.setText(_translate("LevelWindow", "Level 1"))
+        self.settingButton.setText(_translate("LevelWindow", "Level 2"))
+        self.settingButton_2.setText(_translate("LevelWindow", "Level 3"))
+        self.title.setText(_translate("LevelWindow", "Level Selector"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    Level_Window = QtWidgets.QMainWindow()
+    ui = Level_Window()
+    ui.setupUi(Level_Window)
+    Level_Window.show()
     sys.exit(app.exec_())

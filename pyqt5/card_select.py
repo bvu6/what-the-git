@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# Made By Thicc-Juice
 import sys
 from PyQt5.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QGraphicsRectItem
 from PyQt5.QtCore import Qt, QPointF

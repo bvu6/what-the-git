@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# Made By Thicc-Juice
+# What The Git!
+
 from Card import Card
 
 

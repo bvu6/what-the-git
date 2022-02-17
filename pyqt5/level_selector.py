@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# Made By Thicc-Juice
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 

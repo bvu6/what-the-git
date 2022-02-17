@@ -8,7 +8,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, QtMultimedia
 class UI_MainChapterWindow(object):
     def setupUI(self, MainChapterWindow):
         MainChapterWindow.setObjectName("MainChapterWindow")
-        MainChapterWindow.resize(1164, 695)
+        MainChapterWindow.resize(1164, 900)
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -208,16 +208,15 @@ class UI_MainChapterWindow(object):
 
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.files_frame)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-
         self.files_layout = QtWidgets.QHBoxLayout()
         self.files_layout.setSpacing(6)
         self.files_layout.setObjectName("files_layout")
-
         self.file1 = QtWidgets.QTextBrowser(self.files_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.file1.sizePolicy().hasHeightForWidth())
+
         self.file1.setSizePolicy(sizePolicy)
         self.file1.setMaximumSize(QtCore.QSize(60, 16777215))
         self.file1.setObjectName("file1")
@@ -415,7 +414,7 @@ class UI_MainChapterWindow(object):
                                       "font-size:13pt; font-weight:400; font-style:normal;\">\n "
                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
                                       "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> <img src=\"\" "
-                                      "width=\"40\" height=\"40\" /></p>\n "
+                                      "width=\"30\" height=\"30\" /></p>\n "
                                       "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
                                       "margin-right:0px; -qt-block-indent:0; text-indent:0px;\">   "
                                       "a.txt</p></body></html>"))

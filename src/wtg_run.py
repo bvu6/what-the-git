@@ -3,26 +3,24 @@
 # What The Git!
 
 import sys
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5 import QtCore, QtGui, QtWidgets
 from level_selector import LevelWindow
 
 
 class Start_Window(object):
-    def openWindow(self):
+    def switch_to_level_selector_window(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = LevelWindow()
-        self.ui.setupUi(self.window)
+        self.ui.setupUI(self.window)
         self.window.show()
 
-    def setupUi(self, MainWindow):
+    def setupUI(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 596)
         MainWindow.setFocusPolicy(QtCore.Qt.ClickFocus)
         MainWindow.setLayoutDirection(QtCore.Qt.LeftToRight)
         MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
+
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.playButton = QtWidgets.QPushButton(self.centralwidget)
@@ -38,8 +36,10 @@ class Start_Window(object):
                                       "    background-Color: #4b72e3;\n"
                                       "    border-radius: 10px;\n"
                                       "}")
+
         self.playButton.setObjectName("playButton")
-        self.playButton.clicked.connect(self.openWindow)
+        self.playButton.clicked.connect(self.switch_to_level_selector_window)  # Switch window
+
         self.settingButton = QtWidgets.QPushButton(self.centralwidget)
         self.settingButton.setGeometry(QtCore.QRect(300, 300, 171, 41))
         self.settingButton.setStyleSheet("QPushButton{\n"
@@ -80,11 +80,9 @@ class Start_Window(object):
 
 
 if __name__ == "__main__":
-    import sys
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Start_Window()
-    ui.setupUi(MainWindow)
+    ui.setupUI(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

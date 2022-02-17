@@ -10,9 +10,6 @@ PyQt3D==5.15.5
 PyQt5==5.15.6
 PyQt5-sip==12.9.0
 PyQtChart==5.15.5
-PyQtDataVisualization==5.15.5
-PyQtNetworkAuth==5.15.5
-PyQtPurchasing==5.15.5
 PythonQwt==0.10.1
 QtPy==2.0.1
 scipy==1.8.0

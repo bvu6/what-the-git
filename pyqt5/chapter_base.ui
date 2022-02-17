@@ -111,7 +111,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:black</string>
+       <string notr="true">background-color: rgb(18, 18, 18);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -134,7 +134,10 @@
        </property>
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,11,4" columnstretch="5,3">
-         <property name="spacing">
+         <property name="horizontalSpacing">
+          <number>5</number>
+         </property>
+         <property name="verticalSpacing">
           <number>1</number>
          </property>
          <item row="2" column="0">
@@ -146,7 +149,9 @@
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(27, 35, 54);</string>
+            <string notr="true">background-color: rgb(27, 35, 54); 
+margin:5px;
+border-radius: 5px;</string>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -223,7 +228,7 @@
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color:black</string>
+            <string notr="true"/>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -341,6 +346,15 @@
            <property name="spacing">
             <number>2</number>
            </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>5</number>
+           </property>
            <item>
             <widget class="QScrollArea" name="scrollArea">
              <property name="widgetResizable">
@@ -351,8 +365,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>431</width>
-                <height>138</height>
+                <width>425</width>
+                <height>131</height>
                </rect>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -378,6 +392,9 @@
                    <family>Courier New</family>
                   </font>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(0, 0, 0);</string>
+                 </property>
                  <property name="html">
                   <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -399,10 +416,18 @@ p, li { white-space: pre-wrap; }
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>Menlo</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="styleSheet">
               <string notr="true">border: 1px solid red;
 border-color: rgb(0, 155, 255);
-border-radius: 5px; </string>
+border-radius: 5px; 
+selection-color: rgb(4, 184, 255);
+background-color: rgb(0, 0, 0);</string>
              </property>
              <property name="text">
               <string/>

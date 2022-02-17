@@ -7,17 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>596</height>
+    <height>591</height>
    </rect>
-  </property>
-  <property name="focusPolicy">
-   <enum>Qt::ClickFocus</enum>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
-  </property>
-  <property name="layoutDirection">
-   <enum>Qt::LeftToRight</enum>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0, 0, 0);</string>
@@ -27,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>220</y>
+      <y>170</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -46,14 +40,14 @@ QPushButton:Hover{
 }</string>
     </property>
     <property name="text">
-     <string>Play</string>
+     <string>Level 1</string>
     </property>
    </widget>
    <widget class="QPushButton" name="settingButton">
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>300</y>
+      <y>230</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -72,14 +66,40 @@ QPushButton:Hover{
 }</string>
     </property>
     <property name="text">
-     <string>Settings</string>
+     <string>Level 2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="settingButton_2">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>290</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-Color: #3250a8;
+	border-radius: 10px;
+	font-size: 30px;
+	font: 25pt &quot;Georgia&quot;;
+}
+
+QPushButton:Hover{
+	background-Color: #4b72e3;
+	border-radius: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Level 3</string>
     </property>
    </widget>
    <widget class="QLabel" name="title">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>80</y>
+      <x>220</x>
+      <y>60</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -89,7 +109,7 @@ QPushButton:Hover{
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>What the Git!</string>
+     <string>Level Selector</string>
     </property>
    </widget>
   </widget>

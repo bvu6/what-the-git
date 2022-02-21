@@ -372,6 +372,7 @@ class UI_MainChapterWindow(object):
         self.cmd_layout.addWidget(self.cmd_user_input_box)
         self.cmd_layout.setStretch(0, 5)
         self.cmd_layout.setStretch(1, 1)
+        self.cmd_user_input_box.setStyleSheet("color: rgb(255,255,255);")
 
         self.main_chapter_layout.addLayout(self.cmd_layout, 2, 1, 1, 1)
         self.main_chapter_layout.setColumnStretch(0, 5)
@@ -399,7 +400,8 @@ class UI_MainChapterWindow(object):
                                             "font-size:13pt; font-weight:400; font-style:normal;\">\n "
                                             "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
                                             "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
-                                            "font-size:12pt;\">Drag the card or type in the command to add, commit, "
+                                            "font-size:12pt; ""color:white;"""
+                                            "\">Drag the card or type in the command to add, commit, "
                                             "and push your first file!</span></p></body></html>"))
         self.task_one.setText(_translate("MainChapterWindow", "Add a.txt"))
         self.task_two.setText(_translate("MainChapterWindow", "Commit the change!"))

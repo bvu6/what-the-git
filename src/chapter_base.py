@@ -1,83 +1,172 @@
-#!/usr/bin/env python3
-# Made By Bikram Chatterjee
-
-import sys
-from PyQt5 import QtCore, QtGui, QtWidgets, QtMultimedia
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QGraphicsScene
 from card_select import MovingCards
-
+import sys
 
 
 class UI_MainChapterWindow(object):
+    def __init__(self, self_MainChapterWindow):
+        self_MainChapterWindow.setObjectName("MainChapterWindow")
+        self_MainChapterWindow.resize(1280, 720)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self_MainChapterWindow.sizePolicy().hasHeightForWidth())
 
-    def switch_to_level_switcher_window(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = UI_MainChapterWindow()
-        self.ui.setupUI(self.window)
-        self.window.show()
-
-    def setupUI(self, MainChapterWindow, app):
-        MainChapterWindow.setObjectName("MainChapterWindow")
-        MainChapterWindow.resize(1164, 695)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainChapterWindow.sizePolicy().hasHeightForWidth())
-        MainChapterWindow.setSizePolicy(sizePolicy)
-        MainChapterWindow.setMinimumSize(QtCore.QSize(900, 530))
-        MainChapterWindow.setMaximumSize(QtCore.QSize(1920, 900))
+        self_MainChapterWindow.setSizePolicy(size_policy)
+        self_MainChapterWindow.setMinimumSize(QtCore.QSize(1280, 720))
+        self_MainChapterWindow.setMaximumSize(QtCore.QSize(1280, 720))
         font = QtGui.QFont()
         font.setPointSize(12)
-        MainChapterWindow.setFont(font)
-        MainChapterWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
-        self.main_chapter_central_widget = QtWidgets.QWidget(MainChapterWindow)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_chapter_central_widget.sizePolicy().hasHeightForWidth())
-        self.main_chapter_central_widget.setSizePolicy(sizePolicy)
-        self.main_chapter_central_widget.setMinimumSize(QtCore.QSize(900, 530))
-        self.main_chapter_central_widget.setMaximumSize(QtCore.QSize(1920, 900))
+        self_MainChapterWindow.setFont(font)
+        self_MainChapterWindow.setStyleSheet("")
+        self_MainChapterWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
+
+        self.main_chapter_central_widget = QtWidgets.QWidget(self_MainChapterWindow)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
         font = QtGui.QFont()
         font.setPointSize(12)
+        size_policy.setHeightForWidth(self.main_chapter_central_widget.sizePolicy().hasHeightForWidth())
+        self.main_chapter_central_widget.setSizePolicy(size_policy)
+        self.main_chapter_central_widget.setMinimumSize(QtCore.QSize(1280, 720))
+        self.main_chapter_central_widget.setMaximumSize(QtCore.QSize(1281, 720))
         self.main_chapter_central_widget.setFont(font)
         self.main_chapter_central_widget.setStyleSheet("")
         self.main_chapter_central_widget.setObjectName("main_chapter_central_widget")
-        self.gridLayout = QtWidgets.QGridLayout(self.main_chapter_central_widget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
+
         self.main_chapter_frame = QtWidgets.QFrame(self.main_chapter_central_widget)
         self.main_chapter_frame.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_chapter_frame.sizePolicy().hasHeightForWidth())
-        self.main_chapter_frame.setSizePolicy(sizePolicy)
+        self.main_chapter_frame.setGeometry(QtCore.QRect(0, -10, 1280, 720))
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.main_chapter_frame.sizePolicy().hasHeightForWidth())
+        self.main_chapter_frame.setSizePolicy(size_policy)
         self.main_chapter_frame.setMinimumSize(QtCore.QSize(900, 530))
         self.main_chapter_frame.setMaximumSize(QtCore.QSize(1920, 1000))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.main_chapter_frame.setFont(font)
-        self.main_chapter_frame.setStyleSheet("background-color: rgb(18, 18, 18);")
+        self.main_chapter_frame.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.main_chapter_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.main_chapter_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main_chapter_frame.setObjectName("main_chapter_frame")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.main_chapter_frame)
-        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.main_chapter_layout = QtWidgets.QGridLayout()
-        self.main_chapter_layout.setHorizontalSpacing(5)
-        self.main_chapter_layout.setVerticalSpacing(1)
-        self.main_chapter_layout.setObjectName("main_chapter_layout")
-        self.cmd_layout = QtWidgets.QVBoxLayout()
-        self.cmd_layout.setContentsMargins(-1, 5, 5, 5)
-        self.cmd_layout.setSpacing(2)
-        self.cmd_layout.setObjectName("cmd_layout")
-        self.cmd_output_scroll_area = QtWidgets.QScrollArea(self.main_chapter_frame)
+        self.layoutWidget = QtWidgets.QWidget(self.main_chapter_frame)
+        self.layoutWidget.setGeometry(QtCore.QRect(830, 280, 441, 131))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.task_vert_layout = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.task_vert_layout.setContentsMargins(0, 7, 0, 7)
+        self.task_vert_layout.setSpacing(6)
+        self.task_vert_layout.setObjectName("task_vert_layout")
+        self.task_one = QtWidgets.QLabel(self.layoutWidget)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.task_one.sizePolicy().hasHeightForWidth())
+        self.task_one.setSizePolicy(size_policy)
+        self.task_one.setMinimumSize(QtCore.QSize(0, 20))
+        self.task_one.setMaximumSize(QtCore.QSize(16777215, 36))
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.task_one.setFont(font)
+        self.task_one.setStyleSheet("background-color: rgb(138, 0, 1);\n"
+                                    "border-radius: 5px; \n"
+                                    "padding-left:5px")
+        self.task_one.setAlignment(QtCore.Qt.AlignCenter)
+        self.task_one.setObjectName("task_one")
+        self.task_vert_layout.addWidget(self.task_one)
+        self.task_two = QtWidgets.QLabel(self.layoutWidget)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.task_two.sizePolicy().hasHeightForWidth())
+        self.task_two.setSizePolicy(size_policy)
+        self.task_two.setMinimumSize(QtCore.QSize(0, 20))
+        self.task_two.setMaximumSize(QtCore.QSize(16777215, 36))
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.task_two.setFont(font)
+        self.task_two.setStyleSheet("background-color: rgb(138, 0, 1);\n"
+                                    "border-radius: 5px; \n"
+                                    "padding-left:5px")
+        self.task_two.setAlignment(QtCore.Qt.AlignCenter)
+        self.task_two.setObjectName("task_two")
+        self.task_vert_layout.addWidget(self.task_two)
+        self.task_three = QtWidgets.QLabel(self.layoutWidget)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.task_three.sizePolicy().hasHeightForWidth())
+        self.task_three.setSizePolicy(size_policy)
+        self.task_three.setMinimumSize(QtCore.QSize(0, 20))
+        self.task_three.setMaximumSize(QtCore.QSize(16777215, 36))
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.task_three.setFont(font)
+        self.task_three.setStyleSheet("background-color: rgb(138, 0, 1);\n"
+                                      "border-radius: 5px; \n"
+                                      "padding-left:5px")
+        self.task_three.setAlignment(QtCore.Qt.AlignCenter)
+        self.task_three.setObjectName("task_three")
+        self.task_vert_layout.addWidget(self.task_three)
+        self.main_view = QtWidgets.QGraphicsView(self.main_chapter_frame)
+        self.main_view.setGeometry(QtCore.QRect(0, 60, 821, 661))
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.main_view.sizePolicy().hasHeightForWidth())
+        self.main_view.setSizePolicy(size_policy)
+        self.main_view.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.main_view.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.main_view.setObjectName("main_view")
+        self.chapter_info_text_browser = QtWidgets.QTextBrowser(self.main_chapter_frame)
+        self.chapter_info_text_browser.setGeometry(QtCore.QRect(830, 70, 441, 211))
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.chapter_info_text_browser.sizePolicy().hasHeightForWidth())
+        self.chapter_info_text_browser.setSizePolicy(size_policy)
+        font = QtGui.QFont()
+        self.chapter_info_text_browser.setFont(font)
+        self.chapter_info_text_browser.setObjectName("chapter_info_text_browser")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.main_chapter_frame)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(830, 10, 441, 61))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.title_layout_vbox = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.title_layout_vbox.setContentsMargins(0, 0, 0, 0)
+        self.title_layout_vbox.setObjectName("title_layout_vbox")
+        self.title_label = QtWidgets.QLabel(self.verticalLayoutWidget)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
+        self.title_label.setSizePolicy(size_policy)
+        font = QtGui.QFont()
+        font.setPointSize(24)
+        self.title_label.setFont(font)
+        self.title_label.setStyleSheet("")
+        self.title_label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.title_label.setObjectName("title_label")
+        self.title_layout_vbox.addWidget(self.title_label)
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.main_chapter_frame)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(830, 500, 441, 221))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.cmd_grid_layout = QtWidgets.QGridLayout(self.verticalLayoutWidget_2)
+        self.cmd_grid_layout.setContentsMargins(0, 7, 0, 7)
+        self.cmd_grid_layout.setVerticalSpacing(3)
+        self.cmd_grid_layout.setObjectName("cmd_grid_layout")
+        self.cmd_output_scroll_area = QtWidgets.QScrollArea(self.verticalLayoutWidget_2)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.cmd_output_scroll_area.sizePolicy().hasHeightForWidth())
+        self.cmd_output_scroll_area.setSizePolicy(size_policy)
         self.cmd_output_scroll_area.setWidgetResizable(True)
         self.cmd_output_scroll_area.setObjectName("cmd_output_scroll_area")
         self.cmd_output_contents = QtWidgets.QWidget()
-        self.cmd_output_contents.setGeometry(QtCore.QRect(0, 0, 263, 149))
+        self.cmd_output_contents.setGeometry(QtCore.QRect(0, 0, 437, 173))
         self.cmd_output_contents.setObjectName("cmd_output_contents")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.cmd_output_contents)
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -86,306 +175,278 @@ class UI_MainChapterWindow(object):
         self.cmd_output_text = QtWidgets.QTextBrowser(self.cmd_output_contents)
         font = QtGui.QFont()
         self.cmd_output_text.setFont(font)
-        self.cmd_output_text.setStyleSheet("background-color: rgb(0, 0, 0);")
+        self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.cmd_output_text.setObjectName("cmd_output_text")
         self.horizontalLayout_4.addWidget(self.cmd_output_text)
         self.cmd_output_scroll_area.setWidget(self.cmd_output_contents)
-        self.cmd_layout.addWidget(self.cmd_output_scroll_area)
-        self.cmd_user_input_box = QtWidgets.QLineEdit(self.main_chapter_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.cmd_user_input_box.sizePolicy().hasHeightForWidth())
-        self.cmd_user_input_box.setSizePolicy(sizePolicy)
+        self.cmd_grid_layout.addWidget(self.cmd_output_scroll_area, 0, 0, 1, 1)
+        self.cmd_user_input_box = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.cmd_user_input_box.sizePolicy().hasHeightForWidth())
+        self.cmd_user_input_box.setSizePolicy(size_policy)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.cmd_user_input_box.setFont(font)
         self.cmd_user_input_box.setStyleSheet("border: 1px solid red;\n"
                                               "border-color: rgb(0, 155, 255);\n"
                                               "border-radius: 5px; \n"
-                                              "selection-color: rgb(4, 184, 255);\n"
-                                              "background-color: rgb(0, 0, 0);")
+                                              "background-color: rgb(30, 30, 30);\n"
+                                              "padding-left:5px;\n"
+                                              "padding-right:5px")
         self.cmd_user_input_box.setText("")
+        self.cmd_user_input_box.setDragEnabled(False)
+        self.cmd_user_input_box.setPlaceholderText("")
         self.cmd_user_input_box.setObjectName("cmd_user_input_box")
-        self.cmd_layout.addWidget(self.cmd_user_input_box)
-        self.cmd_layout.setStretch(0, 5)
-        self.cmd_layout.setStretch(1, 1)
-        self.main_chapter_layout.addLayout(self.cmd_layout, 2, 1, 1, 1)
-        self.chapter_info_frame = QtWidgets.QFrame(self.main_chapter_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.chapter_info_frame.sizePolicy().hasHeightForWidth())
-        self.chapter_info_frame.setSizePolicy(sizePolicy)
-        self.chapter_info_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.chapter_info_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.chapter_info_frame.setObjectName("chapter_info_frame")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.chapter_info_frame)
-        self.gridLayout_4.setContentsMargins(0, 0, 5, 0)
-        self.gridLayout_4.setVerticalSpacing(4)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.chapter_info_layout = QtWidgets.QVBoxLayout()
-        self.chapter_info_layout.setObjectName("chapter_info_layout")
-        self.scrollArea = QtWidgets.QScrollArea(self.chapter_info_frame)
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 260, 246))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.scrollAreaWidgetContents.sizePolicy().hasHeightForWidth())
-        self.scrollAreaWidgetContents.setSizePolicy(sizePolicy)
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
-        self.gridLayout_5.setContentsMargins(2, 2, 2, 2)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.textBrowser = QtWidgets.QTextBrowser(self.scrollAreaWidgetContents)
-        font = QtGui.QFont()
-        self.textBrowser.setFont(font)
-        self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout_5.addWidget(self.textBrowser, 0, 0, 1, 1)
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.chapter_info_layout.addWidget(self.scrollArea)
-        self.gridLayout_4.addLayout(self.chapter_info_layout, 0, 0, 1, 1)
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setContentsMargins(5, 5, 5, 5)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.task_one = QtWidgets.QLabel(self.chapter_info_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.task_one.sizePolicy().hasHeightForWidth())
-        self.task_one.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        self.task_one.setFont(font)
-        self.task_one.setStyleSheet("background-color: rgb(138, 0, 1);\n"
-                                    "border-radius: 5px; \n"
-                                    "padding-left:5px")
-        self.task_one.setObjectName("task_one")
-        self.verticalLayout.addWidget(self.task_one)
-        self.task_two = QtWidgets.QLabel(self.chapter_info_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.task_two.sizePolicy().hasHeightForWidth())
-        self.task_two.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        self.task_two.setFont(font)
-        self.task_two.setStyleSheet("background-color: rgb(138, 0, 1);\n"
-                                    "border-radius: 5px; \n"
-                                    "padding-left:5px")
-        self.task_two.setObjectName("task_two")
-        self.verticalLayout.addWidget(self.task_two)
-        self.task_three = QtWidgets.QLabel(self.chapter_info_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.task_three.sizePolicy().hasHeightForWidth())
-        self.task_three.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        self.task_three.setFont(font)
-        self.task_three.setStyleSheet("background-color: rgb(138, 0, 1);\n"
-                                      "border-radius: 5px; \n"
-                                      "padding-left:5px")
-        self.task_three.setObjectName("task_three")
-        self.verticalLayout.addWidget(self.task_three)
-        self.gridLayout_4.addLayout(self.verticalLayout, 1, 0, 1, 1)
-        self.files_frame = QtWidgets.QFrame(self.chapter_info_frame)
-        self.files_frame.setStyleSheet("background-color: rgb(0, 157, 255);border-radius: 5px")
-        self.files_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.files_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.files_frame.setObjectName("files_frame")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.files_frame)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.files_layout = QtWidgets.QHBoxLayout()
-        self.files_layout.setSpacing(6)
-        self.files_layout.setObjectName("files_layout")
-        self.file1 = QtWidgets.QTextBrowser(self.files_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.file1.sizePolicy().hasHeightForWidth())
-        self.file1.setSizePolicy(sizePolicy)
-        self.file1.setMaximumSize(QtCore.QSize(60, 16777215))
-        self.file1.setObjectName("file1")
-        self.files_layout.addWidget(self.file1)
-        self.horizontalLayout_5.addLayout(self.files_layout)
-        self.gridLayout_4.addWidget(self.files_frame, 2, 0, 1, 1)
-        self.gridLayout_4.setRowStretch(0, 5)
-        self.gridLayout_4.setRowStretch(1, 2)
-        self.gridLayout_4.setRowStretch(2, 2)
-        self.main_chapter_layout.addWidget(self.chapter_info_frame, 1, 1, 1, 1)
-        self.frame = QtWidgets.QFrame(self.main_chapter_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
-        self.frame.setStyleSheet("")
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.commit_view = QtWidgets.QGraphicsView(self.frame)
-        self.commit_view.setObjectName("commit_view")
-        self.gridLayout_2.addWidget(self.commit_view, 0, 0, 1, 1)
-        self.main_chapter_layout.addWidget(self.frame, 1, 0, 1, 1)
-        self.title_label = QtWidgets.QLabel(self.main_chapter_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
-        self.title_label.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        self.title_label.setFont(font)
-        self.title_label.setStyleSheet("align=\"center\" ")
-        self.title_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.title_label.setObjectName("title_label")
-        self.main_chapter_layout.addWidget(self.title_label, 0, 1, 1, 1)
-        self.button_layout = QtWidgets.QHBoxLayout()
-        self.button_layout.setSizeConstraint(QtWidgets.QLayout.SetMinAndMaxSize)
-        self.button_layout.setContentsMargins(10, 10, 280, 10)
-        self.button_layout.setSpacing(20)
-        self.button_layout.setObjectName("button_layout")
+        self.cmd_grid_layout.addWidget(self.cmd_user_input_box, 1, 0, 1, 1)
+        self.cmd_grid_layout.setRowStretch(0, 12)
+        self.cmd_grid_layout.setRowStretch(1, 2)
         self.back_button = QtWidgets.QPushButton(self.main_chapter_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.back_button.sizePolicy().hasHeightForWidth())
-        self.back_button.setSizePolicy(sizePolicy)
+        self.back_button.setGeometry(QtCore.QRect(10, 20, 71, 31))
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.back_button.sizePolicy().hasHeightForWidth())
+        self.back_button.setSizePolicy(size_policy)
         self.back_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         self.back_button.setFont(font)
-        self.back_button.setStyleSheet(
-            "background-color: rgb(71, 71, 71);border-radius: 5px;padding-left:10px ;padding-right:10px ")
+        self.back_button.setStyleSheet("QPushButton {\n"
+                                       "    border: 1px solid #F4D782;\n"
+                                       "    font-size: 14px;\n"
+                                       "    color: #F4D782;\n"
+                                       "    padding: 1px;\n"
+                                       "    border-radius:10px\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:hover {\n"
+                                       "    background: #F4D780;\n"
+                                       "    color: black\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:pressed {\n"
+                                       "    background-color: rgb(255, 210, 103);\n"
+                                       "    color: black\n"
+                                       "}")
         self.back_button.setObjectName("back_button")
-        self.button_layout.addWidget(self.back_button)
-        self.reload_button = QtWidgets.QPushButton(self.main_chapter_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.reload_button.sizePolicy().hasHeightForWidth())
-        self.reload_button.setSizePolicy(sizePolicy)
-        self.reload_button.setMinimumSize(QtCore.QSize(0, 0))
-        font = QtGui.QFont()
-        self.reload_button.setFont(font)
-        self.reload_button.setStyleSheet("background-color: rgb(71, 71, 71);border-radius: 5px; ")
-        self.reload_button.setObjectName("reload_button")
-        self.button_layout.addWidget(self.reload_button)
         self.toggle_music_button = QtWidgets.QPushButton(self.main_chapter_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toggle_music_button.sizePolicy().hasHeightForWidth())
-        self.toggle_music_button.setSizePolicy(sizePolicy)
+        self.toggle_music_button.setGeometry(QtCore.QRect(180, 20, 120, 30))
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.toggle_music_button.sizePolicy().hasHeightForWidth())
+        self.toggle_music_button.setSizePolicy(size_policy)
         self.toggle_music_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         self.toggle_music_button.setFont(font)
-        self.toggle_music_button.setStyleSheet("background-color: rgb(71, 71, 71);border-radius: 5px; ")
+        self.toggle_music_button.setStyleSheet("QPushButton {\n"
+                                               "    border: 1px solid #F4D782;\n"
+                                               "    font-size: 14px;\n"
+                                               "    color: #F4D782;\n"
+                                               "    padding: 1px;\n"
+                                               "    border-radius:10px\n"
+                                               "}\n"
+                                               "\n"
+                                               "QPushButton:hover {\n"
+                                               "    background: #F4D780;\n"
+                                               "    color: black\n"
+                                               "}\n"
+                                               "\n"
+                                               "QPushButton:pressed {\n"
+                                               "    background-color: rgb(255, 210, 103);\n"
+                                               "    color: black\n"
+                                               "}")
         self.toggle_music_button.setObjectName("toggle_music_button")
-        self.button_layout.addWidget(self.toggle_music_button)
-        self.button_layout.setStretch(0, 1)
-        self.button_layout.setStretch(1, 2)
-        self.button_layout.setStretch(2, 4)
-        self.main_chapter_layout.addLayout(self.button_layout, 0, 0, 1, 1)
-        self.card_graphics_view = QtWidgets.QGraphicsView(self.main_chapter_frame)
-        self.card_graphics_view.setStyleSheet("background-color: rgb(10, 79, 255);")
-        self.card_graphics_view.setObjectName("card_graphics_view")
-        self.main_chapter_layout.addWidget(self.card_graphics_view, 2, 0, 1, 1)
-        self.main_chapter_layout.setColumnStretch(0, 5)
-        self.main_chapter_layout.setRowStretch(0, 1)
-        self.gridLayout_3.addLayout(self.main_chapter_layout, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.main_chapter_frame, 0, 0, 1, 1)
-        MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
+        self.reload_button = QtWidgets.QPushButton(self.main_chapter_frame)
+        self.reload_button.setGeometry(QtCore.QRect(90, 20, 80, 30))
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.reload_button.sizePolicy().hasHeightForWidth())
+        self.reload_button.setSizePolicy(size_policy)
+        self.reload_button.setMinimumSize(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        self.reload_button.setFont(font)
+        self.reload_button.setStyleSheet("QPushButton {\n"
+                                         "    border: 1px solid #F4D782;\n"
+                                         "    font-size: 14px;\n"
+                                         "    color: #F4D782;\n"
+                                         "    padding: 1px;\n"
+                                         "    border-radius:10px\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover {\n"
+                                         "    background: #F4D780;\n"
+                                         "    color: black\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:pressed {\n"
+                                         "    background-color: rgb(255, 210, 103);\n"
+                                         "    color: black\n"
+                                         "}")
+        self.reload_button.setObjectName("reload_button")
+        self.file_stacked_widget = QtWidgets.QStackedWidget(self.main_chapter_frame)
+        self.file_stacked_widget.setGeometry(QtCore.QRect(830, 410, 441, 91))
+        self.file_stacked_widget.setObjectName("file_stacked_widget")
+        self.file_main_page = QtWidgets.QWidget()
+        self.file_main_page.setObjectName("file_main_page")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.file_main_page)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.files_frame_2 = QtWidgets.QFrame(self.file_main_page)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.files_frame_2.sizePolicy().hasHeightForWidth())
+        self.files_frame_2.setSizePolicy(size_policy)
+        self.files_frame_2.setStyleSheet("background-color: rgb(0, 157, 255);border-radius: 5px")
+        self.files_frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.files_frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.files_frame_2.setObjectName("files_frame_2")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.files_frame_2)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.files_horiz_layout = QtWidgets.QHBoxLayout()
+        self.files_horiz_layout.setSpacing(0)
+        self.files_horiz_layout.setObjectName("files_horiz_layout")
+        self.file_img1 = QtWidgets.QTextBrowser(self.files_frame_2)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.file_img1.sizePolicy().hasHeightForWidth())
+        self.file_img1.setSizePolicy(size_policy)
+        self.file_img1.setMaximumSize(QtCore.QSize(40, 60))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.file_img1.setFont(font)
+        self.file_img1.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.file_img1.setStyleSheet("")
+        self.file_img1.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.file_img1.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.file_img1.setObjectName("file_img1")
+        self.files_horiz_layout.addWidget(self.file_img1)
+        self.horizontalLayout_6.addLayout(self.files_horiz_layout)
+        self.gridLayout_2.addWidget(self.files_frame_2, 0, 0, 1, 1)
+        self.file_stacked_widget.addWidget(self.file_main_page)
+        self.file_txt_page1 = QtWidgets.QWidget()
+        self.file_txt_page1.setObjectName("file_txt_page1")
+        self.gridLayout = QtWidgets.QGridLayout(self.file_txt_page1)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.file_txt1_edit = QtWidgets.QPlainTextEdit(self.file_txt_page1)
+        font = QtGui.QFont()
+        self.file_txt1_edit.setFont(font)
+        self.file_txt1_edit.setAutoFillBackground(False)
+        self.file_txt1_edit.setStyleSheet("border: 1px solid white;\n"
+                                          "border-radius: 5px")
+        self.file_txt1_edit.setObjectName("file_txt1_edit")
+        self.gridLayout.addWidget(self.file_txt1_edit, 0, 0, 1, 1)
+        self.file_txt1_button = QtWidgets.QPushButton(self.file_txt_page1)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.file_txt1_button.sizePolicy().hasHeightForWidth())
+        self.file_txt1_button.setSizePolicy(size_policy)
+        font = QtGui.QFont()
+        self.file_txt1_button.setFont(font)
+        self.file_txt1_button.setStyleSheet("QPushButton {\n"
+                                            "    border: 1px solid #F4D782;\n"
+                                            "    font-size: 14px;\n"
+                                            "    color: #F4D782;\n"
+                                            "    padding: 10px;\n"
+                                            "    border-radius:10px\n"
+                                            "}\n"
+                                            "\n"
+                                            "QPushButton:hover {\n"
+                                            "    background: #F4D780;\n"
+                                            "    color: black\n"
+                                            "}\n"
+                                            "\n"
+                                            "QPushButton:pressed {\n"
+                                            "    background-color: rgb(255, 210, 103);\n"
+                                            "    color: black\n"
+                                            "}")
+        self.file_txt1_button.setObjectName("file_txt1_button")
+        self.gridLayout.addWidget(self.file_txt1_button, 0, 1, 1, 1)
+        self.file_stacked_widget.addWidget(self.file_txt_page1)
 
-        self.card_graphics_view.scene = QGraphicsScene()
-        self.card_graphics_view.setScene(self.card_graphics_view.scene)
-        #self.card_graphics_view.setSceneRect(0, 0, 300, 200)
+        self.main_view.scene = QGraphicsScene()
+        self.main_view.setScene(self.main_view.scene)
+        # self.card_graphics_view.setSceneRect(0, 0, 300, 200)
 
         self.moveObject = MovingCards(0, 0, 150, 190, app)
         self.moveObject.setName("Git Add")
         self.moveObjectText = self.moveObject.getText()
-        self.card_graphics_view.scene.addItem(self.moveObject)
-        self.card_graphics_view.scene.addItem(self.moveObjectText)
-        # self.moveObject1 = MovingCards(-400, 0, 150, 190, app)
-        # self.moveObject1.setName("Git Add")
-        # self.moveObjectText1 = self.moveObject1.getText()
-        # self.card_graphics_view.scene.addItem(self.moveObject1)
-        # self.card_graphics_view.scene.addItem(self.moveObjectText1)
+        self.main_view.scene.addItem(self.moveObject)
+        self.main_view.scene.addItem(self.moveObjectText)
 
-        self.retranslateUI(MainChapterWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainChapterWindow)
+        self_MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
 
-    def retranslateUI(self, MainChapterWindow):
+        self.retranslate_ui(self_MainChapterWindow)
+        self.file_stacked_widget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(self_MainChapterWindow)
+
+    def retranslate_ui(self, MainChapterWindow):
         _translate = QtCore.QCoreApplication.translate
         MainChapterWindow.setWindowTitle(_translate("MainChapterWindow", "MainWindow"))
-        self.textBrowser.setHtml(_translate("MainChapterWindow",
-                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
-                                            "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
-                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
-                                            "charset=\"utf-8\" /><style type=\"text/css\">\n "
-                                            "p, li { white-space: pre-wrap; }\n"
-                                            "</style></head><body style=\" font-family:\'Montserrat\'; "
-                                            "font-size:13pt; font-weight:400; font-style:normal;\">\n "
-                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
-                                            "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
-                                            "font-size:12pt; ""color:white;"""
-                                            "\">Drag the card or type in the command to add, commit, "
-                                            "and push your first file!</span></p></body></html>"))
         self.task_one.setText(_translate("MainChapterWindow", "Add a.txt"))
         self.task_two.setText(_translate("MainChapterWindow", "Commit the change!"))
         self.task_three.setText(_translate("MainChapterWindow", "Push!"))
-        self.file1.setHtml(_translate("MainChapterWindow",
-                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
-                                      "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
-                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" "
-                                      "/><style type=\"text/css\">\n "
-                                      "p, li { white-space: pre-wrap; }\n"
-                                      "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; "
-                                      "font-size:13pt; font-weight:400; font-style:normal;\">\n "
-                                      "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
-                                      "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> <img src=\"\" "
-                                      "width=\"30\" height=\"30\" /></p>\n "
-                                      "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
-                                      "margin-right:0px; -qt-block-indent:0; text-indent:0px;\">   "
-                                      "a.txt</p></body></html>"))
+        self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow",
+                                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                                          "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                                          "charset=\"utf-8\" /><style type=\"text/css\">\n "
+                                                          "p, li { white-space: pre-wrap; }\n"
+                                                          "</style></head><body style=\" "
+                                                          "font-family:\'.AppleSystemUIFont\'; font-size:13pt; "
+                                                          "font-weight:400; font-style:normal;\">\n "
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; "
+                                                          "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                          "text-indent:0px;\"><span style=\" "
+                                                          "font-family:\'Montserrat\'; font-size:14pt;\">Drag the "
+                                                          "card or type in the command to add, commit, and push your "
+                                                          "first file!</span></p></body></html>"))
         self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
-        self.back_button.setText(_translate("MainChapterWindow", "Back"))
-        self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
-        self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
         self.cmd_output_text.setHtml(_translate("MainChapterWindow",
                                                 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
                                                 "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
                                                 "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                                 "p, li { white-space: pre-wrap; }\n"
-                                                "</style></head><body style=\" font-family:\'Courier New\'; "
+                                                "</style></head><body style=\" font-family:\'Montserrat\'; "
                                                 "font-size:13pt; font-weight:400; font-style:normal;\">\n "
                                                 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
                                                 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
                                                 "style=\" font-family:\'Menlo\'; font-size:11pt; "
                                                 "color:#ffffff;\">user@what-the-git repo_folder % "
                                                 "</span></p></body></html>"))
+        self.cmd_output_text.setPlaceholderText(_translate("MainChapterWindow", "user@what-the-git repo_folder %"))
+        self.back_button.setText(_translate("MainChapterWindow", "Back"))
+        self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
+        self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
+        self.file_img1.setHtml(_translate("MainChapterWindow",
+                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                          "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                          "charset=\"utf-8\" /><style type=\"text/css\">\n "
+                                          "p, li { white-space: pre-wrap; }\n"
+                                          "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; "
+                                          "font-size:12pt; font-weight:400; font-style:normal;\">\n "
+                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                                          "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img "
+                                          "src=\"media/txt_img.png\" width=\"35\" height=\"40\" /></p>\n "
+                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                                          "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+                                          "font-family:\'Montserrat\'; font-size:13pt; color:#ffffff;\"> "
+                                          "a.txt</span></p></body></html>"))
+        self.file_txt1_edit.setPlainText(_translate("MainChapterWindow", "hello world"))
+        self.file_txt1_button.setText(_translate("MainChapterWindow", "Done"))
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainChapterWindow = QtWidgets.QMainWindow()
-    ui = UI_MainChapterWindow()
-    ui.setupUI(MainChapterWindow, app)
-
-    # Play background music
-    # filename = 'music/track.mp3'
-    # fullpath = QtCore.QDir.current().absoluteFilePath(filename)
-    # media = QtCore.QUrl.fromLocalFile(fullpath)
-    # print(fullpath)
-    # content = QtMultimedia.QMediaContent(media)
-    # player = QtMultimedia.QMediaPlayer()
-    # player.setMedia(content)
-    # player.play()
-
+    ui = UI_MainChapterWindow(MainChapterWindow)
     MainChapterWindow.show()
     sys.exit(app.exec_())

@@ -16,7 +16,7 @@ class Start_Window(object):
 
     def setupUI(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 596)
+        MainWindow.resize(1164, 900)
         MainWindow.setFocusPolicy(QtCore.Qt.ClickFocus)
         MainWindow.setLayoutDirection(QtCore.Qt.LeftToRight)
         MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")

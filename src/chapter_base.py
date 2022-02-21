@@ -301,15 +301,20 @@ class UI_MainChapterWindow(object):
         self.gridLayout.addWidget(self.main_chapter_frame, 0, 0, 1, 1)
         MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
 
-        # self.commit_view.scene = QGraphicsScene()
-        # self.commit_view.setScene(self.commit_view.scene)
-        # self.commit_view.setSceneRect(0, 0, 1200, 1000)
+        self.card_graphics_view.scene = QGraphicsScene()
+        self.card_graphics_view.setScene(self.card_graphics_view.scene)
+        #self.card_graphics_view.setSceneRect(0, 0, 300, 200)
 
-        # self.moveObject = MovingCards(50, 50, 150, 200, app)
-        # self.moveObject.setName("Git Commit")
-        # self.moveObjectText = self.moveObject.getText()
-        # self.commit_view.scene.addItem(self.moveObject)
-        # self.commit_view.scene.addItem(self.moveObjectText)
+        self.moveObject = MovingCards(0, 0, 150, 190, app)
+        self.moveObject.setName("Git Add")
+        self.moveObjectText = self.moveObject.getText()
+        self.card_graphics_view.scene.addItem(self.moveObject)
+        self.card_graphics_view.scene.addItem(self.moveObjectText)
+        # self.moveObject1 = MovingCards(-400, 0, 150, 190, app)
+        # self.moveObject1.setName("Git Add")
+        # self.moveObjectText1 = self.moveObject1.getText()
+        # self.card_graphics_view.scene.addItem(self.moveObject1)
+        # self.card_graphics_view.scene.addItem(self.moveObjectText1)
 
         self.retranslateUI(MainChapterWindow)
         QtCore.QMetaObject.connectSlotsByName(MainChapterWindow)
@@ -373,14 +378,14 @@ if __name__ == "__main__":
     ui.setupUI(MainChapterWindow, app)
 
     # Play background music
-    filename = 'music/track.mp3'
-    fullpath = QtCore.QDir.current().absoluteFilePath(filename)
-    media = QtCore.QUrl.fromLocalFile(fullpath)
-    print(fullpath)
-    content = QtMultimedia.QMediaContent(media)
-    player = QtMultimedia.QMediaPlayer()
-    player.setMedia(content)
-    player.play()
+    # filename = 'music/track.mp3'
+    # fullpath = QtCore.QDir.current().absoluteFilePath(filename)
+    # media = QtCore.QUrl.fromLocalFile(fullpath)
+    # print(fullpath)
+    # content = QtMultimedia.QMediaContent(media)
+    # player = QtMultimedia.QMediaPlayer()
+    # player.setMedia(content)
+    # player.play()
 
     MainChapterWindow.show()
     sys.exit(app.exec_())

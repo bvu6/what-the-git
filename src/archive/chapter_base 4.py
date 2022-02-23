@@ -1,8 +1,10 @@
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from cards import DraggableCardImages
 
+
 class Ui_MainChapterWindow(object):
-    def __init__(self, MainChapterWindow):
+    def setupUi(self, MainChapterWindow):
         MainChapterWindow.setObjectName("MainChapterWindow")
         MainChapterWindow.resize(1280, 720)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -32,7 +34,7 @@ class Ui_MainChapterWindow(object):
         self.main_chapter_central_widget.setObjectName("main_chapter_central_widget")
         self.main_chapter_frame = QtWidgets.QFrame(self.main_chapter_central_widget)
         self.main_chapter_frame.setEnabled(True)
-        self.main_chapter_frame.setGeometry(QtCore.QRect(0, -10, 1280, 720))
+        self.main_chapter_frame.setGeometry(QtCore.QRect(0, 0, 1280, 720))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -48,7 +50,7 @@ class Ui_MainChapterWindow(object):
         self.main_chapter_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main_chapter_frame.setObjectName("main_chapter_frame")
         self.main_view = QtWidgets.QGraphicsView(self.main_chapter_frame)
-        self.main_view.setGeometry(QtCore.QRect(0, 60, 1280, 720))
+        self.main_view.setGeometry(QtCore.QRect(0, 60, 821, 431))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -67,25 +69,6 @@ class Ui_MainChapterWindow(object):
         font = QtGui.QFont()
         self.chapter_info_text_browser.setFont(font)
         self.chapter_info_text_browser.setObjectName("chapter_info_text_browser")
-        self.verticalLayoutWidget = QtWidgets.QWidget(self.main_chapter_frame)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(830, 10, 441, 61))
-        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.title_layout_vbox = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-        self.title_layout_vbox.setContentsMargins(0, 0, 0, 0)
-        self.title_layout_vbox.setObjectName("title_layout_vbox")
-        self.title_label = QtWidgets.QLabel(self.verticalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
-        self.title_label.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        self.title_label.setFont(font)
-        self.title_label.setStyleSheet("")
-        self.title_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.title_label.setObjectName("title_label")
-        self.title_layout_vbox.addWidget(self.title_label)
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.main_chapter_frame)
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(830, 500, 441, 221))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
@@ -110,7 +93,6 @@ class Ui_MainChapterWindow(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.cmd_output_text = QtWidgets.QTextBrowser(self.cmd_output_contents)
         font = QtGui.QFont()
-        font.setFamily("Montserrat")
         self.cmd_output_text.setFont(font)
         self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.cmd_output_text.setObjectName("cmd_output_text")
@@ -257,7 +239,6 @@ class Ui_MainChapterWindow(object):
         self.file_img1.setSizePolicy(sizePolicy)
         self.file_img1.setMaximumSize(QtCore.QSize(40, 63))
         font = QtGui.QFont()
-        font.setFamily("Montserrat")
         font.setPointSize(12)
         self.file_img1.setFont(font)
         self.file_img1.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
@@ -374,22 +355,56 @@ class Ui_MainChapterWindow(object):
         self.task_three.setAlignment(QtCore.Qt.AlignCenter)
         self.task_three.setObjectName("task_three")
         self.task_vert_layout.addWidget(self.task_three)
-        self.rm_card = QtWidgets.QLabel(self.main_chapter_frame)
-        self.rm_card.setGeometry(QtCore.QRect(50, 540, 111, 161))
-        self.rm_card.setText("")
-        self.rm_card.setPixmap(QtGui.QPixmap("../edu-tool-group-project-thicc-juice/media/cards/rm.png"))
-        self.rm_card.setScaledContents(True)
-        self.rm_card.setObjectName("rm_card")
+        self.frame = QtWidgets.QFrame(self.main_chapter_frame)
+        self.frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setMaximumSize(QtCore.QSize(16777215, 220))
+        self.frame.setStyleSheet("\n"
+"background-color:  #F4D782;")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.title_label = QtWidgets.QLabel(self.main_chapter_frame)
+        self.title_label.setGeometry(QtCore.QRect(830, 10, 439, 59))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
+        self.title_label.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(24)
+        self.title_label.setFont(font)
+        self.title_label.setStyleSheet("")
+        self.title_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.title_label.setObjectName("title_label")
+        # self.rm_card = QtWidgets.QLabel(self.main_chapter_frame)
+        # self.rm_card.setGeometry(QtCore.QRect(130, 420, 145, 190))
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.rm_card.sizePolicy().hasHeightForWidth())
+        # self.rm_card.setSizePolicy(sizePolicy)
+        # self.rm_card.setMaximumSize(QtCore.QSize(145, 190))
+        # font = QtGui.QFont()
+        # self.rm_card.setFont(font)
+        # self.rm_card.setText("")
+        # self.rm_card.setPixmap(QtGui.QPixmap("images/cards/rm.png"))
+        # self.rm_card.setScaledContents(True)
+        # self.rm_card.setObjectName("rm_card")
 
         self._imgList = [
-            "media/cards/rm.png",
-            "media/cards/rm.png",
+            "images/cards/rm.png",
+            "images/cards/rm.png",
         ]
 
         for img in self._imgList:
             print('1')
-            draggableImage = DraggableCardImages(imgPath=img, parent=MainChapterWindow)
-            self.card = draggableImage
+            self.card =  DraggableCardImages(imgPath=img, parent=self.main_chapter_frame, wid=None)
+
 
 
         MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
@@ -406,7 +421,6 @@ class Ui_MainChapterWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:14pt;\">Drag the card or type in the command to add, commit, and push your first file!</span></p></body></html>"))
-        self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
         self.cmd_output_text.setHtml(_translate("MainChapterWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -427,12 +441,14 @@ class Ui_MainChapterWindow(object):
         self.task_one.setText(_translate("MainChapterWindow", "Add a.txt"))
         self.task_two.setText(_translate("MainChapterWindow", "Commit the change!"))
         self.task_three.setText(_translate("MainChapterWindow", "Push!"))
+        self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainChapterWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainChapterWindow(MainChapterWindow)
+    ui = Ui_MainChapterWindow()
+    ui.setupUi(MainChapterWindow)
     MainChapterWindow.show()
     sys.exit(app.exec_())

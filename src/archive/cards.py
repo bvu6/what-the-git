@@ -3,13 +3,15 @@ import os
 
 
 class DraggableCardImages(QtWidgets.QLabel):
-    def __init__(self, imgPath=None, parent=None):
+    def __init__(self, imgPath=None, parent=None, wid=None):
         super(DraggableCardImages, self).__init__()
+
         self.setParent(parent)
-        self.setGeometry(QtCore.QRect(50, 540, 111, 161))
+        self.setGeometry(QtCore.QRect(300, 540, 111, 161))
         self.setScaledContents(True)
         self.setPixmap(QtGui.QPixmap(imgPath))
         self.drag_start_pos = None
+        self.wid=wid
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
@@ -29,7 +31,7 @@ class DraggableCardImages(QtWidgets.QLabel):
         self.setCursor(QtCore.Qt.ArrowCursor)
         self.drag_start_pos = None
 
-        parent_layout = self.parent().mainLayout
+        parent_layout = self.wid
 
         all_images = [parent_layout.itemAt(i).widget() for i in range(parent_layout.count())]
 
@@ -44,25 +46,25 @@ class DraggableCardImages(QtWidgets.QLabel):
         super(DraggableCardImages, self).mouseReleaseEvent(event)
 
 
-class MainWindow(QtWidgets.QWidget):
-    def __init__(self):
-        super(MainWindow, self).__init__()
-        self.mainLayout = QtWidgets.QHBoxLayout()
-        self.setLayout(self.mainLayout)
-        self._imgList = [
-            "media/cards/rm.png",
-            "media/cards/rm.png",
-        ]
-
-        for img in self._imgList:
-            print('1')
-            draggableImage = DraggableCardImages(imgPath=img, parent=self)
-            self.mainLayout.addWidget(draggableImage)
-
-
-if __name__ == '__main__':
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    win = MainWindow()
-    win.show()
-    sys.exit(app.exec_())
+# class MainWindow(QtWidgets.QWidget):
+#     def __init__(self):
+#         super(MainWindow, self).__init__()
+#         self.horizontalLayout = QtWidgets.QHBoxLayout()
+#         self.setLayout(self.horizontalLayout)
+#         self._imgList = [
+#             "images/cards/rm.png",
+#             "images/cards/rm.png",
+#         ]
+#
+#         for img in self._imgList:
+#             print('1')
+#             draggableImage = DraggableCardImages(imgPath=img, parent=self)
+#             self.horizontalLayout.addWidget(draggableImage)
+#
+#
+# if __name__ == '__main__':
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     win = MainWindow()
+#     win.show()
+#     sys.exit(app.exec_())

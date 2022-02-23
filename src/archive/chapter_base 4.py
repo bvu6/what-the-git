@@ -1,7 +1,10 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QGraphicsScene
+from PyQt5.QtCore import QUrl
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+import sys
+import os
 from cards import DraggableCardImages
-
 
 class Ui_MainChapterWindow(object):
     def setupUi(self, MainChapterWindow):
@@ -152,33 +155,62 @@ class Ui_MainChapterWindow(object):
         self.back_button.setObjectName("back_button")
         self.toggle_music_button = QtWidgets.QPushButton(self.main_chapter_frame)
         self.toggle_music_button.setGeometry(QtCore.QRect(180, 20, 120, 30))
+        self.toggleoff_music_button = QtWidgets.QPushButton(self.main_chapter_frame)
+        self.toggleoff_music_button.setGeometry(QtCore.QRect(180, 20, 120, 30))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.toggle_music_button.sizePolicy().hasHeightForWidth())
         self.toggle_music_button.setSizePolicy(sizePolicy)
         self.toggle_music_button.setMinimumSize(QtCore.QSize(0, 0))
+        self.toggleoff_music_button.setSizePolicy(sizePolicy)
+        self.toggleoff_music_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(-1)
         self.toggle_music_button.setFont(font)
         self.toggle_music_button.setStyleSheet("QPushButton {\n"
-"    border: 1px solid #F4D782;\n"
-"    font-size: 14px;\n"
-"    color: #F4D782;\n"
-"    padding: 1px;\n"
-"    border-radius:10px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: #F4D780;\n"
-"    color: black\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(255, 210, 103);\n"
-"    color: black\n"
-"}")
+                                               "    border: 1px solid #F4D782;\n"
+                                               "    font-size: 14px;\n"
+                                               "    color: #F4D782;\n"
+                                               "    padding: 1px;\n"
+                                               "    border-radius:10px\n"
+                                               "}\n"
+                                               "\n"
+                                               "QPushButton:hover {\n"
+                                               "    background: #F4D780;\n"
+                                               "    color: black\n"
+                                               "}\n"
+                                               "\n"
+                                               "QPushButton:pressed {\n"
+                                               "    background-color: rgb(255, 210, 103);\n"
+                                               "    color: black\n"
+                                               "}")
         self.toggle_music_button.setObjectName("toggle_music_button")
+        self.toggleoff_music_button.setFont(font)
+        self.toggleoff_music_button.setStyleSheet("QPushButton {\n"
+                                                  "    border: 1px solid #F4D782;\n"
+                                                  "    font-size: 14px;\n"
+                                                  "    color: #F4D782;\n"
+                                                  "    padding: 1px;\n"
+                                                  "    border-radius:10px\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QPushButton:hover {\n"
+                                                  "    background: #F4D780;\n"
+                                                  "    color: black\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QPushButton:pressed {\n"
+                                                  "    background-color: rgb(255, 210, 103);\n"
+                                                  "    color: black\n"
+                                                  "}")
+        self.toggleoff_music_button.setObjectName("toggle_music_button")
+        # play Song
+        self.player = QMediaPlayer()
+        self.toggleoff_music_button.hide()
+        self.toggle_music_button.clicked.connect(lambda: self.playSong())
+        self.toggleoff_music_button.clicked.connect(lambda: self.stopSong())
+
         self.reload_button = QtWidgets.QPushButton(self.main_chapter_frame)
         self.reload_button.setGeometry(QtCore.QRect(90, 20, 80, 30))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -429,6 +461,7 @@ class Ui_MainChapterWindow(object):
         self.cmd_output_text.setPlaceholderText(_translate("MainChapterWindow", "user@what-the-git repo_folder %"))
         self.back_button.setText(_translate("MainChapterWindow", "Back"))
         self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
+        self.toggleoff_music_button.setText(_translate("MainChapterWindow", "Toggle Off Music"))
         self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
         self.file_img1.setHtml(_translate("MainChapterWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -447,6 +480,25 @@ class Ui_MainChapterWindow(object):
         cardList = []
         for i in range(num):
             cardList.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150*i))
+
+    def playSong(self):
+        current_path = os.path.dirname(os.path.realpath(__file__))
+        print(current_path)
+        print("song Playing")
+        full_file_path = os.path.join(current_path, 'music/track.mp3')
+        print(full_file_path)
+        url = QUrl.fromLocalFile(full_file_path)
+        content = QMediaContent(url)
+        self.player.setMedia(content)
+        self.player.play()
+        self.toggle_music_button.hide()
+        self.toggleoff_music_button.show()
+
+    def stopSong(self):
+        self.player.stop()
+        self.toggleoff_music_button.hide()
+        self.toggle_music_button.show()
+        print("Song Stopped")
 
 if __name__ == "__main__":
     import sys

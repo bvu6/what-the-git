@@ -466,7 +466,7 @@ class Ui_MainChapterWindow(object):
         current_path = os.path.dirname(os.path.realpath(__file__))
         print(current_path)
         print("song Playing")
-        full_file_path = os.path.join(current_path, 'music/track.mp3')
+        full_file_path = os.path.join(current_path, 'archive/music/track.mp3')
         print(full_file_path)
         url = QUrl.fromLocalFile(full_file_path)
         content = QMediaContent(url)

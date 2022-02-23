@@ -1,17 +1,23 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
+from PyQt5.QtCore import QPointF
+
 
 class DraggableCardImages(QtWidgets.QLabel):
-    def __init__(self, imgPath=None, parent=None, wid=None):
+    def __init__(self, imgPath=None, parent=None, wid=None, x=None):
         super(DraggableCardImages, self).__init__()
 
         self.setParent(parent)
-        self.setGeometry(QtCore.QRect(300, 540, 111, 161))
+        self.ogX = 50 + x
+        self.ogY = 540
+        self.setStyleSheet("background-color: cyan")
+        self.setGeometry(QtCore.QRect(self.ogX, self.ogY, 111, 161))
         self.setScaledContents(True)
         self.setPixmap(QtGui.QPixmap(imgPath))
         self.drag_start_pos = None
-        self.wid=wid
+        self.wid = wid
+        self.setText("Git")
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
@@ -27,24 +33,30 @@ class DraggableCardImages(QtWidgets.QLabel):
             self.move(self.pos() + event.pos() - self.drag_start_pos)
         super(DraggableCardImages, self).mouseMoveEvent(event)
 
+    # def mouseReleaseEvent(self, event):
+    #     self.setCursor(QtCore.Qt.ArrowCursor)
+    #     self.drag_start_pos = None
+    #
+    #     parent_layout = self.wid
+    #
+    #     all_images = [parent_layout.itemAt(i).widget() for i in range(parent_layout.count())]
+    #
+    #     # sort the list of widgets by their x position
+    #     order = sorted(all_images, key=lambda i: i.pos().x())
+    #
+    #     # remove each item from the layout and insert the one that should go in that index.
+    #     for idx, widget in enumerate(order):
+    #         parent_layout.takeAt(idx)
+    #         parent_layout.insertWidget(idx, widget)
+    #
+    #     super(DraggableCardImages, self).mouseReleaseEvent(event)
+
     def mouseReleaseEvent(self, event):
-        self.setCursor(QtCore.Qt.ArrowCursor)
-        self.drag_start_pos = None
-
-        parent_layout = self.wid
-
-        all_images = [parent_layout.itemAt(i).widget() for i in range(parent_layout.count())]
-
-        # sort the list of widgets by their x position
-        order = sorted(all_images, key=lambda i: i.pos().x())
-
-        # remove each item from the layout and insert the one that should go in that index.
-        for idx, widget in enumerate(order):
-            parent_layout.takeAt(idx)
-            parent_layout.insertWidget(idx, widget)
-
-        super(DraggableCardImages, self).mouseReleaseEvent(event)
-
+        if self.x() > 800 or self.y() > 430:
+            self.move(self.ogX, self.ogY)
+        else:
+            print("adding git card to thing")
+            self.setParent(None)
 
 # class MainWindow(QtWidgets.QWidget):
 #     def __init__(self):

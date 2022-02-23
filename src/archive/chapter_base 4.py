@@ -396,16 +396,16 @@ class Ui_MainChapterWindow(object):
         # self.rm_card.setScaledContents(True)
         # self.rm_card.setObjectName("rm_card")
 
-        self._imgList = [
-            "images/cards/rm.png",
-            "images/cards/rm.png",
-        ]
+        # self._imgList = [
+        #     "images/cards/rm.png",
+        #     "images/cards/rm.png",
+        # ]
+        #
+        # for img in self._imgList:
+        #     print('1')
+        #     self.card =  DraggableCardImages(imgPath=img, parent=self.main_chapter_frame, wid=None)
 
-        for img in self._imgList:
-            print('1')
-            self.card =  DraggableCardImages(imgPath=img, parent=self.main_chapter_frame, wid=None)
-
-
+        self.createCards(5)
 
         MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
 
@@ -443,6 +443,10 @@ class Ui_MainChapterWindow(object):
         self.task_three.setText(_translate("MainChapterWindow", "Push!"))
         self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
 
+    def createCards(self, num):
+        cardList = []
+        for i in range(num):
+            cardList.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150*i))
 
 if __name__ == "__main__":
     import sys

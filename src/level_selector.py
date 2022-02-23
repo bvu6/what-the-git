@@ -2,14 +2,14 @@
 # Made By Thicc-Juice
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from chapter_base import UI_MainChapterWindow
+from chapter_base import Ui_MainChapterWindow
 import sys
 
 
 class LevelWindow(object):
     def switch_to_level_window(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = UI_MainChapterWindow()
+        self.ui = Ui_MainChapterWindow()
         self.ui.setupUI(self.window)
         self.window.show()
 

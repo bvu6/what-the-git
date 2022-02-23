@@ -40,6 +40,7 @@ class Ui_MainWindow(object):
 "}")
         self.playButton.setObjectName("playButton")
         self.playButton.clicked.connect(self.switch_to_level_selector_window) #switch windows
+        self.playButton.clicked.connect(MainWindow.close) #closes window
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(240, 30, 321, 241))
         self.label.setText("")

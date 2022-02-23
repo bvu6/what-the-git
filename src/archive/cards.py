@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
 from PyQt5.QtCore import QPointF
+from PyQt5.QtGui import QFont
 
 
 class DraggableCardImages(QtWidgets.QLabel):
@@ -17,7 +18,9 @@ class DraggableCardImages(QtWidgets.QLabel):
         self.setPixmap(QtGui.QPixmap(imgPath))
         self.drag_start_pos = None
         self.wid = wid
-        self.setText("Git")
+        self.setText("Git Commit")
+        self.setFont(QFont("Arial", 15))
+        self.setAlignment(QtCore.Qt.AlignHCenter)
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:

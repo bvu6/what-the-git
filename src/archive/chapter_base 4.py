@@ -483,7 +483,8 @@ class Ui_MainChapterWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainChapterWindow.setWindowTitle(_translate("MainChapterWindow", "MainWindow"))
         self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow",
-                                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                                          "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
                                                           "p, li { white-space: pre-wrap; }\n"
                                                           "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"

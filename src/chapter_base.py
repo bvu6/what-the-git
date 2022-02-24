@@ -167,7 +167,6 @@ class UI_MainChapterWindow(object):
         self.toggleoff_music_button.setSizePolicy(sizePolicy)
         self.toggleoff_music_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
-        font.setPointSize(-1)
         self.toggle_music_button.setFont(font)
         self.toggle_music_button.setStyleSheet("QPushButton {\n"
                                                "    border: 1px solid #F4D782;\n"

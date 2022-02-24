@@ -3,18 +3,9 @@
 # What The Git!
 
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMainWindow
-
-from level_selector import LevelWindow
+from chapter_selector import LevelWindow
 from start_screen import UI_start_window
 import sys
-
-
-def switch_to_level_selector_window(self):
-    self.window = QtWidgets.QMainWindow()
-    self.ui = LevelWindow()
-    self.ui.setupUI(self.window)
-    self.window.show()
 
 
 class MainWindow:
@@ -30,6 +21,13 @@ class MainWindow:
         self.ui.playButton.clicked.connect(lambda: self.switch_to_level_selector())
 
     def switch_to_level_selector(self):
+        self.stacked_widget.hide()
+        self.stacked_widget.removeWidget(self.main_window)
+        self.ui = LevelWindow(self.main_window)
+        self.stacked_widget.addWidget(self.main_window)
+        self.stacked_widget.show()
+
+    def switch_to_level_one(self):
         self.stacked_widget.hide()
         self.stacked_widget.removeWidget(self.main_window)
         self.ui = LevelWindow(self.main_window)

@@ -6,21 +6,21 @@ import sys
 
 
 class UI_start_window(object):
-    def __init__(self, start_window_obj):
-        start_window_obj.setObjectName("start_window")
-        start_window_obj.resize(1280, 720)
+    def __init__(self, window):
+        window.setObjectName("start_window")
+        window.resize(1280, 720)
 
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
-        size_policy.setHeightForWidth(start_window_obj.sizePolicy().hasHeightForWidth())
+        size_policy.setHeightForWidth(window.sizePolicy().hasHeightForWidth())
 
-        start_window_obj.setSizePolicy(size_policy)
-        start_window_obj.setFocusPolicy(QtCore.Qt.ClickFocus)
-        start_window_obj.setLayoutDirection(QtCore.Qt.LeftToRight)
-        start_window_obj.setStyleSheet("background-color: rgb(0, 0, 0);")
+        window.setSizePolicy(size_policy)
+        window.setFocusPolicy(QtCore.Qt.ClickFocus)
+        window.setLayoutDirection(QtCore.Qt.LeftToRight)
+        window.setStyleSheet("background-color: rgb(0, 0, 0);")
 
-        self.start_screen_central_widget = QtWidgets.QWidget(start_window_obj)
+        self.start_screen_central_widget = QtWidgets.QWidget(window)
         self.start_screen_central_widget.setObjectName("start_screen_central_widget")
         self.start_screen_frame = QtWidgets.QFrame(self.start_screen_central_widget)
         self.start_screen_frame.setGeometry(QtCore.QRect(0, 0, 1280, 720))
@@ -86,9 +86,9 @@ class UI_start_window(object):
         self.game_logo.setScaledContents(True)
         self.game_logo.setObjectName("game_logo")
 
-        start_window_obj.setCentralWidget(self.start_screen_central_widget)
-        self.retranslate(start_window_obj)
-        QtCore.QMetaObject.connectSlotsByName(start_window_obj)
+        window.setCentralWidget(self.start_screen_central_widget)
+        self.retranslate(window)
+        QtCore.QMetaObject.connectSlotsByName(window)
 
     def retranslate(self, start_window_obj_retrans):
         _translate = QtCore.QCoreApplication.translate

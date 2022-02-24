@@ -93,6 +93,7 @@ class ui_chapter_window(object):
         self.chapter_info_text_browser.setSizePolicy(size_policy)
         font = QtGui.QFont()
         self.chapter_info_text_browser.setFont(font)
+        self.chapter_info_text_browser.setStyleSheet("color: white;")
         self.chapter_info_text_browser.setObjectName("chapter_info_text_browser")
 
         self.cmd_input_vert_layout = QtWidgets.QWidget(self.main_chapter_frame)
@@ -630,7 +631,6 @@ class ui_chapter_window(object):
                                                 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
                                                 "style=\" font-size:11pt; color:#ffffff;\">user@what-the-git "
                                                 "repo_folder % </span></p></body></html>"))
-        self.cmd_output_text.setPlaceholderText(_translate("window", "user@what-the-git repo_folder %"))
         self.back_button.setText(_translate("window", "Back"))
         self.toggle_music_button.setText(_translate("window", "Toggle Music"))
         self.reload_button.setText(_translate("window", "Reload"))

@@ -12,7 +12,8 @@ class DraggableCardImages(QtWidgets.QLabel):
         self.setParent(parent)
         self.ogX = 50 + x
         self.ogY = 540
-        self.setStyleSheet("background-color: cyan")
+        # self.setStyleSheet("background-color: cyan")
+        self.setStyleSheet(("background-image : url(image.png); background-position: center;"))
         self.setGeometry(QtCore.QRect(self.ogX, self.ogY, 111, 161))
         self.setScaledContents(True)
         self.setPixmap(QtGui.QPixmap(imgPath))
@@ -60,7 +61,6 @@ class DraggableCardImages(QtWidgets.QLabel):
         else:
             print("adding git card to thing")
             self.setParent(None)
-
 # class MainWindow(QtWidgets.QWidget):
 #     def __init__(self):
 #         super(MainWindow, self).__init__()

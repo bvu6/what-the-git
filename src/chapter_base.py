@@ -2,28 +2,28 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QGraphicsScene
 from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-from card_select import MovingCards
 import sys
 import os
+from cards import DraggableCardImages
 
 
 class ui_chapter_window(object):
-    def __init__(self, window):
-        window.setObjectName("MainChapterWindow")
-        window.resize(1280, 720)
+    def __init__(self, MainChapterWindow):
+        MainChapterWindow.setObjectName("MainChapterWindow")
+        MainChapterWindow.resize(1280, 720)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(window.sizePolicy().hasHeightForWidth())
-        window.setSizePolicy(sizePolicy)
-        window.setMinimumSize(QtCore.QSize(1280, 720))
-        window.setMaximumSize(QtCore.QSize(1280, 720))
+        sizePolicy.setHeightForWidth(MainChapterWindow.sizePolicy().hasHeightForWidth())
+        MainChapterWindow.setSizePolicy(sizePolicy)
+        MainChapterWindow.setMinimumSize(QtCore.QSize(1280, 720))
+        MainChapterWindow.setMaximumSize(QtCore.QSize(1280, 720))
         font = QtGui.QFont()
         font.setPointSize(12)
-        window.setFont(font)
-        window.setStyleSheet("")
-        window.setTabShape(QtWidgets.QTabWidget.Rounded)
-        self.main_chapter_central_widget = QtWidgets.QWidget(window)
+        MainChapterWindow.setFont(font)
+        MainChapterWindow.setStyleSheet("")
+        MainChapterWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.main_chapter_central_widget = QtWidgets.QWidget(MainChapterWindow)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -54,7 +54,7 @@ class ui_chapter_window(object):
         self.main_chapter_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main_chapter_frame.setObjectName("main_chapter_frame")
         self.main_view = QtWidgets.QGraphicsView(self.main_chapter_frame)
-        self.main_view.setGeometry(QtCore.QRect(0, 70, 821, 651))
+        self.main_view.setGeometry(QtCore.QRect(0, 60, 821, 431))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -167,6 +167,7 @@ class ui_chapter_window(object):
         self.toggleoff_music_button.setSizePolicy(sizePolicy)
         self.toggleoff_music_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
+        font.setPointSize(-1)
         self.toggle_music_button.setFont(font)
         self.toggle_music_button.setStyleSheet("QPushButton {\n"
                                                "    border: 1px solid #F4D782;\n"
@@ -188,29 +189,28 @@ class ui_chapter_window(object):
         self.toggle_music_button.setObjectName("toggle_music_button")
         self.toggleoff_music_button.setFont(font)
         self.toggleoff_music_button.setStyleSheet("QPushButton {\n"
-                                               "    border: 1px solid #F4D782;\n"
-                                               "    font-size: 14px;\n"
-                                               "    color: #F4D782;\n"
-                                               "    padding: 1px;\n"
-                                               "    border-radius:10px\n"
-                                               "}\n"
-                                               "\n"
-                                               "QPushButton:hover {\n"
-                                               "    background: #F4D780;\n"
-                                               "    color: black\n"
-                                               "}\n"
-                                               "\n"
-                                               "QPushButton:pressed {\n"
-                                               "    background-color: rgb(255, 210, 103);\n"
-                                               "    color: black\n"
-                                               "}")
+                                                  "    border: 1px solid #F4D782;\n"
+                                                  "    font-size: 14px;\n"
+                                                  "    color: #F4D782;\n"
+                                                  "    padding: 1px;\n"
+                                                  "    border-radius:10px\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QPushButton:hover {\n"
+                                                  "    background: #F4D780;\n"
+                                                  "    color: black\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QPushButton:pressed {\n"
+                                                  "    background-color: rgb(255, 210, 103);\n"
+                                                  "    color: black\n"
+                                                  "}")
         self.toggleoff_music_button.setObjectName("toggle_music_button")
-        #play Song
+        # play Song
         self.player = QMediaPlayer()
         self.toggleoff_music_button.hide()
         self.toggle_music_button.clicked.connect(lambda: self.playSong())
         self.toggleoff_music_button.clicked.connect(lambda: self.stopSong())
-
 
         self.reload_button = QtWidgets.QPushButton(self.main_chapter_frame)
         self.reload_button.setGeometry(QtCore.QRect(90, 20, 80, 30))
@@ -388,8 +388,21 @@ class ui_chapter_window(object):
         self.task_three.setAlignment(QtCore.Qt.AlignCenter)
         self.task_three.setObjectName("task_three")
         self.task_vert_layout.addWidget(self.task_three)
+        self.frame = QtWidgets.QFrame(self.main_chapter_frame)
+        self.frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setMaximumSize(QtCore.QSize(16777215, 220))
+        self.frame.setStyleSheet("\n"
+                                 "background-color:  #F4D782;")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
         self.title_label = QtWidgets.QLabel(self.main_chapter_frame)
-        self.title_label.setGeometry(QtCore.QRect(830, 8, 439, 61))
+        self.title_label.setGeometry(QtCore.QRect(830, 10, 439, 59))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -401,29 +414,73 @@ class ui_chapter_window(object):
         self.title_label.setStyleSheet("")
         self.title_label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.title_label.setObjectName("title_label")
+        # self.rm_card = QtWidgets.QLabel(self.main_chapter_frame)
+        # self.rm_card.setGeometry(QtCore.QRect(130, 420, 145, 190))
+        # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        # sizePolicy.setHorizontalStretch(0)
+        # sizePolicy.setVerticalStretch(0)
+        # sizePolicy.setHeightForWidth(self.rm_card.sizePolicy().hasHeightForWidth())
+        # self.rm_card.setSizePolicy(sizePolicy)
+        # self.rm_card.setMaximumSize(QtCore.QSize(145, 190))
+        # font = QtGui.QFont()
+        # self.rm_card.setFont(font)
+        # self.rm_card.setText("")
+        # self.rm_card.setPixmap(QtGui.QPixmap("images/cards/rm.png"))
+        # self.rm_card.setScaledContents(True)
+        # self.rm_card.setObjectName("rm_card")
 
-        self.main_view.scene = QGraphicsScene()
-        self.main_view.setScene(self.main_view.scene)
-        self.main_view.setSceneRect(0, 0, 300, 200)
+        # self._imgList = [
+        #     "images/cards/rm.png",
+        #     "images/cards/rm.png",
+        # ]
+        #
+        # for img in self._imgList:
+        #     print('1')
+        #     self.card =  DraggableCardImages(imgPath=img, parent=self.main_chapter_frame, wid=None)
+        self.verticalWidget = QtWidgets.QWidget(self.main_chapter_frame)
+        self.verticalWidget.setGeometry(QtCore.QRect(80, 210, 160, 80))
+        self.verticalWidget.setStyleSheet("background-color: rgb(4, 255, 0)")
+        self.verticalWidget.setObjectName("verticalWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label = QtWidgets.QLabel(self.verticalWidget)
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        self.verticalWidget_2 = QtWidgets.QWidget(self.main_chapter_frame)
+        self.verticalWidget_2.setGeometry(QtCore.QRect(290, 210, 160, 80))
+        self.verticalWidget_2.setStyleSheet("background-color: rgb(4, 255, 0)")
+        self.verticalWidget_2.setObjectName("verticalWidget_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalWidget_2)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalWidget_3 = QtWidgets.QWidget(self.main_chapter_frame)
+        self.verticalWidget_3.setGeometry(QtCore.QRect(510, 210, 160, 80))
+        self.verticalWidget_3.setStyleSheet("background-color: rgb(4, 255, 0)")
+        self.verticalWidget_3.setObjectName("verticalWidget_3")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalWidget_3)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalWidget_3.hide()
+        self.verticalWidget_2.hide()
+        self.verticalWidget.hide()
 
-        self.moveObject = MovingCards(0, 0, 150, 190, app)
-        self.moveObject.setName("Git Add")
-        self.moveObjectText = self.moveObject.getText()
-        self.main_view.scene.addItem(self.moveObject)
-        self.main_view.scene.addItem(self.moveObjectText)
+        # ^^ widget creation for dragging card
+        self.createCards(3)
 
-        window.setCentralWidget(self.main_chapter_central_widget)
-        self.retranslate(window)
+        MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
+
+        self.retranslateUi(MainChapterWindow)
         self.file_stacked_widget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(window)
+        QtCore.QMetaObject.connectSlotsByName(MainChapterWindow)
 
-    def retranslate(self, MainChapterWindow):
+    def retranslateUi(self, MainChapterWindow):
         _translate = QtCore.QCoreApplication.translate
         MainChapterWindow.setWindowTitle(_translate("MainChapterWindow", "MainWindow"))
         self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow",
                                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
-                                                          "charset=\"utf-8\" /><style type=\"text/css\">\n "
+                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
                                                           "p, li { white-space: pre-wrap; }\n"
                                                           "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:14pt;\">Drag the card or type in the command to add, commit, and push your first file!</span></p></body></html>"))
@@ -436,7 +493,7 @@ class ui_chapter_window(object):
         self.cmd_output_text.setPlaceholderText(_translate("MainChapterWindow", "user@what-the-git repo_folder %"))
         self.back_button.setText(_translate("MainChapterWindow", "Back"))
         self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
-        self.toggleoff_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
+        self.toggleoff_music_button.setText(_translate("MainChapterWindow", "Toggle Off Music"))
         self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
         self.file_img1.setHtml(_translate("MainChapterWindow",
                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -452,11 +509,16 @@ class ui_chapter_window(object):
         self.task_three.setText(_translate("MainChapterWindow", "Push!"))
         self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
 
+    def createCards(self, num):
+        cardList = []
+        for i in range(num):
+            cardList.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150 * i, i, self))
+
     def playSong(self):
         current_path = os.path.dirname(os.path.realpath(__file__))
         print(current_path)
         print("song Playing")
-        full_file_path = os.path.join(current_path, 'archive/music/track.mp3')
+        full_file_path = os.path.join(current_path, 'music/track.mp3')
         print(full_file_path)
         url = QUrl.fromLocalFile(full_file_path)
         content = QMediaContent(url)
@@ -469,9 +531,30 @@ class ui_chapter_window(object):
         self.player.stop()
         self.toggleoff_music_button.hide()
         self.toggle_music_button.show()
+        print("Song Stopped")
+
+    def showCard(self, type):
+        if type == 0:
+            self.verticalWidget.show()
+            self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                          "border-radius: 5px; \n"
+                                          "padding-left:5px")
+
+        elif type == 1:
+            self.verticalWidget_2.show()
+            self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                          "border-radius: 5px; \n"
+                                          "padding-left:5px")
+        elif type == 2:
+            self.verticalWidget_3.show()
+            self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                          "border-radius: 5px; \n"
+                                          "padding-left:5px")
 
 
 if __name__ == "__main__":
+    import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainChapterWindow = QtWidgets.QMainWindow()
     ui = ui_chapter_window(MainChapterWindow)

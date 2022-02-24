@@ -35,6 +35,7 @@ class MainWindow:
     def switch_to_level_one(self):
         self.ui = ui_chapter_window(self.main_window)
         self.update_stacked_widget()
+        self.ui.reload_button.clicked.connect(lambda: self.switch_to_level_one())
 
 
 if __name__ == "__main__":

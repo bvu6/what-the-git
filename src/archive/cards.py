@@ -6,9 +6,10 @@ from PyQt5.QtGui import QFont
 
 
 class DraggableCardImages(QtWidgets.QLabel):
-    def __init__(self, imgPath=None, parent=None, wid=None, x=None):
+    def __init__(self, imgPath=None, parent=None, wid=None, x=None, type=None):
         super(DraggableCardImages, self).__init__()
-
+        self.cardType = ["Git Add", "Git Commit", "Git Push"]
+        self.type = type
         self.setParent(parent)
         self.ogX = 50 + x
         self.ogY = 540
@@ -19,7 +20,7 @@ class DraggableCardImages(QtWidgets.QLabel):
         self.setPixmap(QtGui.QPixmap(imgPath))
         self.drag_start_pos = None
         self.wid = wid
-        self.setText("Git Commit")
+        self.setText(self.cardType[type])
         self.setFont(QFont("Arial", 15))
         self.setAlignment(QtCore.Qt.AlignHCenter)
 
@@ -36,6 +37,17 @@ class DraggableCardImages(QtWidgets.QLabel):
             # While left button is clicked the widget will move along with the mouse
             self.move(self.pos() + event.pos() - self.drag_start_pos)
         super(DraggableCardImages, self).mouseMoveEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        if self.x() > 800 or self.y() > 430:
+            self.move(self.ogX, self.ogY)
+        else:
+            print("Doing", self.cardType[self.type])
+            self.setParent(None)
+
+    def getType(self):
+        print(self.cardType[self.type])
+        return self.type
 
     # def mouseReleaseEvent(self, event):
     #     self.setCursor(QtCore.Qt.ArrowCursor)
@@ -55,12 +67,6 @@ class DraggableCardImages(QtWidgets.QLabel):
     #
     #     super(DraggableCardImages, self).mouseReleaseEvent(event)
 
-    def mouseReleaseEvent(self, event):
-        if self.x() > 800 or self.y() > 430:
-            self.move(self.ogX, self.ogY)
-        else:
-            print("adding git card to thing")
-            self.setParent(None)
 # class MainWindow(QtWidgets.QWidget):
 #     def __init__(self):
 #         super(MainWindow, self).__init__()

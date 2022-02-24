@@ -437,7 +437,7 @@ class Ui_MainChapterWindow(object):
         #     print('1')
         #     self.card =  DraggableCardImages(imgPath=img, parent=self.main_chapter_frame, wid=None)
 
-        self.createCards(5)
+        self.createCards(3)
 
         MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
 
@@ -479,7 +479,7 @@ class Ui_MainChapterWindow(object):
     def createCards(self, num):
         cardList = []
         for i in range(num):
-            cardList.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150*i))
+            cardList.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150*i, i))
 
     def playSong(self):
         current_path = os.path.dirname(os.path.realpath(__file__))

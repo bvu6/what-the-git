@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 # Made By Thicc-Juice
 # What The Git!
-import os
-
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from chapter_selector import ui_chapter_selection_window
 from start_screen import ui_start_window
 from chapter_base import ui_chapter_window
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import QUrl
+import os
 import sys
 
 

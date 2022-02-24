@@ -272,9 +272,9 @@ class ui_chapter_window(object):
         self.file_main_page.setFont(font)
         self.file_main_page.setObjectName("file_main_page")
 
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.file_main_page)
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.file_main_grid_layout = QtWidgets.QGridLayout(self.file_main_page)
+        self.file_main_grid_layout.setContentsMargins(0, 0, 0, 0)
+        self.file_main_grid_layout.setObjectName("file_main_grid_layout")
 
         self.files_main_frame = QtWidgets.QFrame(self.file_main_page)
 
@@ -282,11 +282,12 @@ class ui_chapter_window(object):
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(self.files_main_frame.sizePolicy().hasHeightForWidth())
+        self.files_main_frame.setContentsMargins(0, 0, 0, 0)
         self.files_main_frame.setSizePolicy(size_policy)
 
         font = QtGui.QFont()
         self.files_main_frame.setFont(font)
-        self.files_main_frame.setStyleSheet("background-color: rgb(0, 157, 255);border-radius: 5px")
+        self.files_main_frame.setStyleSheet("background-color: rgb(0, 157, 255);border-radius: 5px; margin:0px")
         self.files_main_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.files_main_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.files_main_frame.setObjectName("files_main_frame")
@@ -296,11 +297,13 @@ class ui_chapter_window(object):
 
         self.files_horiz_layout = QtWidgets.QHBoxLayout()
         self.files_horiz_layout.setSpacing(0)
+        self.files_horiz_layout.setContentsMargins(0, 0, 0, 0)
         self.files_horiz_layout.setObjectName("files_horiz_layout")
 
-        self.file_img1 = QtWidgets.QTextBrowser(self.files_main_frame)
+        self.file_img1 = QtWidgets.QTextBrowser(self.main_chapter_frame)
+        self.file_img1.setGeometry(100,14,40,63)
 
-        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(self.file_img1.sizePolicy().hasHeightForWidth())
@@ -321,7 +324,7 @@ class ui_chapter_window(object):
 
         self.files_horiz_layout.addWidget(self.file_img1)
         self.file_main_frame_horiz_layout.addLayout(self.files_horiz_layout)
-        self.gridLayout_2.addWidget(self.files_main_frame, 0, 0, 1, 1)
+        self.file_main_grid_layout.addWidget(self.files_main_frame, 0, 0, 1, 1)
 
         self.file_stacked_widget.addWidget(self.file_main_page)
         self.file1_edit_widget = QtWidgets.QWidget()
@@ -329,9 +332,9 @@ class ui_chapter_window(object):
         self.file1_edit_widget.setFont(font)
         self.file1_edit_widget.setObjectName("file1_edit_widget")
 
-        self.gridLayout = QtWidgets.QGridLayout(self.file1_edit_widget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
+        self.file1_edit_grid_layout = QtWidgets.QGridLayout(self.file1_edit_widget)
+        self.file1_edit_grid_layout.setContentsMargins(0, 0, 0, 0)
+        self.file1_edit_grid_layout.setObjectName("file1_edit_grid_layout")
 
         self.file1_done_button = QtWidgets.QPushButton(self.file1_edit_widget)
 
@@ -363,7 +366,7 @@ class ui_chapter_window(object):
                                              "    color: black\n"
                                              "}")
         self.file1_done_button.setObjectName("file1_done_button")
-        self.gridLayout.addWidget(self.file1_done_button, 0, 1, 1, 1)
+        self.file1_edit_grid_layout.addWidget(self.file1_done_button, 0, 1, 1, 1)
 
         self.file1_qplaintextedit = QtWidgets.QPlainTextEdit(self.file1_edit_widget)
         self.file1_qplaintextedit.setMaximumSize(QtCore.QSize(1280, 85))
@@ -376,7 +379,7 @@ class ui_chapter_window(object):
                                                 "color: white")
         self.file1_qplaintextedit.setObjectName("file1_qplaintextedit")
 
-        self.gridLayout.addWidget(self.file1_qplaintextedit, 0, 0, 1, 1)
+        self.file1_edit_grid_layout.addWidget(self.file1_qplaintextedit, 0, 0, 1, 1)
         self.file_stacked_widget.addWidget(self.file1_edit_widget)
 
         self.layoutWidget = QtWidgets.QWidget(self.main_chapter_frame)
@@ -549,7 +552,7 @@ class ui_chapter_window(object):
         # modifier
         self.frame = QtWidgets.QFrame(self.main_chapter_frame)
         self.frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
-        ize_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
@@ -560,7 +563,7 @@ class ui_chapter_window(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
 
-        self.createCards(3)
+        self.create_cards(3)
         self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
             self.file_stacked_widget.currentIndex() + 1)
         self.file1_done_button.clicked.connect(lambda: self.save_file(0))
@@ -672,10 +675,10 @@ class ui_chapter_window(object):
         self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
         pass
 
-    def createCards(self, num):
+    def create_cards(self, num):
         card_list = []
         for i in range(num):
-            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150 * i, i, self))
+            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 100+200 * i, i, self))
 
     def showCard(self, card_type, valid):
         if valid:
@@ -696,6 +699,7 @@ class ui_chapter_window(object):
                                             "border-radius: 5px; \n"
                                             "padding-left:5px")
                 self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Committing")
+
             elif card_type == 2:
                 self.commit_state_widget.show()
                 self.first_commit_label.show()

@@ -553,8 +553,6 @@ class ui_chapter_window(object):
 
 
 if __name__ == "__main__":
-    import sys
-
     app = QtWidgets.QApplication(sys.argv)
     MainChapterWindow = QtWidgets.QMainWindow()
     ui = ui_chapter_window(MainChapterWindow)

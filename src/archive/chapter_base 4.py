@@ -551,16 +551,22 @@ class Ui_MainChapterWindow(object):
                                               "border-radius: 5px; \n"
                                               "padding-left:5px")
 
+                #self.cmd_output_text.setText(self.cmd_output_text.text() + "Adding a.txt")
+                self.cmd_output_text.setStyleSheet("font-size:11pt; color:#ffffff;")
+                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Adding a.txt")
+
             elif type == 1:
                 self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
                                               "border-radius: 5px; \n"
                                               "padding-left:5px")
+                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Committing")
             elif type == 2:
                 self.verticalWidget_2.show()
                 self.label_2.show()
                 self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
                                               "border-radius: 5px; \n"
                                               "padding-left:5px")
+                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Pushing")
 
     def validCheck(self, type):
         #print("type:", type,self.lastMove)

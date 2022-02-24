@@ -214,8 +214,6 @@ class ui_chapter_selection_window(object):
         self.select_chapter_label.setText(_translate("chapter_selection_window", "Select Chapter"))
 
 
-
-
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     chapter_selection_window = QtWidgets.QMainWindow()

@@ -582,7 +582,7 @@ class ui_chapter_window(object):
         _translate = QtCore.QCoreApplication.translate
         window.setWindowTitle(_translate("window", "What The Git!"))
 
-        with open('what_the_git/CH1/a.txt') as f:
+        with open('wtg/CH1/a.txt') as f:
             self.file1_qplaintextedit.setPlainText(_translate("window", f.read()))
 
         self.chapter_info_text_browser.setHtml(_translate("window",
@@ -704,8 +704,8 @@ class ui_chapter_window(object):
         self.commit_connect_line.hide()
 
     def save_file(self, file_num):
-        file = os.listdir(f'what_the_git/CH{self.chapter_num}')[file_num - 1]
-        with open(f'what_the_git/CH{self.chapter_num}/{file}', 'w') as f:
+        file = os.listdir(f'wtg/CH{self.chapter_num}')[file_num - 1]
+        with open(f'wtg/CH{self.chapter_num}/{file}', 'w') as f:
             if file_num == 1:
                 f.write(self.file1_qplaintextedit.toPlainText())
 

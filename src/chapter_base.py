@@ -478,7 +478,7 @@ class ui_chapter_window(object):
         font = QtGui.QFont()
         font.setPointSize(24)
         self.title_label.setFont(font)
-        self.title_label.setStyleSheet("color: white")
+        self.title_label.setStyleSheet("font: 24pt \"Montserrat\"; color: white")
         self.title_label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.title_label.setObjectName("title_label")
 
@@ -550,18 +550,18 @@ class ui_chapter_window(object):
         self.commit_connect_line.raise_()
 
         # modifier
-        self.frame = QtWidgets.QFrame(self.main_chapter_frame)
-        self.frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
+        self.card_holder_frame = QtWidgets.QFrame(self.main_chapter_frame)
+        self.card_holder_frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
-        size_policy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(size_policy)
-        self.frame.setMaximumSize(QtCore.QSize(16777215, 220))
-        self.frame.setStyleSheet("\nbackground-color:  #F4D782;")
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
+        size_policy.setHeightForWidth(self.card_holder_frame.sizePolicy().hasHeightForWidth())
+        self.card_holder_frame.setSizePolicy(size_policy)
+        self.card_holder_frame.setMaximumSize(QtCore.QSize(16777215, 220))
+        self.card_holder_frame.setStyleSheet("\nbackground-color:  #F4D782;")
+        self.card_holder_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.card_holder_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.card_holder_frame.setObjectName("frame")
 
         self.create_cards(3)
         self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
@@ -583,15 +583,41 @@ class ui_chapter_window(object):
                                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
                                                           "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                                           "p, li { white-space: pre-wrap; }\n"
-                                                          "</style></head><body style=\" "
-                                                          "font-family:\'.AppleSystemUIFont\'; font-size:13pt; "
-                                                          "font-weight:400; font-style:normal;\">\n "
+                                                          "</style></head><body style=\" font-family:\'Montserrat\'; "
+                                                          "font-size:13pt; font-weight:400; font-style:normal;\">\n "
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; "
                                                           "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-                                                          "text-indent:0px;\"><span style=\" "
-                                                          "font-family:\'Montserrat\'; font-size:14pt;\">Drag the "
-                                                          "card or type in the command to add, commit, and push your "
-                                                          "first file!</span></p></body></html>"))
+                                                          "text-indent:0px;\"><span style=\" font-size:14pt;\">Drag "
+                                                          "the card or type in the command to add, commit, "
+                                                          "and push your first file!</span></p>\n "
+                                                          "<p style=\"-qt-paragraph-type:empty; margin-top:0px; "
+                                                          "margin-bottom:0px; margin-left:0px; margin-right:0px; "
+                                                          "-qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br "
+                                                          "/></p>\n "
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; "
+                                                          "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                          "text-indent:0px;\"><span style=\" font-size:14pt;\">git "
+                                                          "add: Add file contents to the index</span></p>\n "
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; "
+                                                          "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                          "text-indent:0px;\"><span style=\" font-size:14pt;\">git "
+                                                          "commit -m &quot;comment&quot;: Record changes to the "
+                                                          "repository</span></p>\n "
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; "
+                                                          "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                          "text-indent:0px;\"><span style=\" font-size:14pt;\">git "
+                                                          "push: Update remote refs along with associated "
+                                                          "object</span></p>\n "
+                                                          "<p style=\"-qt-paragraph-type:empty; margin-top:0px; "
+                                                          "margin-bottom:0px; margin-left:0px; margin-right:0px; "
+                                                          "-qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br "
+                                                          "/></p>\n "
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; "
+                                                          "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                          "text-indent:0px;\"><span style=\" font-size:14pt;\">You "
+                                                          "currently have an modified a.txt file that you want to "
+                                                          "push. What steps should you take to push the modified file?"
+                                                          "</span></p></body></html>"))
         self.cmd_output_text.setHtml(_translate("window",
                                                 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
                                                 "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "

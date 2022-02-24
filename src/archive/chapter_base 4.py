@@ -461,7 +461,11 @@ class Ui_MainChapterWindow(object):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalWidget_3)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalWidget_3.hide()
+        self.verticalWidget_2.hide()
+        self.verticalWidget.hide()
 
+        # ^^ widget creation for dragging card
         self.createCards(3)
 
         MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
@@ -500,32 +504,10 @@ class Ui_MainChapterWindow(object):
         self.task_two.setText(_translate("MainChapterWindow", "Commit the change!"))
         self.task_three.setText(_translate("MainChapterWindow", "Push!"))
         self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
-        self.verticalWidget = QtWidgets.QWidget(self.main_chapter_frame)
-        self.verticalWidget.setGeometry(QtCore.QRect(80, 210, 160, 80))
-        self.verticalWidget.setStyleSheet("background-color: rgb(4, 255, 0)")
-        self.verticalWidget.setObjectName("verticalWidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalWidget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.label = QtWidgets.QLabel(self.verticalWidget)
-        self.label.setText("")
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
-        self.verticalWidget_2 = QtWidgets.QWidget(self.main_chapter_frame)
-        self.verticalWidget_2.setGeometry(QtCore.QRect(290, 210, 160, 80))
-        self.verticalWidget_2.setStyleSheet("background-color: rgb(4, 255, 0)")
-        self.verticalWidget_2.setObjectName("verticalWidget_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalWidget_2)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.verticalWidget_3 = QtWidgets.QWidget(self.main_chapter_frame)
-        self.verticalWidget_3.setGeometry(QtCore.QRect(510, 210, 160, 80))
-        self.verticalWidget_3.setStyleSheet("background-color: rgb(4, 255, 0)")
-        self.verticalWidget_3.setObjectName("verticalWidget_3")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalWidget_3)
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
 
-        #^^ widget creation for dragging card
+
+
+
     def createCards(self, num):
         cardList = []
         for i in range(num):
@@ -549,6 +531,15 @@ class Ui_MainChapterWindow(object):
         self.toggleoff_music_button.hide()
         self.toggle_music_button.show()
         print("Song Stopped")
+
+
+    def showCard(self):
+
+        self.verticalWidget_3.hide()
+        self.verticalWidget_2.hide()
+        self.verticalWidget.hide()
+
+        
 
 if __name__ == "__main__":
     import sys

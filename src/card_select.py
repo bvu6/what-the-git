@@ -2,8 +2,7 @@
 # Made By Thicc-Juice
 import sys
 
-from PyQt5 import QtGui, QtCore
-from PyQt5.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QGraphicsRectItem, QGraphicsTextItem
+from PyQt5.QtWidgets import QGraphicsRectItem, QGraphicsTextItem
 from PyQt5.QtCore import Qt, QPointF
 
 

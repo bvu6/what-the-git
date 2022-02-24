@@ -2,18 +2,17 @@
 # Made By Thicc-Juice
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from chapter_base import Ui_MainChapterWindow
+from chapter_base import UI_MainChapterWindow
 import sys
 
 
 class LevelWindow(object):
     def switch_to_level_window(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_MainChapterWindow()
-        self.ui.setupUI(self.window)
+        self.ui = UI_MainChapterWindow(self.window)
         self.window.show()
 
-    def setupUI(self, MainWindow):
+    def __init__(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1164, 900)
         MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
@@ -93,7 +92,6 @@ class LevelWindow(object):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Level_Window = QtWidgets.QMainWindow()
-    ui = LevelWindow()
-    ui.setupUI(Level_Window)
+    ui = LevelWindow(Level_Window)
     Level_Window.show()
     sys.exit(app.exec_())

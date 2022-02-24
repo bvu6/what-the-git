@@ -45,7 +45,8 @@ class DraggableCardImages(QtWidgets.QLabel):
         else:
             print("Doing", self.cardType[self.type])
             self.chapter.showCard(self.type)
-            self.setParent(None)
+        self.move(self.ogX, self.ogY)
+           # self.setParent(None)
 
     def getType(self):
         print(self.cardType[self.type])

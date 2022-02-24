@@ -11,6 +11,7 @@ import os
 
 class ui_chapter_window(object):
     def __init__(self, window):
+        self.lastMove = -1
         window.setObjectName("window")
         window.resize(1280, 720)
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -551,6 +552,9 @@ class ui_chapter_window(object):
         self.chapter_info_text_browser_3.setObjectName("chapter_info_text_browser_3")
         self.createCards(3)
 
+        self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() + 1)
+        self.file_txt1_button.clicked.connect(lambda: self.save_file(0))
+
         window.setCentralWidget(self.main_chapter_central_widget)
         self.restranslate(window)
         self.file_stacked_widget.setCurrentIndex(0)
@@ -572,7 +576,7 @@ class ui_chapter_window(object):
                                                           "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                                           "text-indent:0px;\"><span style=\" "
                                                           "font-family:\'Montserrat\'; font-size:14pt; color:rgb(255,255,255);\">Drag the "
-                                                          "card or type in the command to add, commit, and push your "
+                                                          "card to add, commit, and push your "
                                                           "first file!</span></p></body></html>"))
         self.cmd_output_text.setHtml(_translate("window",
                                                 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -635,6 +639,11 @@ class ui_chapter_window(object):
         self.verticalWidget.hide()
         self.verticalWidget_2.hide()
         self.lineEdit.hide()
+
+    def save_file(self, file_num):
+        self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
+        pass
+
     def createCards(self, num):
         cardList = []
         for i in range(num):
@@ -659,25 +668,40 @@ class ui_chapter_window(object):
         self.toggle_music_button.show()
         print("Song Stopped")
 
-    def showCard(self, card_type):
-        if card_type == 0:
-            self.verticalWidget.show()
-            self.lineEdit.show()
-            self.label.show()
-            self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                        "border-radius: 5px; \n"
-                                        "padding-left:5px; font: Montserrat")
+    def showCard(self, card_type, valid):
+        if valid:
+            if card_type == 0:
+                self.verticalWidget.show()
+                self.lineEdit.show()
+                self.label.show()
+                self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                            "border-radius: 5px; \n"
+                                            "padding-left:5px")
 
-        elif card_type == 1:
-            self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                        "border-radius: 5px; \n"
-                                        "padding-left:5px; font: Montserrat")
-        elif card_type == 2:
-            self.verticalWidget_2.show()
-            self.label_2.show()
-            self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                          "border-radius: 5px; \n"
-                                          "padding-left:5px; font: Montserrat")
+                # self.cmd_output_text.setText(self.cmd_output_text.text() + "Adding a.txt")
+                self.cmd_output_text.setStyleSheet("font-size:11pt; color:#ffffff;")
+                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Adding a.txt")
+
+            elif card_type == 1:
+                self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                            "border-radius: 5px; \n"
+                                            "padding-left:5px")
+                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Committing")
+            elif card_type == 2:
+                self.verticalWidget_2.show()
+                self.label_2.show()
+                self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                              "border-radius: 5px; \n"
+                                              "padding-left:5px")
+                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Pushing")
+
+    def validCheck(self, card_type):
+        if self.lastMove == card_type - 1:
+            self.lastMove = card_type
+            return True
+        else:
+            print("Invalid move")
+            return False
 
 
 if __name__ == "__main__":

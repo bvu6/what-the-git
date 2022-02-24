@@ -470,6 +470,9 @@ class Ui_MainChapterWindow(object):
         self.lineEdit.setObjectName("lineEdit")
         self.createCards(3)
 
+        self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() + 1)
+        self.file_txt1_button.clicked.connect(lambda: self.save_file(0))
+
         MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
 
         self.retranslateUi(MainChapterWindow)
@@ -516,6 +519,10 @@ class Ui_MainChapterWindow(object):
         self.verticalWidget.hide()
         self.verticalWidget_2.hide()
         self.lineEdit.hide()
+
+    def save_file(self, file_num):
+        self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
+        pass
 
     def createCards(self, num):
         cardList = []

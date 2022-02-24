@@ -43,52 +43,10 @@ class DraggableCardImages(QtWidgets.QLabel):
         if self.x() > 800 or self.y() > 430:
             self.move(self.ogX, self.ogY)
         else:
-            print("Doing", self.cardType[self.type])
-            self.chapter.showCard(self.type)
-        self.move(self.ogX, self.ogY)
-           # self.setParent(None)
+            valid = self.chapter.validCheck(self.type)
+            self.chapter.showCard(self.type, valid)
+            self.move(self.ogX, self.ogY)
 
     def getType(self):
         print(self.cardType[self.type])
         return self.type
-
-    # def mouseReleaseEvent(self, event):
-    #     self.setCursor(QtCore.Qt.ArrowCursor)
-    #     self.drag_start_pos = None
-    #
-    #     parent_layout = self.wid
-    #
-    #     all_images = [parent_layout.itemAt(i).widget() for i in range(parent_layout.count())]
-    #
-    #     # sort the list of widgets by their x position
-    #     order = sorted(all_images, key=lambda i: i.pos().x())
-    #
-    #     # remove each item from the layout and insert the one that should go in that index.
-    #     for idx, widget in enumerate(order):
-    #         parent_layout.takeAt(idx)
-    #         parent_layout.insertWidget(idx, widget)
-    #
-    #     super(DraggableCardImages, self).mouseReleaseEvent(event)
-
-# class MainWindow(QtWidgets.QWidget):
-#     def __init__(self):
-#         super(MainWindow, self).__init__()
-#         self.horizontalLayout = QtWidgets.QHBoxLayout()
-#         self.setLayout(self.horizontalLayout)
-#         self._imgList = [
-#             "images/cards/rm.png",
-#             "images/cards/rm.png",
-#         ]
-#
-#         for img in self._imgList:
-#             print('1')
-#             draggableImage = DraggableCardImages(imgPath=img, parent=self)
-#             self.horizontalLayout.addWidget(draggableImage)
-#
-#
-# if __name__ == '__main__':
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     win = MainWindow()
-#     win.show()
-#     sys.exit(app.exec_())

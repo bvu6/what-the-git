@@ -7,23 +7,23 @@ import sys
 import os
 
 
-class UI_MainChapterWindow(object):
-    def __init__(self, MainChapterWindow):
-        MainChapterWindow.setObjectName("MainChapterWindow")
-        MainChapterWindow.resize(1280, 720)
+class ui_chapter_window(object):
+    def __init__(self, window):
+        window.setObjectName("MainChapterWindow")
+        window.resize(1280, 720)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainChapterWindow.sizePolicy().hasHeightForWidth())
-        MainChapterWindow.setSizePolicy(sizePolicy)
-        MainChapterWindow.setMinimumSize(QtCore.QSize(1280, 720))
-        MainChapterWindow.setMaximumSize(QtCore.QSize(1280, 720))
+        sizePolicy.setHeightForWidth(window.sizePolicy().hasHeightForWidth())
+        window.setSizePolicy(sizePolicy)
+        window.setMinimumSize(QtCore.QSize(1280, 720))
+        window.setMaximumSize(QtCore.QSize(1280, 720))
         font = QtGui.QFont()
         font.setPointSize(12)
-        MainChapterWindow.setFont(font)
-        MainChapterWindow.setStyleSheet("")
-        MainChapterWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
-        self.main_chapter_central_widget = QtWidgets.QWidget(MainChapterWindow)
+        window.setFont(font)
+        window.setStyleSheet("")
+        window.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.main_chapter_central_widget = QtWidgets.QWidget(window)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -412,17 +412,18 @@ class UI_MainChapterWindow(object):
         self.main_view.scene.addItem(self.moveObject)
         self.main_view.scene.addItem(self.moveObjectText)
 
-        MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
-        self.retranslateUi(MainChapterWindow)
+        window.setCentralWidget(self.main_chapter_central_widget)
+        self.retranslate(window)
         self.file_stacked_widget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainChapterWindow)
+        QtCore.QMetaObject.connectSlotsByName(window)
 
-    def retranslateUi(self, MainChapterWindow):
+    def retranslate(self, MainChapterWindow):
         _translate = QtCore.QCoreApplication.translate
         MainChapterWindow.setWindowTitle(_translate("MainChapterWindow", "MainWindow"))
         self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow",
                                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                                          "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                                           "p, li { white-space: pre-wrap; }\n"
                                                           "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:14pt;\">Drag the card or type in the command to add, commit, and push your first file!</span></p></body></html>"))
@@ -473,6 +474,6 @@ class UI_MainChapterWindow(object):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainChapterWindow = QtWidgets.QMainWindow()
-    ui = UI_MainChapterWindow(MainChapterWindow)
+    ui = ui_chapter_window(MainChapterWindow)
     MainChapterWindow.show()
     sys.exit(app.exec_())

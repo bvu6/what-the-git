@@ -5,7 +5,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
 
-class UI_start_window(object):
+class ui_start_window(object):
     def __init__(self, window):
         window.setObjectName("start_window")
         window.resize(1280, 720)
@@ -99,6 +99,6 @@ class UI_start_window(object):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
-    start_screen_ui = UI_start_window(main_window)
+    start_screen_ui = ui_start_window(main_window)
     main_window.show()
     sys.exit(app.exec_())

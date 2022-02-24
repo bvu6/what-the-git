@@ -78,7 +78,7 @@ class ui_chapter_window(object):
         self.main_view.setObjectName("main_view")
 
         self.chapter_info_text_browser = QtWidgets.QTextBrowser(self.main_chapter_frame)
-        self.chapter_info_text_browser.setGeometry(QtCore.QRect(830, 70, 441, 211))
+        self.chapter_info_text_browser.setGeometry(QtCore.QRect(830, 190, 441, 61))
 
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
         size_policy.setHorizontalStretch(0)
@@ -88,6 +88,8 @@ class ui_chapter_window(object):
         self.chapter_info_text_browser.setSizePolicy(size_policy)
         font = QtGui.QFont()
         self.chapter_info_text_browser.setFont(font)
+        self.chapter_info_text_browser.setStyleSheet("font: 13pt \"Georgia\";")
+        self.chapter_info_text_browser.setStyleSheet(("color: rgb(255, 255, 255);"))
         self.chapter_info_text_browser.setObjectName("chapter_info_text_browser")
 
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.main_chapter_frame)
@@ -515,6 +517,38 @@ class ui_chapter_window(object):
         self.lineEdit.setStyleSheet("background-color: rgb(170, 255, 0)")
         self.lineEdit.setObjectName("lineEdit")
 
+        self.chapter_info_text_browser_2 = QtWidgets.QTextBrowser(self.main_chapter_frame)
+        self.chapter_info_text_browser_2.setGeometry(QtCore.QRect(830, 130, 441, 61))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.chapter_info_text_browser_2.sizePolicy().hasHeightForWidth())
+        self.chapter_info_text_browser_2.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.chapter_info_text_browser_2.setFont(font)
+        self.chapter_info_text_browser_2.setStyleSheet("font: 8pt \"Georgia\";")
+        self.chapter_info_text_browser_2.setObjectName("chapter_info_text_browser_2")
+        self.chapter_info_text_browser_3 = QtWidgets.QTextBrowser(self.main_chapter_frame)
+        self.chapter_info_text_browser_3.setGeometry(QtCore.QRect(830, 70, 441, 61))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.chapter_info_text_browser_3.sizePolicy().hasHeightForWidth())
+        self.chapter_info_text_browser_3.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.chapter_info_text_browser_3.setFont(font)
+        self.chapter_info_text_browser_3.setStyleSheet("font: 12pt \"Georgia\";")
+        self.chapter_info_text_browser_3.setObjectName("chapter_info_text_browser_3")
         self.createCards(3)
 
         window.setCentralWidget(self.main_chapter_central_widget)
@@ -532,12 +566,12 @@ class ui_chapter_window(object):
                                                           "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                                           "p, li { white-space: pre-wrap; }\n"
                                                           "</style></head><body style=\" "
-                                                          "font-family:\'Montserrat\'; font-size:13pt; "
+                                                          "font-family:\'Montserrat\'; font-size:8pt; "
                                                           "font-weight:400; font-style:normal;\">\n "
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; "
                                                           "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                                           "text-indent:0px;\"><span style=\" "
-                                                          "font-family:\'Montserrat\'; font-size:14pt;\">Drag the "
+                                                          "font-family:\'Montserrat\'; font-size:14pt; color:rgb(255,255,255);\">Drag the "
                                                           "card or type in the command to add, commit, and push your "
                                                           "first file!</span></p></body></html>"))
         self.cmd_output_text.setHtml(_translate("window",
@@ -580,12 +614,27 @@ class ui_chapter_window(object):
         self.title_label.setText(_translate("window", "CH1: First Commit"))
         self.label.setText(_translate("window", "Head"))
         self.label_2.setText(_translate("window", "Commit"))
+
+        self.chapter_info_text_browser_2.setHtml(_translate("MainChapterWindow",
+                                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                            "p, li { white-space: pre-wrap; }\n"
+                                                            "</style></head><body style=\" font-family:\'Georgia\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+                                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; color:#ffffff;\">Git Add: Add file contents to the index </span></p>\n"
+                                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; color:#ffffff;\">Git Commit: Record changes to the repository </span></p>\n"
+                                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; color:#ffffff;\">Git Push: Update remote refs along with associated object</span></p></body></html>"))
+        self.chapter_info_text_browser_3.setHtml(_translate("MainChapterWindow",
+                                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                            "p, li { white-space: pre-wrap; }\n"
+                                                            "</style></head><body style=\" font-family:\'Georgia\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+                                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; color:#ffffff;\">You currently have an edited a.txt file that you want to push to main. What steps should you take to get the file to main</span></p></body></html>"))
+
         self.label.hide()
         self.label_2.hide()
         self.verticalWidget.hide()
         self.verticalWidget_2.hide()
         self.lineEdit.hide()
-
     def createCards(self, num):
         cardList = []
         for i in range(num):

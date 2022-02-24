@@ -1,34 +1,36 @@
+#!/usr/bin/env python3
+# Made By Thicc-Juice
+# What The Git!
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QGraphicsScene
 from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from cards import DraggableCardImages
 import sys
 import os
-from cards import DraggableCardImages
 
 
 class ui_chapter_window(object):
-    def __init__(self, MainChapterWindow):
-        MainChapterWindow.setObjectName("MainChapterWindow")
-        MainChapterWindow.resize(1280, 720)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainChapterWindow.sizePolicy().hasHeightForWidth())
-        MainChapterWindow.setSizePolicy(sizePolicy)
-        MainChapterWindow.setMinimumSize(QtCore.QSize(1280, 720))
-        MainChapterWindow.setMaximumSize(QtCore.QSize(1280, 720))
+    def __init__(self, window):
+        window.setObjectName("MainChapterWindow")
+        window.resize(1280, 720)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(window.sizePolicy().hasHeightForWidth())
+        window.setSizePolicy(size_policy)
+        window.setMinimumSize(QtCore.QSize(1280, 720))
+        window.setMaximumSize(QtCore.QSize(1280, 720))
         font = QtGui.QFont()
         font.setPointSize(12)
-        MainChapterWindow.setFont(font)
-        MainChapterWindow.setStyleSheet("")
-        MainChapterWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
-        self.main_chapter_central_widget = QtWidgets.QWidget(MainChapterWindow)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_chapter_central_widget.sizePolicy().hasHeightForWidth())
-        self.main_chapter_central_widget.setSizePolicy(sizePolicy)
+        window.setFont(font)
+        window.setStyleSheet("")
+        window.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.main_chapter_central_widget = QtWidgets.QWidget(window)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.main_chapter_central_widget.sizePolicy().hasHeightForWidth())
+        self.main_chapter_central_widget.setSizePolicy(size_policy)
         self.main_chapter_central_widget.setMinimumSize(QtCore.QSize(1280, 720))
         self.main_chapter_central_widget.setMaximumSize(QtCore.QSize(1281, 720))
         font = QtGui.QFont()
@@ -39,11 +41,11 @@ class ui_chapter_window(object):
         self.main_chapter_frame = QtWidgets.QFrame(self.main_chapter_central_widget)
         self.main_chapter_frame.setEnabled(True)
         self.main_chapter_frame.setGeometry(QtCore.QRect(0, 0, 1280, 720))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_chapter_frame.sizePolicy().hasHeightForWidth())
-        self.main_chapter_frame.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.main_chapter_frame.sizePolicy().hasHeightForWidth())
+        self.main_chapter_frame.setSizePolicy(size_policy)
         self.main_chapter_frame.setMinimumSize(QtCore.QSize(900, 530))
         self.main_chapter_frame.setMaximumSize(QtCore.QSize(1920, 1000))
         font = QtGui.QFont()
@@ -55,21 +57,21 @@ class ui_chapter_window(object):
         self.main_chapter_frame.setObjectName("main_chapter_frame")
         self.main_view = QtWidgets.QGraphicsView(self.main_chapter_frame)
         self.main_view.setGeometry(QtCore.QRect(0, 60, 821, 431))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_view.sizePolicy().hasHeightForWidth())
-        self.main_view.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.main_view.sizePolicy().hasHeightForWidth())
+        self.main_view.setSizePolicy(size_policy)
         self.main_view.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.main_view.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.main_view.setObjectName("main_view")
         self.chapter_info_text_browser = QtWidgets.QTextBrowser(self.main_chapter_frame)
         self.chapter_info_text_browser.setGeometry(QtCore.QRect(830, 70, 441, 211))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.chapter_info_text_browser.sizePolicy().hasHeightForWidth())
-        self.chapter_info_text_browser.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.chapter_info_text_browser.sizePolicy().hasHeightForWidth())
+        self.chapter_info_text_browser.setSizePolicy(size_policy)
         font = QtGui.QFont()
         self.chapter_info_text_browser.setFont(font)
         self.chapter_info_text_browser.setObjectName("chapter_info_text_browser")
@@ -81,11 +83,11 @@ class ui_chapter_window(object):
         self.cmd_grid_layout.setVerticalSpacing(3)
         self.cmd_grid_layout.setObjectName("cmd_grid_layout")
         self.cmd_output_scroll_area = QtWidgets.QScrollArea(self.verticalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.cmd_output_scroll_area.sizePolicy().hasHeightForWidth())
-        self.cmd_output_scroll_area.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.cmd_output_scroll_area.sizePolicy().hasHeightForWidth())
+        self.cmd_output_scroll_area.setSizePolicy(size_policy)
         self.cmd_output_scroll_area.setWidgetResizable(True)
         self.cmd_output_scroll_area.setObjectName("cmd_output_scroll_area")
         self.cmd_output_contents = QtWidgets.QWidget()
@@ -105,11 +107,11 @@ class ui_chapter_window(object):
         self.cmd_user_input_box = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         self.cmd_grid_layout.addWidget(self.cmd_output_scroll_area, 0, 0, 1, 1)
         self.cmd_user_input_box = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.cmd_user_input_box.sizePolicy().hasHeightForWidth())
-        self.cmd_user_input_box.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.cmd_user_input_box.sizePolicy().hasHeightForWidth())
+        self.cmd_user_input_box.setSizePolicy(size_policy)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.cmd_user_input_box.setFont(font)
@@ -128,11 +130,11 @@ class ui_chapter_window(object):
         self.cmd_grid_layout.setRowStretch(1, 2)
         self.back_button = QtWidgets.QPushButton(self.main_chapter_frame)
         self.back_button.setGeometry(QtCore.QRect(10, 20, 71, 31))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.back_button.sizePolicy().hasHeightForWidth())
-        self.back_button.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.back_button.sizePolicy().hasHeightForWidth())
+        self.back_button.setSizePolicy(size_policy)
         self.back_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(-1)
@@ -159,13 +161,13 @@ class ui_chapter_window(object):
         self.toggle_music_button.setGeometry(QtCore.QRect(180, 20, 120, 30))
         self.toggleoff_music_button = QtWidgets.QPushButton(self.main_chapter_frame)
         self.toggleoff_music_button.setGeometry(QtCore.QRect(180, 20, 120, 30))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toggle_music_button.sizePolicy().hasHeightForWidth())
-        self.toggle_music_button.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.toggle_music_button.sizePolicy().hasHeightForWidth())
+        self.toggle_music_button.setSizePolicy(size_policy)
         self.toggle_music_button.setMinimumSize(QtCore.QSize(0, 0))
-        self.toggleoff_music_button.setSizePolicy(sizePolicy)
+        self.toggleoff_music_button.setSizePolicy(size_policy)
         self.toggleoff_music_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(-1)
@@ -207,6 +209,7 @@ class ui_chapter_window(object):
                                                   "    color: black\n"
                                                   "}")
         self.toggleoff_music_button.setObjectName("toggle_music_button")
+
         # play Song
         self.player = QMediaPlayer()
         self.toggleoff_music_button.hide()
@@ -215,11 +218,11 @@ class ui_chapter_window(object):
 
         self.reload_button = QtWidgets.QPushButton(self.main_chapter_frame)
         self.reload_button.setGeometry(QtCore.QRect(90, 20, 80, 30))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.reload_button.sizePolicy().hasHeightForWidth())
-        self.reload_button.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.reload_button.sizePolicy().hasHeightForWidth())
+        self.reload_button.setSizePolicy(size_policy)
         self.reload_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(-1)
@@ -251,11 +254,11 @@ class ui_chapter_window(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.files_frame_2 = QtWidgets.QFrame(self.file_main_page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.files_frame_2.sizePolicy().hasHeightForWidth())
-        self.files_frame_2.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.files_frame_2.sizePolicy().hasHeightForWidth())
+        self.files_frame_2.setSizePolicy(size_policy)
         self.files_frame_2.setStyleSheet("background-color: rgb(0, 157, 255);border-radius: 5px")
         self.files_frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.files_frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -266,11 +269,11 @@ class ui_chapter_window(object):
         self.files_horiz_layout.setSpacing(0)
         self.files_horiz_layout.setObjectName("files_horiz_layout")
         self.file_img1 = QtWidgets.QTextBrowser(self.files_frame_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.file_img1.sizePolicy().hasHeightForWidth())
-        self.file_img1.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.file_img1.sizePolicy().hasHeightForWidth())
+        self.file_img1.setSizePolicy(size_policy)
         self.file_img1.setMaximumSize(QtCore.QSize(40, 63))
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -300,11 +303,11 @@ class ui_chapter_window(object):
         self.file_txt1_edit.setObjectName("file_txt1_edit")
         self.gridLayout.addWidget(self.file_txt1_edit, 0, 0, 1, 1)
         self.file_txt1_button = QtWidgets.QPushButton(self.file_txt_page1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.file_txt1_button.sizePolicy().hasHeightForWidth())
-        self.file_txt1_button.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.file_txt1_button.sizePolicy().hasHeightForWidth())
+        self.file_txt1_button.setSizePolicy(size_policy)
         font = QtGui.QFont()
         font.setPointSize(-1)
         self.file_txt1_button.setFont(font)
@@ -336,11 +339,11 @@ class ui_chapter_window(object):
         self.task_vert_layout.setSpacing(6)
         self.task_vert_layout.setObjectName("task_vert_layout")
         self.task_one = QtWidgets.QLabel(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.task_one.sizePolicy().hasHeightForWidth())
-        self.task_one.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.task_one.sizePolicy().hasHeightForWidth())
+        self.task_one.setSizePolicy(size_policy)
         self.task_one.setMinimumSize(QtCore.QSize(0, 20))
         self.task_one.setMaximumSize(QtCore.QSize(16777215, 36))
         font = QtGui.QFont()
@@ -354,11 +357,11 @@ class ui_chapter_window(object):
         self.task_one.setObjectName("task_one")
         self.task_vert_layout.addWidget(self.task_one)
         self.task_two = QtWidgets.QLabel(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.task_two.sizePolicy().hasHeightForWidth())
-        self.task_two.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.task_two.sizePolicy().hasHeightForWidth())
+        self.task_two.setSizePolicy(size_policy)
         self.task_two.setMinimumSize(QtCore.QSize(0, 20))
         self.task_two.setMaximumSize(QtCore.QSize(16777215, 36))
         font = QtGui.QFont()
@@ -372,11 +375,11 @@ class ui_chapter_window(object):
         self.task_two.setObjectName("task_two")
         self.task_vert_layout.addWidget(self.task_two)
         self.task_three = QtWidgets.QLabel(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.task_three.sizePolicy().hasHeightForWidth())
-        self.task_three.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.task_three.sizePolicy().hasHeightForWidth())
+        self.task_three.setSizePolicy(size_policy)
         self.task_three.setMinimumSize(QtCore.QSize(0, 20))
         self.task_three.setMaximumSize(QtCore.QSize(16777215, 36))
         font = QtGui.QFont()
@@ -391,11 +394,11 @@ class ui_chapter_window(object):
         self.task_vert_layout.addWidget(self.task_three)
         self.frame = QtWidgets.QFrame(self.main_chapter_frame)
         self.frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(size_policy)
         self.frame.setMaximumSize(QtCore.QSize(16777215, 220))
         self.frame.setStyleSheet("\n"
                                  "background-color:  #F4D782;")
@@ -404,11 +407,11 @@ class ui_chapter_window(object):
         self.frame.setObjectName("frame")
         self.title_label = QtWidgets.QLabel(self.main_chapter_frame)
         self.title_label.setGeometry(QtCore.QRect(830, 10, 439, 59))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
-        self.title_label.setSizePolicy(sizePolicy)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
+        self.title_label.setSizePolicy(size_policy)
         font = QtGui.QFont()
         font.setPointSize(24)
         self.title_label.setFont(font)
@@ -469,34 +472,51 @@ class ui_chapter_window(object):
         self.lineEdit.setObjectName("lineEdit")
         self.createCards(3)
 
-        MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
+        window.setCentralWidget(self.main_chapter_central_widget)
 
-        self.retranslateUi(MainChapterWindow)
+        self.retranslateUi(window)
         self.file_stacked_widget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainChapterWindow)
+        QtCore.QMetaObject.connectSlotsByName(window)
 
     def retranslateUi(self, MainChapterWindow):
         _translate = QtCore.QCoreApplication.translate
         MainChapterWindow.setWindowTitle(_translate("MainChapterWindow", "MainWindow"))
         self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow",
-                                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                                          "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                                          "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                                           "p, li { white-space: pre-wrap; }\n"
-                                                          "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-                                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:14pt;\">Drag the card or type in the command to add, commit, and push your first file!</span></p></body></html>"))
+                                                          "</style></head><body style=\" "
+                                                          "font-family:\'Montserrat\'; font-size:13pt; "
+                                                          "font-weight:400; font-style:normal;\">\n "
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; "
+                                                          "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                          "text-indent:0px;\"><span style=\" "
+                                                          "font-family:\'Montserrat\'; font-size:14pt;\">Drag the "
+                                                          "card or type in the command to add, commit, and push your "
+                                                          "first file!</span></p></body></html>")) 
         self.cmd_output_text.setHtml(_translate("MainChapterWindow",
-                                                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                                "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                                "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                                 "p, li { white-space: pre-wrap; }\n"
-                                                "</style></head><body style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-                                                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Menlo\'; font-size:11pt; color:#ffffff;\">user@what-the-git repo_folder % </span></p></body></html>"))
+                                                "</style></head><body style=\" font-family:\'Montserrat\'; "
+                                                "font-size:13pt; font-weight:400; font-style:normal;\">\n "
+                                                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                                                "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
+                                                "style=\" font-family:\'Menlo\'; font-size:11pt; "
+                                                "color:#ffffff;\">user@what-the-git repo_folder % "
+                                                "</span></p></body></html>")) 
         self.cmd_output_text.setPlaceholderText(_translate("MainChapterWindow", "user@what-the-git repo_folder %"))
         self.back_button.setText(_translate("MainChapterWindow", "Back"))
         self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
         self.toggleoff_music_button.setText(_translate("MainChapterWindow", "Toggle Off Music"))
         self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
         self.file_img1.setHtml(_translate("MainChapterWindow",
-                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                          "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
                                           "p, li { white-space: pre-wrap; }\n"
                                           "</style></head><body style=\" font-family:\'Montserrat\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
@@ -564,7 +584,6 @@ class ui_chapter_window(object):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainChapterWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainChapterWindow()
-    ui.setupUi(MainChapterWindow)
+    ui = ui_chapter_window(MainChapterWindow)
     MainChapterWindow.show()
     sys.exit(app.exec_())

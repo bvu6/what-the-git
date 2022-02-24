@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 # Made By Thicc-Juice
 # What The Git!
+import os
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+
+from PyQt5.QtCore import QUrl
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 
 
 class ui_chapter_selection_window(object):
@@ -207,6 +212,8 @@ class ui_chapter_selection_window(object):
         self.chapter_two_start_button.setText(_translate("chapter_selection_window", "Chapter 2: Branching"))
         self.chapter_one_start_button.setText(_translate("chapter_selection_window", "Chapter 1: First Commit"))
         self.select_chapter_label.setText(_translate("chapter_selection_window", "Select Chapter"))
+
+
 
 
 if __name__ == "__main__":

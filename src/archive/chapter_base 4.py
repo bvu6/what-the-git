@@ -102,6 +102,7 @@ class Ui_MainChapterWindow(object):
         self.cmd_output_text.setObjectName("cmd_output_text")
         self.horizontalLayout_4.addWidget(self.cmd_output_text)
         self.cmd_output_scroll_area.setWidget(self.cmd_output_contents)
+        self.cmd_user_input_box = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         self.cmd_grid_layout.addWidget(self.cmd_output_scroll_area, 0, 0, 1, 1)
         self.cmd_user_input_box = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -437,36 +438,35 @@ class Ui_MainChapterWindow(object):
         # for img in self._imgList:
         #     print('1')
         #     self.card =  DraggableCardImages(imgPath=img, parent=self.main_chapter_frame, wid=None)
+
+        # ^^ widget creation for dragging card
         self.verticalWidget = QtWidgets.QWidget(self.main_chapter_frame)
-        self.verticalWidget.setGeometry(QtCore.QRect(80, 210, 160, 80))
-        self.verticalWidget.setStyleSheet("background-color: rgb(4, 255, 0)")
+        self.verticalWidget.setGeometry(QtCore.QRect(220, 270, 71, 71))
+        self.verticalWidget.setStyleSheet("background-color:rgb(174, 61, 255)")
         self.verticalWidget.setObjectName("verticalWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(self.verticalWidget)
-        self.label.setText("")
+        self.label.setStyleSheet("font: 12pt \"Georgia\";")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
         self.verticalWidget_2 = QtWidgets.QWidget(self.main_chapter_frame)
-        self.verticalWidget_2.setGeometry(QtCore.QRect(290, 210, 160, 80))
-        self.verticalWidget_2.setStyleSheet("background-color: rgb(4, 255, 0)")
+        self.verticalWidget_2.setGeometry(QtCore.QRect(400, 270, 81, 71))
+        self.verticalWidget_2.setStyleSheet("background-color:rgb(174, 61, 255)")
         self.verticalWidget_2.setObjectName("verticalWidget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalWidget_2)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.verticalWidget_3 = QtWidgets.QWidget(self.main_chapter_frame)
-        self.verticalWidget_3.setGeometry(QtCore.QRect(510, 210, 160, 80))
-        self.verticalWidget_3.setStyleSheet("background-color: rgb(4, 255, 0)")
-        self.verticalWidget_3.setObjectName("verticalWidget_3")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalWidget_3)
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.verticalWidget_3.hide()
-        self.verticalWidget_2.hide()
-        self.verticalWidget.hide()
-
-        # ^^ widget creation for dragging card
+        self.label_2 = QtWidgets.QLabel(self.verticalWidget_2)
+        self.label_2.setStyleSheet("font: 12pt \"Georgia\";")
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_2.addWidget(self.label_2, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.lineEdit = QtWidgets.QLineEdit(self.main_chapter_frame)
+        self.lineEdit.setGeometry(QtCore.QRect(290, 300, 113, 5))
+        self.lineEdit.setStyleSheet("background-color: rgb(170, 255, 0)")
+        self.lineEdit.setObjectName("lineEdit")
         self.createCards(3)
 
         MainChapterWindow.setCentralWidget(self.main_chapter_central_widget)
@@ -508,6 +508,13 @@ class Ui_MainChapterWindow(object):
         self.task_two.setText(_translate("MainChapterWindow", "Commit the change!"))
         self.task_three.setText(_translate("MainChapterWindow", "Push!"))
         self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
+        self.label.setText(_translate("MainChapterWindow", "Head"))
+        self.label_2.setText(_translate("MainChapterWindow", "Commit"))
+        self.label.hide()
+        self.label_2.hide()
+        self.verticalWidget.hide()
+        self.verticalWidget_2.hide()
+        self.lineEdit.hide()
 
     def createCards(self, num):
         cardList = []
@@ -536,17 +543,19 @@ class Ui_MainChapterWindow(object):
     def showCard(self, type):
         if type == 0:
             self.verticalWidget.show()
+            self.lineEdit.show()
+            self.label.show()
             self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
                                           "border-radius: 5px; \n"
                                           "padding-left:5px")
 
         elif type == 1:
-            self.verticalWidget_2.show()
             self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
                                           "border-radius: 5px; \n"
                                           "padding-left:5px")
         elif type == 2:
-            self.verticalWidget_3.show()
+            self.verticalWidget_2.show()
+            self.label_2.show()
             self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
                                           "border-radius: 5px; \n"
                                           "padding-left:5px")

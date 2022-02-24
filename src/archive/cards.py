@@ -6,9 +6,10 @@ from PyQt5.QtGui import QFont
 
 
 class DraggableCardImages(QtWidgets.QLabel):
-    def __init__(self, imgPath=None, parent=None, wid=None, x=None, type=None):
+    def __init__(self, imgPath=None, parent=None, wid=None, x=None, type=None, chapter=None):
         super(DraggableCardImages, self).__init__()
         self.cardType = ["Git Add", "Git Commit", "Git Push"]
+        self.chapter = chapter
         self.type = type
         self.setParent(parent)
         self.ogX = 50 + x
@@ -43,6 +44,7 @@ class DraggableCardImages(QtWidgets.QLabel):
             self.move(self.ogX, self.ogY)
         else:
             print("Doing", self.cardType[self.type])
+            self.chapter.showCard(self.type)
             self.setParent(None)
 
     def getType(self):

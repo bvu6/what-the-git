@@ -6,6 +6,7 @@ import sys
 import os
 from cards import DraggableCardImages
 
+
 class Ui_MainChapterWindow(object):
     def setupUi(self, MainChapterWindow):
         MainChapterWindow.setObjectName("MainChapterWindow")
@@ -112,11 +113,11 @@ class Ui_MainChapterWindow(object):
         font.setPointSize(12)
         self.cmd_user_input_box.setFont(font)
         self.cmd_user_input_box.setStyleSheet("border: 1px solid red;\n"
-"border-color: rgb(0, 155, 255);\n"
-"border-radius: 5px; \n"
-"background-color: rgb(30, 30, 30);\n"
-"padding-left:5px;\n"
-"padding-right:5px")
+                                              "border-color: rgb(0, 155, 255);\n"
+                                              "border-radius: 5px; \n"
+                                              "background-color: rgb(30, 30, 30);\n"
+                                              "padding-left:5px;\n"
+                                              "padding-right:5px")
         self.cmd_user_input_box.setText("")
         self.cmd_user_input_box.setDragEnabled(False)
         self.cmd_user_input_box.setPlaceholderText("")
@@ -136,22 +137,22 @@ class Ui_MainChapterWindow(object):
         font.setPointSize(-1)
         self.back_button.setFont(font)
         self.back_button.setStyleSheet("QPushButton {\n"
-"    border: 1px solid #F4D782;\n"
-"    font-size: 14px;\n"
-"    color: #F4D782;\n"
-"    padding: 1px;\n"
-"    border-radius:10px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: #F4D780;\n"
-"    color: black\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(255, 210, 103);\n"
-"    color: black\n"
-"}")
+                                       "    border: 1px solid #F4D782;\n"
+                                       "    font-size: 14px;\n"
+                                       "    color: #F4D782;\n"
+                                       "    padding: 1px;\n"
+                                       "    border-radius:10px\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:hover {\n"
+                                       "    background: #F4D780;\n"
+                                       "    color: black\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:pressed {\n"
+                                       "    background-color: rgb(255, 210, 103);\n"
+                                       "    color: black\n"
+                                       "}")
         self.back_button.setObjectName("back_button")
         self.toggle_music_button = QtWidgets.QPushButton(self.main_chapter_frame)
         self.toggle_music_button.setGeometry(QtCore.QRect(180, 20, 120, 30))
@@ -223,22 +224,22 @@ class Ui_MainChapterWindow(object):
         font.setPointSize(-1)
         self.reload_button.setFont(font)
         self.reload_button.setStyleSheet("QPushButton {\n"
-"    border: 1px solid #F4D782;\n"
-"    font-size: 14px;\n"
-"    color: #F4D782;\n"
-"    padding: 1px;\n"
-"    border-radius:10px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: #F4D780;\n"
-"    color: black\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(255, 210, 103);\n"
-"    color: black\n"
-"}")
+                                         "    border: 1px solid #F4D782;\n"
+                                         "    font-size: 14px;\n"
+                                         "    color: #F4D782;\n"
+                                         "    padding: 1px;\n"
+                                         "    border-radius:10px\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover {\n"
+                                         "    background: #F4D780;\n"
+                                         "    color: black\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:pressed {\n"
+                                         "    background-color: rgb(255, 210, 103);\n"
+                                         "    color: black\n"
+                                         "}")
         self.reload_button.setObjectName("reload_button")
         self.file_stacked_widget = QtWidgets.QStackedWidget(self.main_chapter_frame)
         self.file_stacked_widget.setGeometry(QtCore.QRect(830, 410, 441, 91))
@@ -294,7 +295,7 @@ class Ui_MainChapterWindow(object):
         self.file_txt1_edit.setFont(font)
         self.file_txt1_edit.setAutoFillBackground(False)
         self.file_txt1_edit.setStyleSheet("border: 1px solid white;\n"
-"border-radius: 5px")
+                                          "border-radius: 5px")
         self.file_txt1_edit.setObjectName("file_txt1_edit")
         self.gridLayout.addWidget(self.file_txt1_edit, 0, 0, 1, 1)
         self.file_txt1_button = QtWidgets.QPushButton(self.file_txt_page1)
@@ -307,22 +308,22 @@ class Ui_MainChapterWindow(object):
         font.setPointSize(-1)
         self.file_txt1_button.setFont(font)
         self.file_txt1_button.setStyleSheet("QPushButton {\n"
-"    border: 1px solid #F4D782;\n"
-"    font-size: 14px;\n"
-"    color: #F4D782;\n"
-"    padding: 10px;\n"
-"    border-radius:10px\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: #F4D780;\n"
-"    color: black\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(255, 210, 103);\n"
-"    color: black\n"
-"}")
+                                            "    border: 1px solid #F4D782;\n"
+                                            "    font-size: 14px;\n"
+                                            "    color: #F4D782;\n"
+                                            "    padding: 10px;\n"
+                                            "    border-radius:10px\n"
+                                            "}\n"
+                                            "\n"
+                                            "QPushButton:hover {\n"
+                                            "    background: #F4D780;\n"
+                                            "    color: black\n"
+                                            "}\n"
+                                            "\n"
+                                            "QPushButton:pressed {\n"
+                                            "    background-color: rgb(255, 210, 103);\n"
+                                            "    color: black\n"
+                                            "}")
         self.file_txt1_button.setObjectName("file_txt1_button")
         self.gridLayout.addWidget(self.file_txt1_button, 0, 1, 1, 1)
         self.file_stacked_widget.addWidget(self.file_txt_page1)
@@ -346,8 +347,8 @@ class Ui_MainChapterWindow(object):
         font.setBold(True)
         self.task_one.setFont(font)
         self.task_one.setStyleSheet("background-color: rgb(138, 0, 1);\n"
-"border-radius: 5px; \n"
-"padding-left:5px")
+                                    "border-radius: 5px; \n"
+                                    "padding-left:5px")
         self.task_one.setAlignment(QtCore.Qt.AlignCenter)
         self.task_one.setObjectName("task_one")
         self.task_vert_layout.addWidget(self.task_one)
@@ -364,8 +365,8 @@ class Ui_MainChapterWindow(object):
         font.setBold(True)
         self.task_two.setFont(font)
         self.task_two.setStyleSheet("background-color: rgb(138, 0, 1);\n"
-"border-radius: 5px; \n"
-"padding-left:5px")
+                                    "border-radius: 5px; \n"
+                                    "padding-left:5px")
         self.task_two.setAlignment(QtCore.Qt.AlignCenter)
         self.task_two.setObjectName("task_two")
         self.task_vert_layout.addWidget(self.task_two)
@@ -382,8 +383,8 @@ class Ui_MainChapterWindow(object):
         font.setBold(True)
         self.task_three.setFont(font)
         self.task_three.setStyleSheet("background-color: rgb(138, 0, 1);\n"
-"border-radius: 5px; \n"
-"padding-left:5px")
+                                      "border-radius: 5px; \n"
+                                      "padding-left:5px")
         self.task_three.setAlignment(QtCore.Qt.AlignCenter)
         self.task_three.setObjectName("task_three")
         self.task_vert_layout.addWidget(self.task_three)
@@ -396,7 +397,7 @@ class Ui_MainChapterWindow(object):
         self.frame.setSizePolicy(sizePolicy)
         self.frame.setMaximumSize(QtCore.QSize(16777215, 220))
         self.frame.setStyleSheet("\n"
-"background-color:  #F4D782;")
+                                 "background-color:  #F4D782;")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -411,7 +412,7 @@ class Ui_MainChapterWindow(object):
         font.setPointSize(24)
         self.title_label.setFont(font)
         self.title_label.setStyleSheet("")
-        self.title_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.title_label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.title_label.setObjectName("title_label")
         # self.rm_card = QtWidgets.QLabel(self.main_chapter_frame)
         # self.rm_card.setGeometry(QtCore.QRect(130, 420, 145, 190))
@@ -477,27 +478,30 @@ class Ui_MainChapterWindow(object):
     def retranslateUi(self, MainChapterWindow):
         _translate = QtCore.QCoreApplication.translate
         MainChapterWindow.setWindowTitle(_translate("MainChapterWindow", "MainWindow"))
-        self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:14pt;\">Drag the card or type in the command to add, commit, and push your first file!</span></p></body></html>"))
-        self.cmd_output_text.setHtml(_translate("MainChapterWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Menlo\'; font-size:11pt; color:#ffffff;\">user@what-the-git repo_folder % </span></p></body></html>"))
+        self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow",
+                                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                                          "p, li { white-space: pre-wrap; }\n"
+                                                          "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:14pt;\">Drag the card or type in the command to add, commit, and push your first file!</span></p></body></html>"))
+        self.cmd_output_text.setHtml(_translate("MainChapterWindow",
+                                                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                                "p, li { white-space: pre-wrap; }\n"
+                                                "</style></head><body style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+                                                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Menlo\'; font-size:11pt; color:#ffffff;\">user@what-the-git repo_folder % </span></p></body></html>"))
         self.cmd_output_text.setPlaceholderText(_translate("MainChapterWindow", "user@what-the-git repo_folder %"))
         self.back_button.setText(_translate("MainChapterWindow", "Back"))
         self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
         self.toggleoff_music_button.setText(_translate("MainChapterWindow", "Toggle Off Music"))
         self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
-        self.file_img1.setHtml(_translate("MainChapterWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Montserrat\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"media/txt_img.png\" width=\"35\" height=\"40\" /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:13pt; color:#ffffff;\"> a.txt</span></p></body></html>"))
+        self.file_img1.setHtml(_translate("MainChapterWindow",
+                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                          "p, li { white-space: pre-wrap; }\n"
+                                          "</style></head><body style=\" font-family:\'Montserrat\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"media/txt_img.png\" width=\"35\" height=\"40\" /></p>\n"
+                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:13pt; color:#ffffff;\"> a.txt</span></p></body></html>"))
         self.file_txt1_edit.setPlainText(_translate("MainChapterWindow", "hello world"))
         self.file_txt1_button.setText(_translate("MainChapterWindow", "Done"))
         self.task_one.setText(_translate("MainChapterWindow", "Add a.txt"))
@@ -505,13 +509,10 @@ class Ui_MainChapterWindow(object):
         self.task_three.setText(_translate("MainChapterWindow", "Push!"))
         self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
 
-
-
-
     def createCards(self, num):
         cardList = []
         for i in range(num):
-            cardList.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150*i, i))
+            cardList.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 150 * i, i, self))
 
     def playSong(self):
         current_path = os.path.dirname(os.path.realpath(__file__))
@@ -532,17 +533,18 @@ class Ui_MainChapterWindow(object):
         self.toggle_music_button.show()
         print("Song Stopped")
 
+    def showCard(self, type):
+        if type == 0:
+            self.verticalWidget.show()
+        elif type == 1:
+            self.verticalWidget_2.show()
+        elif type == 2:
+            self.verticalWidget_3.show()
 
-    def showCard(self):
-
-        self.verticalWidget_3.hide()
-        self.verticalWidget_2.hide()
-        self.verticalWidget.hide()
-
-        
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainChapterWindow = QtWidgets.QMainWindow()
     ui = Ui_MainChapterWindow()

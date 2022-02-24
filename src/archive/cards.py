@@ -40,12 +40,13 @@ class DraggableCardImages(QtWidgets.QLabel):
         super(DraggableCardImages, self).mouseMoveEvent(event)
 
     def mouseReleaseEvent(self, event):
-        if self.x() > 800 or self.y() > 430:
-            self.move(self.ogX, self.ogY)
-        else:
-            print("Doing", self.cardType[self.type])
-            self.chapter.showCard(self.type)
-            self.setParent(None)
+        # if self.x() > 800 or self.y() > 430:
+        #     self.move(self.ogX, self.ogY)
+        # else:
+        #print("Doing", self.cardType[self.type])
+        valid = self.chapter.validCheck(self.type)
+        self.chapter.showCard(self.type, valid)
+        self.move(self.ogX, self.ogY)
 
     def getType(self):
         print(self.cardType[self.type])

@@ -9,6 +9,7 @@ from cards import DraggableCardImages
 
 class Ui_MainChapterWindow(object):
     def setupUi(self, MainChapterWindow):
+        self.lastMove = -1
         MainChapterWindow.setObjectName("MainChapterWindow")
         MainChapterWindow.resize(1280, 720)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -540,25 +541,44 @@ class Ui_MainChapterWindow(object):
         self.toggle_music_button.show()
         print("Song Stopped")
 
-    def showCard(self, type):
-        if type == 0:
-            self.verticalWidget.show()
-            self.lineEdit.show()
-            self.label.show()
-            self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                          "border-radius: 5px; \n"
-                                          "padding-left:5px")
+    def showCard(self, type, valid):
+        if valid:
+            if type == 0:
+                self.verticalWidget.show()
+                self.lineEdit.show()
+                self.label.show()
+                self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                              "border-radius: 5px; \n"
+                                              "padding-left:5px")
 
-        elif type == 1:
-            self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                          "border-radius: 5px; \n"
-                                          "padding-left:5px")
-        elif type == 2:
-            self.verticalWidget_2.show()
-            self.label_2.show()
-            self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                          "border-radius: 5px; \n"
-                                          "padding-left:5px")
+            elif type == 1:
+                self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                              "border-radius: 5px; \n"
+                                              "padding-left:5px")
+            elif type == 2:
+                self.verticalWidget_2.show()
+                self.label_2.show()
+                self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                              "border-radius: 5px; \n"
+                                              "padding-left:5px")
+
+    def validCheck(self, type):
+        #print("type:", type,self.lastMove)
+        # if type == 0 and self.lastMove == -1:
+        #     self.lastMove = type
+        #     return True
+        # elif type == 1 and self.lastMove == 0:
+        #     self.lastMove = type
+        #     return True
+        # elif type == 2  and self.lastMove == 1:
+        #     self.lastMove = type
+        #     return True
+        if self.lastMove == type - 1:
+            self.lastMove = type
+            return True
+        else:
+            print("Invalid move")
+            return False
 
 
 if __name__ == "__main__":

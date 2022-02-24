@@ -282,8 +282,8 @@ class ui_chapter_window(object):
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(self.files_main_frame.sizePolicy().hasHeightForWidth())
-        self.files_main_frame.setContentsMargins(0, 0, 0, 0)
         self.files_main_frame.setSizePolicy(size_policy)
+        self.files_main_frame.setContentsMargins(0, 0, 0, 0)
 
         font = QtGui.QFont()
         self.files_main_frame.setFont(font)
@@ -300,8 +300,7 @@ class ui_chapter_window(object):
         self.files_horiz_layout.setContentsMargins(0, 0, 0, 0)
         self.files_horiz_layout.setObjectName("files_horiz_layout")
 
-        self.file_img1 = QtWidgets.QTextBrowser(self.main_chapter_frame)
-        self.file_img1.setGeometry(100,14,40,63)
+        self.file_img1 = QtWidgets.QTextBrowser(self.files_main_frame)
 
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         size_policy.setHorizontalStretch(0)
@@ -309,12 +308,13 @@ class ui_chapter_window(object):
         size_policy.setHeightForWidth(self.file_img1.sizePolicy().hasHeightForWidth())
 
         self.file_img1.setSizePolicy(size_policy)
-        self.file_img1.setMinimumSize(QtCore.QSize(40, 63))
-        self.file_img1.setMaximumSize(QtCore.QSize(40, 63))
+        self.file_img1.setMinimumSize(QtCore.QSize(50, 100))
+        self.file_img1.setMaximumSize(QtCore.QSize(50, 100))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.file_img1.setFont(font)
         self.file_img1.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.file_img1.verticalScrollBar().setValue(self.file_img1.verticalScrollBar().maximum())
         self.file_img1.setStyleSheet("")
         self.file_img1.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.file_img1.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

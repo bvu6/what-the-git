@@ -12,6 +12,7 @@ import os
 class ui_chapter_window(object):
     def __init__(self, window):
         self.lastMove = -1
+        self.chapter_num = 1
 
         window.setObjectName("window")
         window.resize(1280, 720)
@@ -338,19 +339,19 @@ class ui_chapter_window(object):
         self.file1_edit_grid_layout.setContentsMargins(0, 0, 0, 0)
         self.file1_edit_grid_layout.setObjectName("file1_edit_grid_layout")
 
-        self.file1_done_button = QtWidgets.QPushButton(self.file1_edit_widget)
+        self.file1_save_button = QtWidgets.QPushButton(self.file1_edit_widget)
 
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
-        size_policy.setHeightForWidth(self.file1_done_button.sizePolicy().hasHeightForWidth())
+        size_policy.setHeightForWidth(self.file1_save_button.sizePolicy().hasHeightForWidth())
 
-        self.file1_done_button.setSizePolicy(size_policy)
-        self.file1_done_button.setMaximumSize(QtCore.QSize(60, 85))
+        self.file1_save_button.setSizePolicy(size_policy)
+        self.file1_save_button.setMaximumSize(QtCore.QSize(60, 85))
         font = QtGui.QFont()
         font.setFamily("Montserrat")
-        self.file1_done_button.setFont(font)
-        self.file1_done_button.setStyleSheet("QPushButton {\n"
+        self.file1_save_button.setFont(font)
+        self.file1_save_button.setStyleSheet("QPushButton {\n"
                                              "    border: 1px solid #F4D782;\n"
                                              "    font-size: 14px;\n"
                                              "    color: #F4D782;\n"
@@ -367,8 +368,8 @@ class ui_chapter_window(object):
                                              "    background-color: rgb(255, 210, 103);\n"
                                              "    color: black\n"
                                              "}")
-        self.file1_done_button.setObjectName("file1_done_button")
-        self.file1_edit_grid_layout.addWidget(self.file1_done_button, 0, 1, 1, 1)
+        self.file1_save_button.setObjectName("file1_done_button")
+        self.file1_edit_grid_layout.addWidget(self.file1_save_button, 0, 1, 1, 1)
 
         self.file1_qplaintextedit = QtWidgets.QPlainTextEdit(self.file1_edit_widget)
         self.file1_qplaintextedit.setMaximumSize(QtCore.QSize(1280, 85))
@@ -568,7 +569,7 @@ class ui_chapter_window(object):
         self.create_cards(3)
         self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
             self.file_stacked_widget.currentIndex() + 1)
-        self.file1_done_button.clicked.connect(lambda: self.save_file(0))
+        self.file1_save_button.clicked.connect(lambda: self.save_file(1))
 
         window.setCentralWidget(self.main_chapter_central_widget)
         self.retranslate(window)
@@ -578,6 +579,9 @@ class ui_chapter_window(object):
     def retranslate(self, window):
         _translate = QtCore.QCoreApplication.translate
         window.setWindowTitle(_translate("window", "What The Git!"))
+
+        with open('what_the_git/CH1/a.txt') as f:
+            self.file1_qplaintextedit.setPlainText(_translate("window", f.read()))
 
         self.chapter_info_text_browser.setHtml(_translate("window",
                                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -650,8 +654,7 @@ class ui_chapter_window(object):
                                           "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
                                           "font-family:\'Montserrat\'; font-size:13pt; color:#ffffff;\"> "
                                           "a.txt</span></p></body></html>"))
-        self.file1_done_button.setText(_translate("window", "Done"))
-        self.file1_qplaintextedit.setPlainText(_translate("window", "hello world"))
+        self.file1_save_button.setText(_translate("window", "Save"))
         self.task_one.setText(_translate("window", "Add a.txt"))
         self.task_two.setText(_translate("window", "Commit the change!"))
         self.task_three.setText(_translate("window", "Push!"))
@@ -699,8 +702,12 @@ class ui_chapter_window(object):
         self.commit_connect_line.hide()
 
     def save_file(self, file_num):
+        file = os.listdir(f'what_the_git/CH{self.chapter_num}')[file_num - 1]
+        with open(f'what_the_git/CH{self.chapter_num}/{file}', 'w') as f:
+            if file_num == 1:
+                f.write(self.file1_qplaintextedit.toPlainText())
+
         self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
-        pass
 
     def create_cards(self, num):
         card_list = []

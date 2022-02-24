@@ -576,7 +576,7 @@ class ui_chapter_window(object):
         self.file_stacked_widget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(window)
 
-        os.system(f'cd what_the_git/CH{self.chapter_num}')
+        # os.system(f'cd what_the_git/CH{self.chapter_num}')
 
     def retranslate(self, window):
         _translate = QtCore.QCoreApplication.translate

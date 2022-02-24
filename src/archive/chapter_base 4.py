@@ -536,10 +536,20 @@ class Ui_MainChapterWindow(object):
     def showCard(self, type):
         if type == 0:
             self.verticalWidget.show()
+            self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                          "border-radius: 5px; \n"
+                                          "padding-left:5px")
+
         elif type == 1:
             self.verticalWidget_2.show()
+            self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                          "border-radius: 5px; \n"
+                                          "padding-left:5px")
         elif type == 2:
             self.verticalWidget_3.show()
+            self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                                          "border-radius: 5px; \n"
+                                          "padding-left:5px")
 
 
 if __name__ == "__main__":

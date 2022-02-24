@@ -134,7 +134,7 @@ class ui_chapter_window(object):
         self.cmd_output_text.setMaximumSize(QtCore.QSize(437, 1280))
         font = QtGui.QFont()
         self.cmd_output_text.setFont(font)
-        self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: white")
         self.cmd_output_text.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.cmd_output_text.setObjectName("cmd_output_text")
 
@@ -491,7 +491,7 @@ class ui_chapter_window(object):
         self.head_state_widget.setStyleSheet("background-color:rgb(174, 61, 255)")
         self.head_state_widget.setObjectName("head_state_widget")
         self.head_state_vert_layout = QtWidgets.QVBoxLayout(self.head_state_widget)
-        self.head_state_vert_layout.setContentsMargins(0, 7, 0, 0)
+        self.head_state_vert_layout.setContentsMargins(0, 8, 0, 0)
         self.head_state_vert_layout.setObjectName("head_state_vert_layout")
         self.head_label = QtWidgets.QTextBrowser(self.head_state_widget)
 
@@ -626,7 +626,7 @@ class ui_chapter_window(object):
                                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
                                                 "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                                 "p, li { white-space: pre-wrap; }\n"
-                                                "</style></head><body style=\" font-family:\'Menlo\'; font-size:13pt; "
+                                                "</style></head><body style=\" font-family:\'Menlo\'; font-size:11pt; "
                                                 "font-weight:400; font-style:normal;\">\n "
                                                 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
                                                 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
@@ -663,7 +663,7 @@ class ui_chapter_window(object):
                                            "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                            "p, li { white-space: pre-wrap; }\n"
                                            "</style></head><body style=\" font-family:\'Montserrat\'; font-size:12pt; "
-                                           "font-weight:400; font-style:normal;\">\n "
+                                           "font-weight:400; font-style:normal;\">"
                                            "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; "
                                            "margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                            "text-indent:0px; font-size:13pt; font-weight:500; color:#ffffff;\"><br "
@@ -677,9 +677,9 @@ class ui_chapter_window(object):
                                                    "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
                                                    "charset=\"utf-8\" /><style type=\"text/css\">\n "
-                                                   "p, li { white-space: pre-wrap; }\n"
+                                                   "p, li { white-space: pre-wrap; }"
                                                    "</style></head><body style=\" font-family:\'Montserrat\'; "
-                                                   "font-size:13pt; font-weight:400; font-style:normal;\">\n "
+                                                   "font-size:13pt; font-weight:400; font-style:normal;\">"
                                                    "<p align=\"center\" style=\"-qt-paragraph-type:empty; "
                                                    "margin-top:0px; margin-bottom:0px; margin-left:0px; "
                                                    "margin-right:0px; -qt-block-indent:0; text-indent:0px; "
@@ -705,7 +705,7 @@ class ui_chapter_window(object):
     def create_cards(self, num):
         card_list = []
         for i in range(num):
-            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 100+200 * i, i, self))
+            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 100 + 200 * i, i, self))
 
     def showCard(self, card_type, valid):
         if valid:
@@ -713,27 +713,39 @@ class ui_chapter_window(object):
                 self.head_state_widget.show()
                 self.commit_connect_line.show()
                 self.head_label.show()
-                self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
                                             "border-radius: 5px; \n"
                                             "padding-left:5px")
 
-                # self.cmd_output_text.setText(self.cmd_output_text.text() + "Adding a.txt")
-                self.cmd_output_text.setStyleSheet("font-size:11pt; color:#ffffff;")
-                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Adding a.txt")
+                self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
+                                                   "white")
+                self.add_cmd_text("git add a.txt\nuser@what-the-git repo_folder % ")
 
             elif card_type == 1:
-                self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);\n"
                                             "border-radius: 5px; \n"
                                             "padding-left:5px")
-                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Committing")
+                self.add_cmd_text("git commit -m \"first commit\")\n[main 431c953] first commit\n")
+                self.add_cmd_text(" 1 file changed, 0 insertions(+), 0 deletions(-)\n")
+                self.add_cmd_text(" create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
 
             elif card_type == 2:
                 self.commit_state_widget.show()
                 self.first_commit_label.show()
-                self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
+                self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);\n"
                                               "border-radius: 5px; \n"
                                               "padding-left:5px")
-                self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + "\n Pushing")
+                self.add_cmd_text("git push\nEnumerating objects: 4, done.\n")
+                self.add_cmd_text("Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")
+                self.add_cmd_text("Compressing objects: 100% (2/2), done.\n")
+                self.add_cmd_text("Writing objects: 100% (3/3), 287 bytes | 287.00 KiB/s, done.\n")
+                self.add_cmd_text("Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\n")
+                self.add_cmd_text("To https://github.com/git/wtg.git\n")
+                self.add_cmd_text("   197bb24..431c953  main -> main\nuser@what-the-git repo_folder % ")
+
+    def add_cmd_text(self, txt):
+        self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + txt)
+        self.cmd_output_text.moveCursor(QtGui.QTextCursor.End)
 
     def validCheck(self, card_type):
         if self.lastMove == card_type - 1:

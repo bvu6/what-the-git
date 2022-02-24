@@ -11,7 +11,7 @@ import os
 
 class ui_chapter_window(object):
     def __init__(self, window):
-        window.setObjectName("MainChapterWindow")
+        window.setObjectName("window")
         window.resize(1280, 720)
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         size_policy.setHorizontalStretch(0)
@@ -126,7 +126,6 @@ class ui_chapter_window(object):
         self.cmd_output_scroll_area.setWidget(self.cmd_output_contents)
         self.cmd_user_input_box = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         self.cmd_grid_layout.addWidget(self.cmd_output_scroll_area, 0, 0, 1, 1)
-        self.cmd_user_input_box = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
@@ -300,9 +299,10 @@ class ui_chapter_window(object):
         self.file_img1.setSizePolicy(size_policy)
         self.file_img1.setMaximumSize(QtCore.QSize(40, 63))
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(7)
         self.file_img1.setFont(font)
         self.file_img1.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.file_img1.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.file_img1.setStyleSheet("")
         self.file_img1.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.file_img1.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -326,7 +326,7 @@ class ui_chapter_window(object):
         self.file_txt_edit.setFont(font)
         self.file_txt_edit.setAutoFillBackground(False)
         self.file_txt_edit.setStyleSheet("border: 1px solid white;\n"
-                                          "border-radius: 5px")
+                                         "border-radius: 5px")
         self.file_txt_edit.setObjectName("file_txt1_edit")
         self.gridLayout.addWidget(self.file_txt_edit, 0, 0, 1, 1)
 
@@ -487,11 +487,11 @@ class ui_chapter_window(object):
         self.verticalWidget.setGeometry(QtCore.QRect(220, 270, 71, 71))
         self.verticalWidget.setStyleSheet("background-color:rgb(174, 61, 255)")
         self.verticalWidget.setObjectName("verticalWidget")
-        
+
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        
+
         self.label = QtWidgets.QLabel(self.verticalWidget)
         self.label.setStyleSheet("font: 12pt \"Montserrat\";")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
@@ -522,10 +522,10 @@ class ui_chapter_window(object):
         self.file_stacked_widget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(window)
 
-    def restranslate(self, MainChapterWindow):
+    def restranslate(self, window):
         _translate = QtCore.QCoreApplication.translate
-        MainChapterWindow.setWindowTitle(_translate("MainChapterWindow", "MainWindow"))
-        self.chapter_info_text_browser.setHtml(_translate("MainChapterWindow",
+        window.setWindowTitle(_translate("window", "What The Git!"))
+        self.chapter_info_text_browser.setHtml(_translate("window",
                                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
                                                           "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
@@ -539,8 +539,8 @@ class ui_chapter_window(object):
                                                           "text-indent:0px;\"><span style=\" "
                                                           "font-family:\'Montserrat\'; font-size:14pt;\">Drag the "
                                                           "card or type in the command to add, commit, and push your "
-                                                          "first file!</span></p></body></html>")) 
-        self.cmd_output_text.setHtml(_translate("MainChapterWindow",
+                                                          "first file!</span></p></body></html>"))
+        self.cmd_output_text.setHtml(_translate("window",
                                                 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
                                                 "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
@@ -552,28 +552,34 @@ class ui_chapter_window(object):
                                                 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
                                                 "style=\" font-family:\'Menlo\'; font-size:11pt; "
                                                 "color:#ffffff;\">user@what-the-git repo_folder % "
-                                                "</span></p></body></html>")) 
-        self.cmd_output_text.setPlaceholderText(_translate("MainChapterWindow", "user@what-the-git repo_folder %"))
-        self.back_button.setText(_translate("MainChapterWindow", "Back"))
-        self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
-        self.toggleoff_music_button.setText(_translate("MainChapterWindow", "Toggle Off Music"))
-        self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
-        self.file_img1.setHtml(_translate("MainChapterWindow",
+                                                "</span></p></body></html>"))
+        self.cmd_output_text.setPlaceholderText(_translate("window", "user@what-the-git repo_folder %"))
+        self.back_button.setText(_translate("window", "Back"))
+        self.toggle_music_button.setText(_translate("window", "Toggle Music"))
+        self.toggleoff_music_button.setText(_translate("window", "Toggle Off Music"))
+        self.reload_button.setText(_translate("window", "Reload"))
+        self.file_img1.setHtml(_translate("window",
                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
                                           "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
-                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                          "charset=\"utf-8\" /><style type=\"text/css\">\n "
                                           "p, li { white-space: pre-wrap; }\n"
-                                          "</style></head><body style=\" font-family:\'Montserrat\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"media/txt_img.png\" width=\"35\" height=\"40\" /></p>\n"
-                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:13pt; color:#ffffff;\"> a.txt</span></p></body></html>"))
-        self.file_txt_edit.setPlainText(_translate("MainChapterWindow", "hello world"))
-        self.file_txt1_button.setText(_translate("MainChapterWindow", "Done"))
-        self.task_one.setText(_translate("MainChapterWindow", "Add a.txt"))
-        self.task_two.setText(_translate("MainChapterWindow", "Commit the change!"))
-        self.task_three.setText(_translate("MainChapterWindow", "Push!"))
-        self.title_label.setText(_translate("MainChapterWindow", "CH1: First Commit"))
-        self.label.setText(_translate("MainChapterWindow", "Head"))
-        self.label_2.setText(_translate("MainChapterWindow", "Commit"))
+                                          "</style></head><body style=\" font-family:\'Montserrat\'; font-size:12pt; "
+                                          "font-weight:400; font-style:normal;\">\n "
+                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                                          "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img "
+                                          "src=\"media/txt_img.png\" width=\"35\" height=\"40\" /></p>\n "
+                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                                          "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+                                          "font-size:13pt; color:#ffffff;\"> a.txt</span></p></body></html>"))
+        self.file_txt_edit.setPlainText(_translate("window", "hello world"))
+        self.file_txt1_button.setText(_translate("window", "Done"))
+        self.task_one.setText(_translate("window", "Add a.txt"))
+        self.task_two.setText(_translate("window", "Commit the change!"))
+        self.task_three.setText(_translate("window", "Push!"))
+        self.title_label.setText(_translate("window", "CH1: First Commit"))
+        self.label.setText(_translate("window", "Head"))
+        self.label_2.setText(_translate("window", "Commit"))
         self.label.hide()
         self.label_2.hide()
         self.verticalWidget.hide()
@@ -604,30 +610,30 @@ class ui_chapter_window(object):
         self.toggle_music_button.show()
         print("Song Stopped")
 
-    def showCard(self, type):
-        if type == 0:
+    def showCard(self, card_type):
+        if card_type == 0:
             self.verticalWidget.show()
             self.lineEdit.show()
             self.label.show()
             self.task_one.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                          "border-radius: 5px; \n"
-                                          "padding-left:5px")
+                                        "border-radius: 5px; \n"
+                                        "padding-left:5px; font: Montserrat")
 
-        elif type == 1:
+        elif card_type == 1:
             self.task_two.setStyleSheet("background-color: rgb(4, 255, 1);\n"
-                                          "border-radius: 5px; \n"
-                                          "padding-left:5px")
-        elif type == 2:
+                                        "border-radius: 5px; \n"
+                                        "padding-left:5px; font: Montserrat")
+        elif card_type == 2:
             self.verticalWidget_2.show()
             self.label_2.show()
             self.task_three.setStyleSheet("background-color: rgb(4, 255, 1);\n"
                                           "border-radius: 5px; \n"
-                                          "padding-left:5px")
+                                          "padding-left:5px; font: Montserrat")
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    MainChapterWindow = QtWidgets.QMainWindow()
-    ui = ui_chapter_window(MainChapterWindow)
-    MainChapterWindow.show()
+    main_window = QtWidgets.QMainWindow()
+    ui = ui_chapter_window(main_window)
+    main_window.show()
     sys.exit(app.exec_())

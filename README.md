@@ -18,7 +18,6 @@
   - [Roadmap](#roadmap)
   - [License](#license)
   - [Contact](#contact)
-  - [Special Notes](#special-notes)
   - [Acknowledgments](#acknowledgments)
 
 </details>

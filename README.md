@@ -8,22 +8,21 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details>
+<details id="table_of_contents">
   <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-    </li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
+
+- [About The Project](#about-the-projec)
+    - [Built With](#built-with)
+  - [Getting Started](#getting-started)
+  - [UI](#ui)
+  - [Roadmap](#roadmap)
+  - [License](#license)
+  - [Contact](#contact)
+  - [Special Notes](#special-notes)
+  - [Acknowledgments](#acknowledgments)
+
 </details>
+
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -75,15 +74,40 @@ venv\Scripts\activate (Windows)
 pip install -r requirements.txt
 ```
 
-4) Run!
+3) Change to src/ directory
+```
+cd src
+```
+
+5) Run!
 ```
 ./wtg_run.py
 ```
+
+## UI
+<div>
+  <img src="media/start_page.png">
+  <img src="media/chapter_selection.png">
+  <img src="media/chapter.png">
+</div>
+
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<!-- Contact -->
+## Contact
+
+Bikram Chatterjee - b_chatterjee@u.pacific.edu
+
+Hung Le - h_le21@u.pacific.edu 
+
+Vincent Tran - 
+
+Benjamin Vu -
+
 
 <!-- Acknowledgments -->
 ## Acknowledgments

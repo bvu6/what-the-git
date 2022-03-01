@@ -34,16 +34,6 @@
  
 What The Git! is a simple Git education tool that teaches users the basics of git via an interactive medium. Users will be able to go through various chapters or levels that teaches the user how to perform git-related tasks. Users can then execute git commands either by clicking the respective cards that execute a certain git command or by directly typing in commands to a simulated command line interface. Users will also have the ability to modify text files for the purposes of the game. As the user progresses through a chapter, the various commits and branches are visualized to ensure better understanding.
 
-
-Notes:
-For your edu game project, use this readme to state your *project's goals* and **what you will be proposing to build**.
-You'll also be using the readme to provide seperate page that will contain an analysis of what you are focusing on, and to provide findings for your project.
-
-Please also make sure to **setup the three milestones** in zenhub to represent the sprints.  Each sprint will last a week.
-The first milestone will be sprint #1 and will go from wednesday to wednesday
-Each sprint will last a week (it's ok to have the dates overlap, since we will finish one sprint and start the next).
-
-
 ### Built With 
 - [![Python 3.9.10](https://img.shields.io/badge/python-3.9.10-red.svg?style=for-the-badge&logo=appveyor)](https://www.python.org/downloads/release/python-360/)
 - PyQt5

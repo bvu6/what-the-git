@@ -9,10 +9,10 @@ import sys
 import os
 
 
-class ui_chapter_window(object):
+class ui_chaptertwo_window(object):
     def __init__(self, window):
         self.lastMove = -1
-        self.chapter_num = 1
+        self.chapterTwo_num = 1
 
         window.setObjectName("window")
         window.resize(1280, 720)

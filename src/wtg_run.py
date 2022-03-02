@@ -5,6 +5,7 @@ from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from chapter_selector import ui_chapter_selection_window
 from start_screen import ui_start_window
 from chapter_base import ui_chapter_window
+from chapter_base2 import ui_chaptertwo_window
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QUrl
 import os
@@ -45,6 +46,7 @@ class MainWindow:
         self.ui.toggle_music_button.setCheckable(self.play_music)
         self.ui.toggle_music_button.clicked.connect(lambda: self.manage_song(self.ui.toggle_music_button))
         self.ui.chapter_one_start_button.clicked.connect(lambda: self.switch_to_level_one())
+        self.ui.chapter_two_start_button.clicked.connect(lambda: self.switch_to_level_two())
 
     def switch_to_level_one(self):
         self.ui = ui_chapter_window(self.main_window)
@@ -52,6 +54,14 @@ class MainWindow:
         self.ui.toggle_music_button.setCheckable(self.play_music)
         self.ui.toggle_music_button.clicked.connect(lambda: self.manage_song(self.ui.toggle_music_button))
         self.ui.reload_button.clicked.connect(lambda: self.switch_to_level_one())
+        self.ui.back_button.clicked.connect(lambda: self.switch_to_chapter_selector())
+
+    def switch_to_level_two(self):
+        self.ui = ui_chaptertwo_window(self.main_window)
+        self.update_stacked_widget()
+        self.ui.toggle_music_button.setCheckable(self.play_music)
+        self.ui.toggle_music_button.clicked.connect(lambda: self.manage_song(self.ui.toggle_music_button))
+        self.ui.reload_button.clicked.connect(lambda: self.switch_to_level_two())
         self.ui.back_button.clicked.connect(lambda: self.switch_to_chapter_selector())
 
     def manage_song(self, toggle_music_button):

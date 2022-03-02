@@ -95,7 +95,7 @@ Hung Le - h_le21@u.pacific.edu
 
 Vincent Tran - 
 
-Benjamin Vu -
+Benjamin Vu - b_vu6@u.pacific.edu
 
 
 <!-- Acknowledgments -->

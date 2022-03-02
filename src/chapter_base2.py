@@ -752,6 +752,13 @@ class ui_chaptertwo_window(object):
                 self.add_cmd_text("To https://github.com/git/wtg.git\n")
                 self.add_cmd_text("   197bb24..431c953  main -> main\nuser@what-the-git repo_folder % ")
 
+            elif card_type == 3:
+                print("git branch")
+
+            elif card_type == 4:
+                print("git checkout")
+
+
     def add_cmd_text(self, txt):
         self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + txt)
         self.cmd_output_text.moveCursor(QtGui.QTextCursor.End)
@@ -759,6 +766,8 @@ class ui_chaptertwo_window(object):
     def validCheck(self, card_type):
         if self.lastMove == card_type - 1:
             self.lastMove = card_type
+            return True
+        elif card_type == 3 or card_type == 4:
             return True
         else:
             print("Invalid move")

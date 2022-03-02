@@ -93,7 +93,7 @@ Bikram Chatterjee - b_chatterjee@u.pacific.edu
 
 Hung Le - h_le21@u.pacific.edu 
 
-Vincent Tran - 
+Vincent Tran - v_tran37@u.pacific.edu
 
 Benjamin Vu - b_vu6@u.pacific.edu
 

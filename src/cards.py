@@ -8,7 +8,7 @@ from PyQt5.QtGui import QFont
 class DraggableCardImages(QtWidgets.QLabel):
     def __init__(self, imgPath=None, parent=None, wid=None, x=None, type=None, chapter=None):
         super(DraggableCardImages, self).__init__()
-        self.cardType = ["git add", "git commit", "git push"]
+        self.cardType = ["git add", "git commit", "git push", "git branch", "git checkout"]
         self.chapter = chapter
         self.type = type
         self.setParent(parent)
@@ -21,7 +21,10 @@ class DraggableCardImages(QtWidgets.QLabel):
         self.drag_start_pos = None
         self.wid = wid
         self.setText(self.cardType[type])
-        self.setFont(QFont("Montserrat", 15))
+        if self.type == 4:
+            self.setFont(QFont("Montserrat", 13))
+        else:
+            self.setFont(QFont("Montserrat", 15))
         self.setAlignment(QtCore.Qt.AlignHCenter)
 
     def mousePressEvent(self, event):

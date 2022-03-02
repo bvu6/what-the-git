@@ -566,7 +566,7 @@ class ui_chaptertwo_window(object):
         self.card_holder_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.card_holder_frame.setObjectName("frame")
 
-        self.create_cards(3)
+        self.create_cards(5)
         self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
             self.file_stacked_widget.currentIndex() + 1)
         self.file1_save_button.clicked.connect(lambda: self.save_file(1))
@@ -714,7 +714,7 @@ class ui_chaptertwo_window(object):
     def create_cards(self, num):
         card_list = []
         for i in range(num):
-            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 100 + 200 * i, i, self))
+            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 0 + 150 * i, i, self))
 
     def showCard(self, card_type, valid):
         if valid:
@@ -768,6 +768,6 @@ class ui_chaptertwo_window(object):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
-    ui = ui_chapter_window(main_window)
+    ui = ui_chaptertwo_window(main_window)
     main_window.show()
     sys.exit(app.exec_())

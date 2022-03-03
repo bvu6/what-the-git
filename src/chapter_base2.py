@@ -12,7 +12,7 @@ import os
 class ui_chaptertwo_window(object):
     def __init__(self, window):
         self.lastMove = -1
-        self.chapterTwo_num = 1
+        self.chapterTwo_num = 2
 
         window.setObjectName("window")
         window.resize(1280, 720)
@@ -286,18 +286,13 @@ class ui_chaptertwo_window(object):
         self.file1_edit_grid_layout = QtWidgets.QGridLayout(self.file1_edit_widget)
         self.file1_edit_grid_layout.setContentsMargins(0, 0, 0, 0)
         self.file1_edit_grid_layout.setObjectName("file1_edit_grid_layout")
-        self.file1_done_button = QtWidgets.QPushButton(self.file1_edit_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.file1_done_button.sizePolicy().hasHeightForWidth())
-        self.file1_done_button.setSizePolicy(sizePolicy)
-        self.file1_done_button.setMaximumSize(QtCore.QSize(60, 85))
-        font = QtGui.QFont()
-        font.setFamily("Montserrat")
-        font.setPointSize(-1)
-        self.file1_done_button.setFont(font)
-        self.file1_done_button.setStyleSheet("QPushButton {\n"
+
+        self.file1_save_button = QtWidgets.QPushButton(self.file1_edit_widget)
+        size_policy.setHeightForWidth(self.file1_save_button.sizePolicy().hasHeightForWidth())
+        self.file1_save_button.setSizePolicy(size_policy)
+        self.file1_save_button.setMaximumSize(QtCore.QSize(60, 85))
+        self.file1_save_button.setFont(font)
+        self.file1_save_button.setStyleSheet("QPushButton {\n"
                                              "    border: 1px solid #F4D782;\n"
                                              "    font-size: 14px;\n"
                                              "    color: #F4D782;\n"
@@ -314,8 +309,21 @@ class ui_chaptertwo_window(object):
                                              "    background-color: rgb(255, 210, 103);\n"
                                              "    color: black\n"
                                              "}")
-        self.file1_done_button.setObjectName("file1_done_button")
-        self.file1_edit_grid_layout.addWidget(self.file1_done_button, 0, 1, 1, 1)
+        self.file1_save_button.setObjectName("file1_done_button")
+        self.file1_edit_grid_layout.addWidget(self.file1_save_button, 0, 1, 1, 1)
+
+
+
+
+
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+
+
+        font = QtGui.QFont()
+        font.setFamily("Montserrat")
+        font.setPointSize(-1)
         self.file1_qplaintextedit = QtWidgets.QPlainTextEdit(self.file1_edit_widget)
         self.file1_qplaintextedit.setMaximumSize(QtCore.QSize(16777215, 85))
         font = QtGui.QFont()
@@ -690,6 +698,29 @@ class ui_chaptertwo_window(object):
         self.line9.raise_()
         self.line10.raise_()
         self.Line2.raise_()
+
+        self.card_holder_frame = QtWidgets.QFrame(self.main_chapter_frame)
+        self.card_holder_frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.card_holder_frame.sizePolicy().hasHeightForWidth())
+
+        self.card_holder_frame.setSizePolicy(size_policy)
+        self.card_holder_frame.setMaximumSize(QtCore.QSize(16777215, 220))
+        self.card_holder_frame.setStyleSheet("\nbackground-color:  #F4D782;")
+        self.card_holder_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.card_holder_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.card_holder_frame.setObjectName("frame")
+
+        self.create_cards(3)
+        self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
+            self.file_stacked_widget.currentIndex() + 1)
+       # self.file1_save_button.clicked.connect(lambda: self.save_file(1))
+        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command())
+
+
+
         window.setCentralWidget(self.main_chapter_central_widget)
 
         self.retranslateUi(window)
@@ -726,8 +757,8 @@ class ui_chaptertwo_window(object):
                                           "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
                                           "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"media/txt_img.png\" width=\"35\" height=\"40\" /></p>\n"
                                           "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; color:#ffffff;\"> a.txt</span></p></body></html>"))
-        self.file1_done_button.setText(_translate("MainChapterWindow", "Done"))
         self.file1_qplaintextedit.setPlainText(_translate("MainChapterWindow", "hello world"))
+        self.file1_save_button.setText(_translate("window", "Save"))
         self.task_one.setText(_translate("MainChapterWindow", "Check current Branch"))
         self.task_two.setText(_translate("MainChapterWindow", "Go to Branch 1 Third commit"))
         self.task_three.setText(_translate("MainChapterWindow", "Good job!"))
@@ -812,13 +843,13 @@ class ui_chaptertwo_window(object):
                                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
                                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
 
-    def save_file(self, file_num):
-        file = os.listdir(f'wtg/CH{self.chapter_num}')[file_num - 1]
-        with open(f'wtg/CH{self.chapter_num}/{file}', 'w') as f:
-            if file_num == 1:
-                f.write(self.file1_qplaintextedit.toPlainText())
-
-        self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
+    # def save_file(self, file_num):
+    #     file = os.listdir(f'wtg/CH{self.chapterTwo_num}')[file_num - 1]
+    #     with open(f'wtg/CH{self.chapterTwo_num}/{file}', 'w') as f:
+    #         if file_num == 1:
+    #             f.write(self.file1_qplaintextedit.toPlainText())
+    #
+    #     self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
 
     def create_cards(self, num):
         card_list = []
@@ -829,7 +860,6 @@ class ui_chaptertwo_window(object):
         if valid:
             if card_type == 0:
                 self.head_state_widget.show()
-                self.commit_connect_line.show()
                 self.head_label.show()
                 self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
                                             "border-radius: 5px; \n"

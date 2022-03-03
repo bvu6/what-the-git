@@ -164,7 +164,6 @@ class ui_chaptertwo_window(object):
         self.back_button.setSizePolicy(sizePolicy)
         self.back_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
-        font.setPointSize(-1)
         self.back_button.setFont(font)
         self.back_button.setStyleSheet("QPushButton {\n"
                                        "    border: 1px solid #F4D782;\n"
@@ -193,7 +192,6 @@ class ui_chaptertwo_window(object):
         self.toggle_music_button.setSizePolicy(sizePolicy)
         self.toggle_music_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
-        font.setPointSize(-1)
         self.toggle_music_button.setFont(font)
         self.toggle_music_button.setStyleSheet("QPushButton {\n"
                                                "    border: 1px solid #F4D782;\n"
@@ -222,7 +220,7 @@ class ui_chaptertwo_window(object):
         self.reload_button.setSizePolicy(sizePolicy)
         self.reload_button.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+
         self.reload_button.setFont(font)
         self.reload_button.setStyleSheet("QPushButton {\n"
                                          "    border: 1px solid #F4D782;\n"
@@ -348,7 +346,6 @@ class ui_chaptertwo_window(object):
 
         font = QtGui.QFont()
         font.setFamily("Montserrat")
-        font.setPointSize(-1)
         self.file1_qplaintextedit = QtWidgets.QPlainTextEdit(self.file1_edit_widget)
         self.file1_qplaintextedit.setMaximumSize(QtCore.QSize(16777215, 85))
         font = QtGui.QFont()

@@ -755,7 +755,7 @@ class ui_chapter_window(QMainWindow):
         return super().eventFilter(obj, event)
 
     # handle commands entered by the user
-    def execute_command(self, type):
+    def execute_command(self, card_type=''):
         cmd = self.cmd_user_input_box.text()  # get user input
         self.cmd_user_input_box.clear()  # clear text from input box
 
@@ -772,25 +772,25 @@ class ui_chapter_window(QMainWindow):
         console_output = self.git_manager.handle_commands(cmd, self.file_dict)  # handle command
         self.add_text_to_console(console_output)  # show output in console
 
-        # if self.cmd == "git add ." and not self.prompt or type == 0:
-        #     self.valid = self.git.check_move(0)
-        #     self.showCard(0, self.valid)
-        # elif self.cmd == "git commit" and not self.prompt or type == 1:
-        #     self.valid = self.git.check_move(1)
-        #     if self.valid:
-        #         self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Enter your commit message\n")
-        #         self.hide_cards()
-        #         self.prompt = True
-        #         self.cmd = None
-        # elif self.prompt:
-        #     self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
-        #     self.prompt = False
-        #     self.showCard(1, self.valid)
-        # elif self.cmd == "git push" and not self.prompt or type == 2:
-        #     self.valid = self.git.check_move(2)
-        #     self.showCard(2, self.valid)
-        # else:
-        #     print("Invalid move")
+        if self.cmd == "git add ." and not self.prompt or card_type == 0:
+            self.valid = self.git.check_move(0)
+            self.showCard(0, self.valid)
+        elif self.cmd == "git commit" and not self.prompt or card_type == 1:
+            self.valid = self.git.check_move(1)
+            if self.valid:
+                self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Enter your commit message\n")
+                self.hide_cards()
+                self.prompt = True
+                self.cmd = None
+        elif self.prompt:
+            self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
+            self.prompt = False
+            self.showCard(1, self.valid)
+        elif self.cmd == "git push" and not self.prompt or card_type == 2:
+            self.valid = self.git.check_move(2)
+            self.showCard(2, self.valid)
+        else:
+            print("Invalid move")
 
     def save_file(self, file_name):
 

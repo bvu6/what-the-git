@@ -9,16 +9,16 @@ class DraggableCardImages(QtWidgets.QLabel):
     def __init__(self, parent=None, wid=None, x=None, type=None, chapter=None, gitStatus=None):
         super(DraggableCardImages, self).__init__()
         self.git = gitStatus
-        self.cardType = ["git add", "git commit", "git push", "git branch", "git checkout \nbranch", "git checkout \nhead"]
+        self.cardType = ["git add", "git commit", "git push", "git branch", "git checkout \nbranch", "git checkout "
+                                                                                                     "\nhead"]
         self.chapter = chapter
         self.type = type
         self.setParent(parent)
         self.ogX = 50 + x
         self.ogY = 540
-        self.setStyleSheet(("background-image : url(image.png); background-position: center;"))
+        self.setStyleSheet("background-image : url(image.png); background-position: center;")
         self.setGeometry(QtCore.QRect(self.ogX, self.ogY, 111, 161))
         self.setScaledContents(True)
-        #self.setPixmap(QtGui.QPixmap(imgPath))
         self.drag_start_pos = None
         self.wid = wid
         self.setText(self.cardType[type])
@@ -43,14 +43,7 @@ class DraggableCardImages(QtWidgets.QLabel):
         if self.x() > 800 or self.y() > 430:
             self.move(self.ogX, self.ogY)
         else:
-            #valid = self.chapter.validCheck(self.type)
-            # working as of now
-            # valid = self.git.check_move(self.type)
-            # if valid:
-            #     self.chapter.execute_command(self.type)
-            # working
             self.chapter.execute_command(self.type)
-            #self.chapter.showCard(self.type, valid)
             self.move(self.ogX, self.ogY)
 
     def getType(self):

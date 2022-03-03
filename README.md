@@ -102,11 +102,10 @@ cd src
 
 ### Sprint 3
 * [x] Added ability for users to use Command line input
-* [x] Implemented a common logic that manages and tracks changes in git repo
-* [x] Added ability for the program to actually do a git add, commit, and push in a real-world repo
+* [x] Implemented a core common logic that manages and tracks changes in git repo
+* [x] Chapter 1 is now able to detect file modifications and react accordingly
+* [x] Command line input detects up and down key events to allow the user to browse through command history
 * [x] Added chapter 2 that challenges users to reach a specific commit state using git commands
-* [x] Track file changes
-* [x] Execute git command lines to reflect realistic changes in the repository
 * [x] Added a "Drag Card Here" label so the user knows where to drag the cards
 * [x] Chapter 2 updates to UI: card setup, command line input/output, and creating a tree branch
 

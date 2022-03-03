@@ -8,13 +8,18 @@ from cards import DraggableCardImages
 import sys
 import os
 
+from src.git_status import git_status
+
 
 class ui_chapter_window(object):
     def __init__(self, window):
+        self.git = git_status()
+        self.valid = False
         self.lastMove = -1
         self.chapter_num = 1
         self.cmd = ""
-
+        self.card_list = []
+        self.prompt = False
         window.setObjectName("window")
         window.resize(1280, 720)
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -587,7 +592,7 @@ class ui_chapter_window(object):
             self.file_stacked_widget.currentIndex() + 1)
         self.file1_save_button.clicked.connect(lambda: self.save_file(1))
 
-        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command())
+        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command(-1))
 
         window.setCentralWidget(self.main_chapter_central_widget)
         self.retranslate(window)
@@ -722,10 +727,29 @@ class ui_chapter_window(object):
         self.commit_state_widget.hide()
         self.commit_connect_line.hide()
 
-    def execute_command(self):
+    def execute_command(self, type):
         self.cmd = self.cmd_user_input_box.text()
         self.cmd_user_input_box.clear()
-        print(self.cmd)
+        if self.cmd == "git add ." and not self.prompt or type == 0:
+            self.valid = self.git.check_move(0)
+            self.showCard(0, self.valid)
+        elif self.cmd == "git commit" and not self.prompt or type == 1:
+            self.valid = self.git.check_move(1)
+            if self.valid:
+                self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Enter your commit message\n")
+                self.hideCards()
+                self.prompt = True
+                self.cmd = None
+        elif self.prompt:
+            self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
+            self.prompt = False
+            self.showCard(1, self.valid)
+        elif self.cmd == "git push" and not self.prompt or type == 2:
+            self.valid = self.git.check_move(2)
+            self.showCard(2, self.valid)
+        else:
+            print("Invalid move")
+        #print(self.cmd)
 
     def save_file(self, file_num):
         file = os.listdir(f'wtg/CH{self.chapter_num}')[file_num - 1]
@@ -736,9 +760,8 @@ class ui_chapter_window(object):
         self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
 
     def create_cards(self, num):
-        card_list = []
         for i in range(num):
-            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 100 + 200 * i, i, self))
+            self.card_list.append(DraggableCardImages(self.main_chapter_frame, None, 100 + 200 * i, i, self, self.git))
 
     def showCard(self, card_type, valid):
         if valid:
@@ -752,15 +775,16 @@ class ui_chapter_window(object):
 
                 self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
                                                    "white")
-                self.add_cmd_text("git add a.txt\nuser@what-the-git repo_folder % ")
+                self.add_cmd_text("git add .\nuser@what-the-git repo_folder % ")
 
             elif card_type == 1:
                 self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);\n"
                                             "border-radius: 5px; \n"
                                             "padding-left:5px")
-                self.add_cmd_text("git commit -m \"first commit\")\n[main 431c953] first commit\n")
-                self.add_cmd_text(" 1 file changed, 0 insertions(+), 0 deletions(-)\n")
-                self.add_cmd_text(" create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
+                self.add_cmd_text("\nuser@what-the-git repo_folder % [main 431c953] " + self.cmd)
+                self.add_cmd_text(" 1 file changed, 1 insertions(+), 0 deletions(-)\n")
+                self.add_cmd_text("create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
+                self.unhindCard()
 
             elif card_type == 2:
                 self.commit_state_widget.show()
@@ -776,17 +800,25 @@ class ui_chapter_window(object):
                 self.add_cmd_text("To https://github.com/git/wtg.git\n")
                 self.add_cmd_text("   197bb24..431c953  main -> main\nuser@what-the-git repo_folder % ")
 
+    def hideCards(self):
+        for i in self.card_list:
+            i.hide()
+
+    def unhindCard(self):
+        for i in self.card_list:
+            i.show()
+
     def add_cmd_text(self, txt):
         self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + txt)
         self.cmd_output_text.moveCursor(QtGui.QTextCursor.End)
 
-    def validCheck(self, card_type):
-        if self.lastMove == card_type - 1:
-            self.lastMove = card_type
-            return True
-        else:
-            print("Invalid move")
-            return False
+    # def validCheck(self, card_type):
+    #     if self.lastMove == card_type - 1:
+    #         self.lastMove = card_type
+    #         return True
+    #     else:
+    #         print("Invalid move")
+    #         return False
 
 
 if __name__ == "__main__":

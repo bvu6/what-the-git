@@ -75,28 +75,6 @@ class git_manager:
         # return empty string if no specifications are met
         return self.generate_output(self.cmd_not_found + cmd)
 
-    def check_move(self, card_type):
-        # if self.lastMove == card_type - 1:
-        #     self.lastMove = card_type
-        #     return True
-        print("Last", self.lastMove, "type", card_type)
-        if card_type == 0:
-            self.lastMove = card_type
-            return True
-
-        elif card_type == 1 and self.lastMove == card_type - 1:
-            self.lastMove = card_type
-            self.commit = True
-            return True
-
-        elif card_type == 2 and self.commit:
-            self.git_reset_flags()
-            return True
-
-        else:
-            print("Invalid move")
-            return False
-
     def modify_file_status(self, file):
         if self.file_dict[file].get_file_modified_status():
             print(f'modify init pass file {self.file_dict[file].get_file_modified_status()}')
@@ -191,6 +169,8 @@ class git_manager:
 
             if 3 in self.chbase.task_done_list:
                 self.chbase.set_task_done(4)
+
+            self.chbase.add_commit_images(1)
 
             return self.generate_output(self.push_msg)
 

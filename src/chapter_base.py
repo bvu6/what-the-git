@@ -25,6 +25,9 @@ class ui_chapter_window(QMainWindow):
         self.cmd_list_pos = 1
         self.file_dict = {'a.txt': file('a.txt')}
         self.task_done_list = []
+        self.commit_state_list = []
+        self.commit_label_list = []
+        self.commit_line_list = []
 
         window.setObjectName("window")
         window.resize(1280, 720)
@@ -784,6 +787,9 @@ class ui_chapter_window(QMainWindow):
 
         return super().eventFilter(obj, event)
 
+    def add_commit_images(self, push_num):
+        self.commit_state_widget.show()
+        self.commit_connect_line.show()
 
     # handle commands entered by the user
     def execute_command(self, card_type=-1):
@@ -821,7 +827,6 @@ class ui_chapter_window(QMainWindow):
             if card_type == 0:
                 console_output = self.git_manager.handle_commands(self, 'git add .', self.file_dict)  # handle command
                 self.add_text_to_console(console_output)  # show output in console
-                # self.add_state_images(0, self.valid)
 
             elif card_type == 1:
                 self.add_text_to_console('\nwhat_the_git: Enter commit message: ')
@@ -874,44 +879,6 @@ class ui_chapter_window(QMainWindow):
 
         self.task_done_list.append(task_num)
 
-    def add_state_images(self, card_type, valid):
-        if valid:
-            if card_type == 0:
-                self.head_state_widget.show()
-                self.commit_connect_line.show()
-                self.head_label.show()
-                self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
-                                            "border-radius: 5px; \n"
-                                            "padding-left:5px")
-
-                self.console.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
-                                           "white")
-                self.add_text_to_console("git add .\nuser@what-the-git repo_folder % ")
-
-            elif card_type == 1:
-                self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);\n"
-                                              "border-radius: 5px; \n"
-                                              "padding-left:5px")
-                self.add_text_to_console("\nuser@what-the-git repo_folder % [main 431c953] " + self.cmd)
-                self.add_text_to_console(" 1 file changed, 1 insertions(+), 0 deletions(-)\n")
-                self.add_text_to_console("create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
-                self.show_card()
-
-            elif card_type == 2:
-                self.commit_state_widget.show()
-                self.first_commit_label.show()
-                self.task_four.setStyleSheet("background-color: rgb(32, 167, 21);\n"
-                                             "border-radius: 5px; \n"
-                                             "padding-left:5px")
-                self.add_text_to_console("git push\nEnumerating objects: 4, done.\n")
-                self.add_text_to_console(
-                    "Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")
-                self.add_text_to_console("Compressing objects: 100% (2/2), done.\n")
-                self.add_text_to_console("Writing objects: 100% (3/3), 287 bytes | 287.00 KiB/s, done.\n")
-                self.add_text_to_console("Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\n")
-                self.add_text_to_console("To https://github.com/git/wtg.git\n")
-                self.add_text_to_console("   197bb24..431c953  main -> main\nuser@what-the-git repo_folder % ")
-
     def hide_cards(self):
         for i in self.card_list:
             i.hide()
@@ -924,14 +891,6 @@ class ui_chapter_window(QMainWindow):
         existing_output = self.console.toPlainText()
         self.console.setText(existing_output + new_output)
         self.console.moveCursor(QtGui.QTextCursor.End)
-
-    # def validCheck(self, card_type):
-    #     if self.lastMove == card_type - 1:
-    #         self.lastMove = card_type
-    #         return True
-    #     else:
-    #         print("Invalid move")
-    #         return False
 
 
 if __name__ == "__main__":

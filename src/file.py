@@ -5,7 +5,7 @@
 class file:
     def __init__(self, name):
         self.file_name = name
-        self.file_modified_status = True
+        self.file_modified_status = False
 
     def get_file_modified_status(self):
         return self.file_modified_status

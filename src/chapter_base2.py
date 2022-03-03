@@ -746,10 +746,14 @@ class ui_chaptertwo_window(object):
                                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                           "p, li { white-space: pre-wrap; }\n"
                                                           "</style></head><body style=\" font-family:\'Montserrat\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Drag the card or type in the command to add, commit, and push your first file!</span></p>\n"
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Drag the card or type in the command to checkout a different commit! </span></p>\n"
                                                           "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p>\n"
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Git Checkout: Switches Branch or restore working tree files</span></p>\n"
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Git Branch: List out all Branch</span></p>\n"
+                                                          "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p>\n"
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">In order to get to a Branch, you need to use Git checkout (branchname)</span></p>\n"
+                                                          "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p>\n"
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">In order to get to a Commit, you need the Head ID of the commit and use the the function Git checkout (ID)</span></p>\n"
                                                           "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p>\n"
                                                           "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p></body></html>"))
         self.cmd_output_text.setHtml(_translate("MainChapterWindow",
@@ -771,8 +775,8 @@ class ui_chaptertwo_window(object):
         self.file1_qplaintextedit.setPlainText(_translate("MainChapterWindow", "hello world"))
         self.file1_save_button.setText(_translate("window", "Save"))
         self.task_one.setText(_translate("MainChapterWindow", "Check current Branch"))
-        self.task_two.setText(_translate("MainChapterWindow", "Go to Branch 1 Third commit"))
-        self.task_three.setText(_translate("MainChapterWindow", "Good job!"))
+        self.task_two.setText(_translate("MainChapterWindow", "Get to Branch 1 Using Git Checkout"))
+        self.task_three.setText(_translate("MainChapterWindow", "Get to Branch 1 Commit 3"))
         self.title_label.setText(_translate("MainChapterWindow", "CH2: Checkout"))
         self.drag_label.setText(_translate("window", "DRAG CARDS HERE"))
         self.head_label.setHtml(_translate("MainChapterWindow",

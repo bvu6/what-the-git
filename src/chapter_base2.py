@@ -312,8 +312,18 @@ class ui_chaptertwo_window(object):
         self.file1_save_button.setObjectName("file1_done_button")
         self.file1_edit_grid_layout.addWidget(self.file1_save_button, 0, 1, 1, 1)
 
-
-
+        self.drag_label = QtWidgets.QLabel(self.main_chapter_frame)
+        self.drag_label.setGeometry(QtCore.QRect(600, 8, 300, 61))
+        font.setPointSize(20)
+        self.drag_label.setFont(font)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.drag_label.sizePolicy().hasHeightForWidth())
+        self.drag_label.setStyleSheet("font: 24pt \"Montserrat\"; color: gray")
+        self.drag_label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.drag_label.move(60, 100)
+        self.drag_label.setObjectName("drag_label")
 
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -698,6 +708,7 @@ class ui_chaptertwo_window(object):
         self.line9.raise_()
         self.line10.raise_()
         self.Line2.raise_()
+        self.drag_label.raise_()
 
         self.card_holder_frame = QtWidgets.QFrame(self.main_chapter_frame)
         self.card_holder_frame.setGeometry(QtCore.QRect(0, 500, 821, 220))
@@ -763,6 +774,7 @@ class ui_chaptertwo_window(object):
         self.task_two.setText(_translate("MainChapterWindow", "Go to Branch 1 Third commit"))
         self.task_three.setText(_translate("MainChapterWindow", "Good job!"))
         self.title_label.setText(_translate("MainChapterWindow", "CH2: Checkout"))
+        self.drag_label.setText(_translate("window", "DRAG CARDS HERE"))
         self.head_label.setHtml(_translate("MainChapterWindow",
                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

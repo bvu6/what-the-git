@@ -108,6 +108,10 @@ cd src
 * [x] Added chapter 2 that challenges users to reach a specific commit state using git commands
 * [x] Added a "Drag Card Here" label so the user knows where to drag the cards
 * [x] Chapter 2 updates to UI: card setup, command line input/output, and creating a tree branch
+* [x] Command line can detect an invlaid move or error
+* [x] Implemented states and images to them
+* [x] Allow user to use the up/down keys
+* [x] Cards are put into synchronous order
 
 <!-- LICENSE -->
 ## License

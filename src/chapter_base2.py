@@ -798,7 +798,7 @@ class ui_chaptertwo_window(object):
                                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                 "p, li { white-space: pre-wrap; }\n"
                                                 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Menlo\'; font-size:11pt; color:#ffffff;\">user@what-the-git repo_folder % </span></p></body></html>"))
+                                                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Menlo\'; font-size:11pt; color:#ffffff;\">user@what-the-git repo_folder %</span></p></body></html>"))
         self.back_button.setText(_translate("MainChapterWindow", "Back"))
         self.toggle_music_button.setText(_translate("MainChapterWindow", "Toggle Music"))
         self.reload_button.setText(_translate("MainChapterWindow", "Reload"))
@@ -905,7 +905,8 @@ class ui_chaptertwo_window(object):
         elif self.cmd == "git checkout branch" and not self.prompt or type == 4:
             self.valid = self.git.check_move(4)
             if self.valid:
-                self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Which branch\n")
+                self.add_cmd_text(" git checkout branch")
+                self.add_cmd_text("\nuser@what-the-git repo_folder % Which branch\n")
                 self.hideCards()
                 self.prompt = True
                 self.cmd = None
@@ -916,7 +917,8 @@ class ui_chaptertwo_window(object):
         elif self.cmd == "git checkout head" and not self.prompt or type == 5:
             self.valid = self.git.check_move(5)
             if self.valid:
-                self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Enter the head ID\n")
+                self.add_cmd_text(" git checkout head")
+                self.add_cmd_text("\nuser@what-the-git repo_folder % Enter the head ID\n")
                 self.hideCards()
                 self.prompt2 = True
                 self.cmd = None
@@ -958,8 +960,9 @@ class ui_chaptertwo_window(object):
 
         if valid:
             if card_type == 3:
-                self.add_cmd_text("\nuser@what-the-git repo_folder % Git Branch \nmain \nbranch 1 \nbranch 2")
+                self.add_cmd_text(" git branch \nmain \nbranch 1 \nbranch 2")
                 self.add_cmd_text("\nCurrent Branch: " + self.currIconLocation)
+                self.add_cmd_text("\nuser@what-the-git repo_folder %")
                 print("Current Branch:", self.currIconLocation)
                 self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
                                             "border-radius: 5px; \n"
@@ -968,7 +971,8 @@ class ui_chaptertwo_window(object):
             elif card_type == 4:
                 # self.add_cmd_text("\nuser@what-the-git repo_folder % " + self.cmd)
                 if self.cmd == "1":
-                    self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout Branch 1 \nSwitching to branch 1")
+                    self.add_cmd_text("\nSwitching to branch 1")
+                    self.add_cmd_text("\nuser@what-the-git repo_folder %")
                     self.humanIcon.move(self.nodedict["21"].pos())
                     self.currIconLocation = "branch 1"
                     self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
@@ -976,19 +980,20 @@ class ui_chaptertwo_window(object):
                                                 "padding-left:5px")
                 elif self.cmd == "2":
                     self.humanIcon.move(self.nodedict["24"].pos())
-                    self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout Branch 2 \nSwitching to branch 2")
+                    self.add_cmd_text("\nSwitching to branch 2")
+                    self.add_cmd_text("\nuser@what-the-git repo_folder %")
                     self.currIconLocation = "branch 2"
 
                 elif self.cmd == "main" or self.cmd == "Main":
                     self.humanIcon.move(self.nodedict["5"].pos())
-                    self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout Main \nSwitching to Main")
+                    self.add_cmd_text("\nSwitching to Main")
+                    self.add_cmd_text("\nuser@what-the-git repo_folder %")
                     self.currIconLocation = "main"
                 self.unhideCard()
             elif card_type == 5:
                 print("\nuser@what-the-git repo_folder % git checkout main" + self.cmd)
-                self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout " + self.cmd)
                 self.add_cmd_text("\n" + self.cmd + "\n you are in 'detached HEAD' state. You can look around, make experimental changes \n and commit them, and you can discard any commits you make in this state without impacting any branches by performing another checkout.")
-                self.add_cmd_text("\n user@what-the-git repo_folder " + self.cmd + "% ")
+                self.add_cmd_text("\nuser@what-the-git repo_folder " + self.cmd + "% ")
                 self.humanIcon.move(self.nodedict[self.cmd].pos())
                 if self.cmd == "23":
                     self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);;\n"

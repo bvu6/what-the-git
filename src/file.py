@@ -5,13 +5,16 @@
 class file:
     def __init__(self, name):
         self.file_name = name
-        self.file_modified_status = False
+        self.file_modified_status = True
 
     def get_file_modified_status(self):
         return self.file_modified_status
 
-    def toggle_file_modified_status(self):
-        self.file_modified_status = not self.file_modified_status
+    def set_file_modified_status_true(self):
+        self.file_modified_status = True
+
+    def set_file_modified_status_false(self):
+        self.file_modified_status = False
 
 
 def main():

@@ -33,11 +33,7 @@ class git_manager:
         self.commit_error = "\nerror: please enter 'git commit -m \"msg\"' to make a commit"
         self.push_error = "\nerror: please enter 'git push' to push all your changes"
 
-        # generate output string for console to display
-
-    def set_add_false(self):
-        self.add = False
-
+    # generate output string for console to display
     def generate_output(self, output):
         return self.cmd + output + self.new_cmd
 
@@ -98,9 +94,17 @@ class git_manager:
             return False
 
     def modify_file_status(self, file):
+        print(f'mfs {file}')
+        print(f'mfs {self.file_dict[file].get_file_modified_status()}')
         if self.file_dict[file].get_file_modified_status():
-            self.file_dict[file].toggle_file_modified_status()
-            self.number_files_changed += 1
+            print(f'modify init pass file {self.file_dict[file].get_file_modified_status()}')
+            print(f'modify init pass add {self.add}')
+            self.file_dict[file].set_file_modified_status_false()
+
+            if file not in self.file_add_list:
+                self.number_files_changed += 1
+                self.file_add_list.append(file)
+
             self.add = True
 
     def git_add_cmd(self, cmd_list):
@@ -146,6 +150,8 @@ class git_manager:
         # perform git commit
         output = self.commit_msg
         output = output.replace('x', str(self.number_files_changed))
+        self.add = False
+        self.file_add_list.clear()
         self.number_files_changed = 0
         self.commit = True
         return self.generate_output(output)

@@ -595,7 +595,7 @@ class ui_chapter_window(QMainWindow):
         self.create_cards(3)
         self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
             self.file_stacked_widget.currentIndex() + 1)
-        self.file1_save_button.clicked.connect(lambda: self.save_file(1))
+        self.file1_save_button.clicked.connect(lambda: self.save_file(list(self.file_dict.keys())[0]))
 
         self.cmd_user_input_box.installEventFilter(self)
         self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command(-1))
@@ -749,7 +749,7 @@ class ui_chapter_window(QMainWindow):
                 if self.cmd_list_pos < len(self.command_list) - 1:
                     self.cmd_list_pos += 1
                     command = self.command_list[self.cmd_list_pos]
-                    self.cmd_user_input_box.setText(self.command_list[self.cmd_list_pos])
+                    self.cmd_user_input_box.setText(command)
                     self.cmd_user_input_box.setCursorPosition(-1)
 
         return super().eventFilter(obj, event)
@@ -792,14 +792,18 @@ class ui_chapter_window(QMainWindow):
         # else:
         #     print("Invalid move")
 
-    def save_file(self, file_num):
+    def save_file(self, file_name):
 
-        file = os.listdir(f'{self.current_directory}/wtg/CH{self.chapter_num}')[file_num - 1]
-        with open(f'{self.current_directory}/wtg/CH{self.chapter_num}/{file}', 'w') as f:
-            if file_num == 1:
-                if f.read() != self.file1_qplaintextedit.toPlainText():
-                    f.write(self.file1_qplaintextedit.toPlainText())
-                    git_manager.
+        file_location = f'{self.current_directory}/wtg/CH{self.chapter_num}/{file_name}'
+
+        with open(file_location) as f:
+            file_contents = f.read()
+
+        with open(file_location, 'w') as f:
+            if file_contents != self.file1_qplaintextedit.toPlainText():
+                print('replacing')
+                f.write(self.file1_qplaintextedit.toPlainText())
+                self.file_dict[file_name].set_file_modified_status_true()
 
         self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
 

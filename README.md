@@ -78,6 +78,7 @@ cd src
   <img src="media/start_page.png">
   <img src="media/chapter_selection.png">
   <img src="media/chapter.png">
+  <img src="media/chapter_selection2.png">
 </div>
 
 <!-- Roadmap -->

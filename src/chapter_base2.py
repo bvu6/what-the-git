@@ -923,7 +923,6 @@ class ui_chaptertwo_window(object):
                 self.prompt2 = True
                 self.cmd = None
         elif self.prompt2:
-            print("hello")
             flag = False
             print(self.cmd in self.headList)
             print(self.currIconLocation)
@@ -938,10 +937,12 @@ class ui_chaptertwo_window(object):
                 self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
                 self.prompt2 = False
                 self.showCard(5, self.valid)
+            else:
+                print("Invalid move")
+                self.add_cmd_text("\ninvalid move")
         else:
             print("Invalid move")
             self.add_cmd_text("\ninvalid move")
-    # print(self.cmd)
 
 
     # def save_file(self, file_num):

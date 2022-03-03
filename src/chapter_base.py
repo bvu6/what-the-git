@@ -702,7 +702,7 @@ class ui_chapter_window(QMainWindow):
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; "
                                                           "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                                           "text-indent:0px;\"><span style=\" font-size:14pt;\">git "
-                                                          "add: Add file contents to the index</span></p>\n "
+                                                          "add . : Add file contents to the index</span></p>\n "
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; "
                                                           "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                                           "text-indent:0px;\"><span style=\" font-size:14pt;\">git "

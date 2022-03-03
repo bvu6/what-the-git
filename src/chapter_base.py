@@ -559,6 +559,7 @@ class ui_chapter_window(object):
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(self.card_holder_frame.sizePolicy().hasHeightForWidth())
+
         self.card_holder_frame.setSizePolicy(size_policy)
         self.card_holder_frame.setMaximumSize(QtCore.QSize(16777215, 220))
         self.card_holder_frame.setStyleSheet("\nbackground-color:  #F4D782;")
@@ -570,6 +571,8 @@ class ui_chapter_window(object):
         self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
             self.file_stacked_widget.currentIndex() + 1)
         self.file1_save_button.clicked.connect(lambda: self.save_file(1))
+
+        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command())
 
         window.setCentralWidget(self.main_chapter_central_widget)
         self.retranslate(window)
@@ -702,6 +705,11 @@ class ui_chapter_window(object):
         self.head_state_widget.hide()
         self.commit_state_widget.hide()
         self.commit_connect_line.hide()
+
+    def execute_command(self):
+        cmd = self.cmd_user_input_box.text()
+        self.cmd_user_input_box.clear()
+        print(cmd)
 
     def save_file(self, file_num):
         file = os.listdir(f'wtg/CH{self.chapter_num}')[file_num - 1]

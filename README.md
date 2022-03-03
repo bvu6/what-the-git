@@ -80,6 +80,27 @@ cd src
   <img src="media/chapter.png">
 </div>
 
+<!-- Roadmap -->
+## Roadmap
+### Sprint 1
+* [x] Designed and implemented Start Screen
+* [x] Designed and implemented Chapter Selection Screen
+* [x] Designed and implemented Chapter Screen
+* [x] Implemented card drag and drop
+* [x] Implemented game soundtrack
+
+### Sprint 2
+* [x] Added music toggling in chapter selection and chapter screen
+* [x] Implemented switching between start, chapter selection, and chapter screens
+* [x] Implemented Command Line output based on user's interaction with the cards
+* [x] Developed logic for git commands
+* [x] Added ability for users to edit text file and automatically save the changes in a real text file outside
+
+### Sprint 3
+* [x] Added ability for users to use Command line input
+* [x] Implemented a common logic that manages and tracks changes in git repo
+* [x] Added ability for the program to actually do a git add, commit, and push in a real-world repo
+* [x] Added chapter 2 that challenges users to reach a specific commit state using git commands
 
 <!-- LICENSE -->
 ## License

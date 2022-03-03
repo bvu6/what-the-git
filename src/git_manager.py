@@ -170,7 +170,7 @@ class git_manager:
             if 3 in self.chbase.task_done_list:
                 self.chbase.set_task_done(4)
 
-            self.chbase.add_commit_images(1)
+            self.chbase.add_commit_images()
 
             return self.generate_output(self.push_msg)
 

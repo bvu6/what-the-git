@@ -28,6 +28,9 @@ class ui_chapter_window(QMainWindow):
         self.commit_state_list = []
         self.commit_label_list = []
         self.commit_line_list = []
+        self._translate = QtCore.QCoreApplication.translate
+        self.window = ''
+        self.push_num = 0
 
         window.setObjectName("window")
         window.resize(1280, 720)
@@ -553,37 +556,6 @@ class ui_chapter_window(QMainWindow):
         self.head_label.setObjectName("head_label")
         self.head_state_vert_layout.addWidget(self.head_label)
 
-        self.commit_state_widget = QtWidgets.QWidget(self.main_chapter_frame)
-        self.commit_state_widget.setGeometry(QtCore.QRect(400, 270, 81, 71))
-        font = QtGui.QFont()
-
-        self.commit_state_widget.setFont(font)
-        self.commit_state_widget.setStyleSheet("background-color:rgb(174, 61, 255)")
-        self.commit_state_widget.setObjectName("commit_state_widget")
-        self.commit_state_widget_layout = QtWidgets.QVBoxLayout(self.commit_state_widget)
-        self.commit_state_widget_layout.setContentsMargins(0, 0, 0, 0)
-        self.commit_state_widget_layout.setObjectName("commit_state_widget_layout")
-
-        self.first_commit_label = QtWidgets.QTextBrowser(self.commit_state_widget)
-        font = QtGui.QFont()
-        self.first_commit_label.setFont(font)
-        self.first_commit_label.setStyleSheet("border: 0px")
-        self.first_commit_label.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.first_commit_label.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.first_commit_label.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
-        self.first_commit_label.setObjectName("first_commit_label")
-
-        self.commit_state_widget_layout.addWidget(self.first_commit_label)
-        self.commit_connect_line = QtWidgets.QLabel(self.main_chapter_frame)
-        self.commit_connect_line.setGeometry(QtCore.QRect(292, 290, 108, 31))
-        font = QtGui.QFont()
-
-        self.commit_connect_line.setFont(font)
-        self.commit_connect_line.setText("")
-        self.commit_connect_line.setPixmap(QtGui.QPixmap("images/arrow.png"))
-        self.commit_connect_line.setScaledContents(True)
-        self.commit_connect_line.setObjectName("commit_connect_line")
-
         self.drag_label = QtWidgets.QLabel(self.main_chapter_frame)
         self.drag_label.setGeometry(QtCore.QRect(830, 8, 439, 61))
         font.setPointSize(24)
@@ -606,9 +578,7 @@ class ui_chapter_window(QMainWindow):
         self.file_stacked_widget.raise_()
         self.layoutWidget.raise_()
         self.title_label.raise_()
-        self.commit_state_widget.raise_()
         self.head_state_widget.raise_()
-        self.commit_connect_line.raise_()
         self.drag_label.raise_()
 
         # modifier
@@ -641,7 +611,71 @@ class ui_chapter_window(QMainWindow):
 
         # os.system(f'cd what_the_git/CH{self.chapter_num}')
 
+    def add_commit_images(self):
+        self.push_num += 1
+
+        if self.push_num < 3:
+            self.commit_state_widget = QtWidgets.QWidget(self.main_chapter_frame)
+            self.commit_state_widget.setGeometry(QtCore.QRect(400 + 190*(self.push_num-1), 270, 81, 71))
+            font = QtGui.QFont()
+
+            self.commit_state_widget.setFont(font)
+            self.commit_state_widget.setStyleSheet("background-color:rgb(174, 61, 255)")
+            self.commit_state_widget.setObjectName("commit_state_widget")
+            self.commit_state_widget_layout = QtWidgets.QVBoxLayout(self.commit_state_widget)
+            self.commit_state_widget_layout.setContentsMargins(0, 0, 0, 0)
+            self.commit_state_widget_layout.setObjectName("commit_state_widget_layout")
+
+            self.first_commit_label = QtWidgets.QTextBrowser(self.commit_state_widget)
+            font = QtGui.QFont()
+            self.first_commit_label.setFont(font)
+            self.first_commit_label.setStyleSheet("border: 0px")
+            self.first_commit_label.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+            self.first_commit_label.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+            self.first_commit_label.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
+            self.first_commit_label.setObjectName("first_commit_label")
+
+            self.commit_state_widget_layout.addWidget(self.first_commit_label)
+            self.commit_connect_line = QtWidgets.QLabel(self.main_chapter_frame)
+            self.commit_connect_line.setGeometry(QtCore.QRect(292 + 190*(self.push_num-1), 290, 108, 31))
+            font = QtGui.QFont()
+
+            self.commit_connect_line.setFont(font)
+            self.commit_connect_line.setText("")
+            self.commit_connect_line.setPixmap(QtGui.QPixmap("images/arrow.png"))
+            self.commit_connect_line.setScaledContents(True)
+            self.commit_connect_line.setObjectName("commit_connect_line")
+
+            self.commit_state_widget.raise_()
+            self.commit_connect_line.raise_()
+
+            self.commit_state_widget.show()
+            self.commit_connect_line.show()
+            self.retrans2(self.window)
+
+    def retrans2(self, window):
+        self.first_commit_label.setHtml(self._translate("window",
+                                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                                        "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                                        "charset=\"utf-8\" /><style type=\"text/css\">\n "
+                                                        "p, li { white-space: pre-wrap; }"
+                                                        "</style></head><body style=\" font-family:\'Montserrat\'; "
+                                                        "font-size:13pt; font-weight:400; font-style:normal;\">"
+                                                        "<p align=\"center\" style=\"-qt-paragraph-type:empty; "
+                                                        "margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                                                        "margin-right:0px; -qt-block-indent:0; text-indent:0px; "
+                                                        "font-weight:500; color:#ffffff;\"><br /></p>\n "
+                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; "
+                                                        "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                        "text-indent:0px;\"></p>\n "
+                                                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; "
+                                                        "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                                        "text-indent:0px;\"><span style=\" font-weight:500; "
+                                                        f"color:#ffffff;\">Commit {self.push_num}!</span></p></body></html>"))
+
     def retranslate(self, window):
+
         _translate = QtCore.QCoreApplication.translate
         window.setWindowTitle(_translate("window", "What The Git!"))
 
@@ -742,29 +776,12 @@ class ui_chapter_window(QMainWindow):
                                            "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                            "text-indent:0px;\"><span style=\" font-size:13pt; font-weight:500; "
                                            "color:#ffffff;\">HEAD</span></p></body></html>"))
-        self.first_commit_label.setHtml(_translate("window",
-                                                   "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
-                                                   "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
-                                                   "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
-                                                   "charset=\"utf-8\" /><style type=\"text/css\">\n "
-                                                   "p, li { white-space: pre-wrap; }"
-                                                   "</style></head><body style=\" font-family:\'Montserrat\'; "
-                                                   "font-size:13pt; font-weight:400; font-style:normal;\">"
-                                                   "<p align=\"center\" style=\"-qt-paragraph-type:empty; "
-                                                   "margin-top:0px; margin-bottom:0px; margin-left:0px; "
-                                                   "margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-                                                   "font-weight:500; color:#ffffff;\"><br /></p>\n "
-                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; "
-                                                   "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-                                                   "text-indent:0px;\"><span style=\" font-weight:500; "
-                                                   "color:#ffffff;\">First</span></p>\n "
-                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; "
-                                                   "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-                                                   "text-indent:0px;\"><span style=\" font-weight:500; "
-                                                   "color:#ffffff;\">Commit!</span></p></body></html>"))
+
         self.head_state_widget.show()
-        self.commit_state_widget.hide()
-        self.commit_connect_line.hide()
+        self._translate = _translate
+        self.window = window
+        # self.commit_state_widget.hide()
+        # self.commit_connect_line.hide()
 
     def eventFilter(self, obj, event):
         if obj is self.cmd_user_input_box and event.type() == QtCore.QEvent.KeyPress:
@@ -787,9 +804,7 @@ class ui_chapter_window(QMainWindow):
 
         return super().eventFilter(obj, event)
 
-    def add_commit_images(self, push_num):
-        self.commit_state_widget.show()
-        self.commit_connect_line.show()
+
 
     # handle commands entered by the user
     def execute_command(self, card_type=-1):

@@ -2,24 +2,24 @@
 # Made By Thicc-Juice
 # What The Git!
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QUrl
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from cards import DraggableCardImages
+from git_manager import git_manager
+from file import file
 import sys
 import os
-
-from src.git_status import git_status
 
 
 class ui_chapter_window(object):
     def __init__(self, window):
-        self.git = git_status()
+        self.current_directory = os.path.dirname(os.path.realpath(__file__))
+        self.git_manager = git_manager()
         self.valid = False
         self.lastMove = -1
         self.chapter_num = 1
-        self.cmd = ""
         self.card_list = []
         self.prompt = False
+        self.file_dict = {'a.txt': file('a.txt')}
+
         window.setObjectName("window")
         window.resize(1280, 720)
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -137,15 +137,15 @@ class ui_chapter_window(object):
         self.cmd_output_content_hlayout.setSpacing(0)
         self.cmd_output_content_hlayout.setObjectName("cmd_output_content_hlayout")
 
-        self.cmd_output_text = QtWidgets.QTextBrowser(self.cmd_output_contents)
-        self.cmd_output_text.setMaximumSize(QtCore.QSize(437, 1280))
+        self.console = QtWidgets.QTextBrowser(self.cmd_output_contents)
+        self.console.setMaximumSize(QtCore.QSize(437, 1280))
         font = QtGui.QFont()
-        self.cmd_output_text.setFont(font)
-        self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: white")
-        self.cmd_output_text.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.cmd_output_text.setObjectName("cmd_output_text")
+        self.console.setFont(font)
+        self.console.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: white")
+        self.console.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.console.setObjectName("cmd_output_text")
 
-        self.cmd_output_content_hlayout.addWidget(self.cmd_output_text)
+        self.cmd_output_content_hlayout.addWidget(self.console)
         self.cmd_output_scroll_area.setWidget(self.cmd_output_contents)
         self.cmd_grid_layout.addWidget(self.cmd_output_scroll_area, 0, 0, 1, 1)
         self.cmd_user_input_box = QtWidgets.QLineEdit(self.cmd_input_vert_layout)
@@ -162,6 +162,7 @@ class ui_chapter_window(object):
         self.cmd_user_input_box.setStyleSheet("border: 1px solid red;\n"
                                               "border-color: rgb(0, 155, 255);\n"
                                               "border-radius: 5px; \n"
+                                              "color: white; \n"
                                               "background-color: rgb(30, 30, 30);\n"
                                               "padding-left:5px;\n"
                                               "padding-right:5px")
@@ -649,7 +650,7 @@ class ui_chapter_window(object):
                                                           "currently have an modified a.txt file that you want to "
                                                           "push. What steps should you take to push the modified file?"
                                                           "</span></p></body></html>"))
-        self.cmd_output_text.setHtml(_translate("window",
+        self.console.setHtml(_translate("window",
                                                 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
                                                 "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
@@ -727,41 +728,48 @@ class ui_chapter_window(object):
         self.commit_state_widget.hide()
         self.commit_connect_line.hide()
 
+    # handle commands entered by the user
     def execute_command(self, type):
-        self.cmd = self.cmd_user_input_box.text()
-        self.cmd_user_input_box.clear()
-        if self.cmd == "git add ." and not self.prompt or type == 0:
-            self.valid = self.git.check_move(0)
-            self.showCard(0, self.valid)
-        elif self.cmd == "git commit" and not self.prompt or type == 1:
-            self.valid = self.git.check_move(1)
-            if self.valid:
-                self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Enter your commit message\n")
-                self.hideCards()
-                self.prompt = True
-                self.cmd = None
-        elif self.prompt:
-            self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
-            self.prompt = False
-            self.showCard(1, self.valid)
-        elif self.cmd == "git push" and not self.prompt or type == 2:
-            self.valid = self.git.check_move(2)
-            self.showCard(2, self.valid)
-        else:
-            print("Invalid move")
-        #print(self.cmd)
+        cmd = ''
+        cmd = self.cmd_user_input_box.text()    # get user input
+        self.cmd_user_input_box.clear()     # clear text from input box
+
+        console_output = self.git_manager.handle_commands(cmd, self.file_dict)   # handle command
+        self.add_text_to_console(console_output)    # show output in console
+
+        # if self.cmd == "git add ." and not self.prompt or type == 0:
+        #     self.valid = self.git.check_move(0)
+        #     self.showCard(0, self.valid)
+        # elif self.cmd == "git commit" and not self.prompt or type == 1:
+        #     self.valid = self.git.check_move(1)
+        #     if self.valid:
+        #         self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Enter your commit message\n")
+        #         self.hide_cards()
+        #         self.prompt = True
+        #         self.cmd = None
+        # elif self.prompt:
+        #     self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
+        #     self.prompt = False
+        #     self.showCard(1, self.valid)
+        # elif self.cmd == "git push" and not self.prompt or type == 2:
+        #     self.valid = self.git.check_move(2)
+        #     self.showCard(2, self.valid)
+        # else:
+        #     print("Invalid move")
 
     def save_file(self, file_num):
-        file = os.listdir(f'wtg/CH{self.chapter_num}')[file_num - 1]
-        with open(f'wtg/CH{self.chapter_num}/{file}', 'w') as f:
+
+        file = os.listdir(f'{self.current_directory}/wtg/CH{self.chapter_num}')[file_num - 1]
+        with open(f'{self.current_directory}/wtg/CH{self.chapter_num}/{file}', 'w') as f:
             if file_num == 1:
+
                 f.write(self.file1_qplaintextedit.toPlainText())
 
         self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
 
     def create_cards(self, num):
         for i in range(num):
-            self.card_list.append(DraggableCardImages(self.main_chapter_frame, None, 100 + 200 * i, i, self, self.git))
+            self.card_list.append(DraggableCardImages(self.main_chapter_frame, None, 100 + 200 * i, i, self, self.git_manager))
 
     def showCard(self, card_type, valid):
         if valid:
@@ -773,18 +781,18 @@ class ui_chapter_window(object):
                                             "border-radius: 5px; \n"
                                             "padding-left:5px")
 
-                self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
+                self.console.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
                                                    "white")
-                self.add_cmd_text("git add .\nuser@what-the-git repo_folder % ")
+                self.add_text_to_console("git add .\nuser@what-the-git repo_folder % ")
 
             elif card_type == 1:
                 self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);\n"
                                             "border-radius: 5px; \n"
                                             "padding-left:5px")
-                self.add_cmd_text("\nuser@what-the-git repo_folder % [main 431c953] " + self.cmd)
-                self.add_cmd_text(" 1 file changed, 1 insertions(+), 0 deletions(-)\n")
-                self.add_cmd_text("create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
-                self.unhindCard()
+                self.add_text_to_console("\nuser@what-the-git repo_folder % [main 431c953] " + self.cmd)
+                self.add_text_to_console(" 1 file changed, 1 insertions(+), 0 deletions(-)\n")
+                self.add_text_to_console("create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
+                self.show_card()
 
             elif card_type == 2:
                 self.commit_state_widget.show()
@@ -792,25 +800,26 @@ class ui_chapter_window(object):
                 self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);\n"
                                               "border-radius: 5px; \n"
                                               "padding-left:5px")
-                self.add_cmd_text("git push\nEnumerating objects: 4, done.\n")
-                self.add_cmd_text("Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")
-                self.add_cmd_text("Compressing objects: 100% (2/2), done.\n")
-                self.add_cmd_text("Writing objects: 100% (3/3), 287 bytes | 287.00 KiB/s, done.\n")
-                self.add_cmd_text("Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\n")
-                self.add_cmd_text("To https://github.com/git/wtg.git\n")
-                self.add_cmd_text("   197bb24..431c953  main -> main\nuser@what-the-git repo_folder % ")
+                self.add_text_to_console("git push\nEnumerating objects: 4, done.\n")
+                self.add_text_to_console("Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")
+                self.add_text_to_console("Compressing objects: 100% (2/2), done.\n")
+                self.add_text_to_console("Writing objects: 100% (3/3), 287 bytes | 287.00 KiB/s, done.\n")
+                self.add_text_to_console("Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\n")
+                self.add_text_to_console("To https://github.com/git/wtg.git\n")
+                self.add_text_to_console("   197bb24..431c953  main -> main\nuser@what-the-git repo_folder % ")
 
-    def hideCards(self):
+    def hide_cards(self):
         for i in self.card_list:
             i.hide()
 
-    def unhindCard(self):
+    def show_card(self):
         for i in self.card_list:
             i.show()
 
-    def add_cmd_text(self, txt):
-        self.cmd_output_text.setText(self.cmd_output_text.toPlainText() + txt)
-        self.cmd_output_text.moveCursor(QtGui.QTextCursor.End)
+    def add_text_to_console(self, new_output):
+        existing_output = self.console.toPlainText()
+        self.console.setText(existing_output + new_output)
+        self.console.moveCursor(QtGui.QTextCursor.End)
 
     # def validCheck(self, card_type):
     #     if self.lastMove == card_type - 1:

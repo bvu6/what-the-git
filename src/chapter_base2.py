@@ -8,7 +8,7 @@ from cards import DraggableCardImages
 import sys
 import os
 
-from src.git_status import git_status
+from src.git_manager import git_manager
 
 
 class ui_chaptertwo_window(object):
@@ -20,7 +20,7 @@ class ui_chaptertwo_window(object):
         self.branch1List = []
         self.branch2List = []
         self.headList = []
-        self.git = git_status()
+        self.git = git_manager()
         self.valid = False
         self.lastMove = -1
         self.chapterTwo_num = 2

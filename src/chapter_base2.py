@@ -940,6 +940,7 @@ class ui_chaptertwo_window(object):
                 self.showCard(5, self.valid)
         else:
             print("Invalid move")
+            self.add_cmd_text("\ninvalid move")
     # print(self.cmd)
 
 

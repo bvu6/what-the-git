@@ -540,6 +540,19 @@ class ui_chapter_window(object):
         self.commit_connect_line.setScaledContents(True)
         self.commit_connect_line.setObjectName("commit_connect_line")
 
+        self.drag_label = QtWidgets.QLabel(self.main_chapter_frame)
+        self.drag_label.setGeometry(QtCore.QRect(830, 8, 439, 61))
+        font.setPointSize(24)
+        self.drag_label.setFont(font)
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.drag_label.sizePolicy().hasHeightForWidth())
+        self.drag_label.setStyleSheet("font: 24pt \"Montserrat\"; color: gray")
+        self.drag_label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.drag_label.move(260, 200)
+        self.drag_label.setObjectName("drag_label")
+
         self.main_view.raise_()
         self.chapter_info_text_browser.raise_()
         self.cmd_input_vert_layout.raise_()
@@ -552,6 +565,7 @@ class ui_chapter_window(object):
         self.commit_state_widget.raise_()
         self.head_state_widget.raise_()
         self.commit_connect_line.raise_()
+        self.drag_label.raise_()
 
         # modifier
         self.card_holder_frame = QtWidgets.QFrame(self.main_chapter_frame)
@@ -665,6 +679,7 @@ class ui_chapter_window(object):
         self.task_two.setText(_translate("window", "Commit the change!"))
         self.task_three.setText(_translate("window", "Push!"))
         self.title_label.setText(_translate("window", "CH1: First Commit"))
+        self.drag_label.setText(_translate("window", "DRAG CARDS HERE"))
         self.head_label.setHtml(_translate("window",
                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
                                            "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "

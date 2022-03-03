@@ -145,6 +145,7 @@ class ui_chaptertwo_window(object):
                                               "border-color: rgb(0, 155, 255);\n"
                                               "border-radius: 5px; \n"
                                               "background-color: rgb(30, 30, 30);\n"
+                                              "color: rgb(255,255,255);\n"
                                               "padding-left:5px;\n"
                                               "padding-right:5px")
         self.cmd_user_input_box.setText("")

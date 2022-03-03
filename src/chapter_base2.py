@@ -13,6 +13,13 @@ from src.git_status import git_status
 
 class ui_chaptertwo_window(object):
     def __init__(self, window):
+        self.nodedict = {}
+        self.currIconLocation = "branch 2"
+        self.avatarposX = 700
+        self.avatarposY = 380
+        self.branch1List = []
+        self.branch2List = []
+        self.headList = []
         self.git = git_status()
         self.valid = False
         self.lastMove = -1
@@ -496,6 +503,7 @@ class ui_chaptertwo_window(object):
         self.first_commit_label_3.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.first_commit_label_3.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.first_commit_label_3.setObjectName("first_commit_label_3")
+
         self.commit_state_widget_layout_3.addWidget(self.first_commit_label_3)
         self.commit_state_widget_4 = QtWidgets.QWidget(self.main_chapter_frame)
         self.commit_state_widget_4.setGeometry(QtCore.QRect(540, 280, 81, 71))
@@ -671,11 +679,6 @@ class ui_chaptertwo_window(object):
         self.line8.setStyleSheet("background-color: rgb(85, 0, 255)")
         self.line8.setText("")
         self.line8.setObjectName("line8")
-        self.line9 = QtWidgets.QLabel(self.main_chapter_frame)
-        self.line9.setGeometry(QtCore.QRect(580, 210, 5, 71))
-        self.line9.setStyleSheet("background-color: rgb(85, 0, 255)")
-        self.line9.setText("")
-        self.line9.setObjectName("line9")
         self.line10 = QtWidgets.QLabel(self.main_chapter_frame)
         self.line10.setGeometry(QtCore.QRect(470, 160, 71, 5))
         self.line10.setStyleSheet("background-color: rgb(85, 0, 255)")
@@ -712,7 +715,6 @@ class ui_chaptertwo_window(object):
         self.line6.raise_()
         self.line7.raise_()
         self.line8.raise_()
-        self.line9.raise_()
         self.line10.raise_()
         self.Line2.raise_()
         self.drag_label.raise_()
@@ -740,6 +742,32 @@ class ui_chaptertwo_window(object):
         self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command(-1))
 
         window.setCentralWidget(self.main_chapter_central_widget)
+
+        self.nodedict["5"] = self.head_state_widget #h
+        self.nodedict["10"] = self.commit_state_widget #Hc1
+        self.nodedict["20"] = self.commit_state_widget_3 #hC2
+        self.nodedict["30"] = self.commit_state_widget_4 #HC3
+        self.nodedict["21"] = self.commit_state_widget_9 #b1c1
+        self.nodedict["22"] = self.commit_state_widget_8 #b1c2
+        self.nodedict["23"] = self.commit_state_widget_10 #b1c3
+        self.nodedict["24"] = self.commit_state_widget_5  #b2c1
+        self.nodedict["25"] = self.commit_state_widget_6   #b2c2
+        self.nodedict["26"] = self.commit_state_widget_7  #b2c3
+
+        self.branch1List.append("21")
+        self.branch1List.append("22")
+        self.branch1List.append("23")
+        self.branch2List.append("24")
+        self.branch2List.append("25")
+        self.branch1List.append("26")
+
+        self.headList.append("5")
+        self.headList.append("10")
+        self.headList.append("20")
+        self.headList.append("30")
+        print(self.headList[0])
+
+
 
         self.retranslateUi(window)
         self.file_stacked_widget.setCurrentIndex(0)
@@ -791,14 +819,14 @@ class ui_chaptertwo_window(object):
                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                            "p, li { white-space: pre-wrap; }\n"
                                            "</style></head><body style=\" font-family:\'Montserrat\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-                                           "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:13pt; font-weight:496; color:#ffffff;\"><br /></p>\n"
+                                           "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">ID(5)</span></p>\n"
                                            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:13pt; font-weight:496; color:#ffffff;\">HEAD</span></p></body></html>"))
         self.first_commit_label.setHtml(_translate("MainChapterWindow",
                                                    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                    "p, li { white-space: pre-wrap; }\n"
                                                    "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                   "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\"><br /></p>\n"
+                                                   "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">ID(10)</span></p>\n"
                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">First</span></p>\n"
                                                    "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_3.setHtml(_translate("MainChapterWindow",
@@ -806,7 +834,7 @@ class ui_chaptertwo_window(object):
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\"><br /></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">ID(20)</span></p>\n"
                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Second</span></p>\n"
                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_4.setHtml(_translate("MainChapterWindow",
@@ -814,7 +842,7 @@ class ui_chaptertwo_window(object):
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                     "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\"><br /></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">ID(30)</span></p>\n"
                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_5.setHtml(_translate("MainChapterWindow",
@@ -822,49 +850,49 @@ class ui_chaptertwo_window(object):
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Branch 2</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">First</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Branch 2 ID(24)</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">First</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_6.setHtml(_translate("MainChapterWindow",
                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Branch 2</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Second</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Branch 2 ID(25)</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Second</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_7.setHtml(_translate("MainChapterWindow",
                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Branch 2</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Branch 2 ID(26)</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_8.setHtml(_translate("MainChapterWindow",
                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Branch 1</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Second</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Branch 1 ID(21)</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Second</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_9.setHtml(_translate("MainChapterWindow",
                                                      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
                                                      "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Branch 1</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">First</span></p>\n"
-                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Branch 1 ID(22)</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">First</span></p>\n"
+                                                     "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
         self.first_commit_label_10.setHtml(_translate("MainChapterWindow",
                                                       "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                       "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                       "p, li { white-space: pre-wrap; }\n"
                                                       "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Branch 1</span></p>\n"
-                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
-                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
+                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Branch 1 ID(23)</span></p>\n"
+                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
+                                                      "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:10pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
 
     def execute_command(self, type):
         self.cmd = self.cmd_user_input_box.text()
@@ -879,7 +907,7 @@ class ui_chaptertwo_window(object):
                 self.hideCards()
                 self.prompt = True
                 self.cmd = None
-        elif self.prompt and (self.cmd == "head" or self.cmd == "1" or self.cmd == "2"):
+        elif self.prompt and (self.cmd == "head" or self.cmd == "HEAD" or self.cmd == "1" or self.cmd == "2"):
             self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
             self.prompt = False
             self.showCard(4, self.valid)
@@ -891,9 +919,21 @@ class ui_chaptertwo_window(object):
                 self.prompt2 = True
                 self.cmd = None
         elif self.prompt2:
-            self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
-            self.prompt = False
-            self.showCard(5, self.valid)
+            print("hello")
+            flag = False
+            print(self.cmd in self.headList)
+            print(self.currIconLocation)
+            if self.cmd in self.headList and self.currIconLocation == "head":
+                print(self.cmd)
+                flag = True
+            elif self.cmd in self.branch1List and self.currIconLocation == "branch 1":
+                flag = True
+            elif self.cmd in self.branch2List and self.currIconLocation == "branch 2":
+                flag = True
+            if flag:
+                self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
+                self.prompt2 = False
+                self.showCard(5, self.valid)
         else:
             print("Invalid move")
     # print(self.cmd)
@@ -913,16 +953,37 @@ class ui_chaptertwo_window(object):
             self.card_list.append(DraggableCardImages(self.main_chapter_frame, None, 100 + (150 * (i-3)), i, self))
 
     def showCard(self, card_type, valid):
+
         if valid:
             if card_type == 3:
-                print("git branch")
+                print("head \nbranch 1 \nbranch 2")
+                print("Current Branch:", self.currIconLocation)
+                self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                                            "border-radius: 5px; \n"
+                                            "padding-left:5px")
 
             elif card_type == 4:
                 self.add_cmd_text("\nuser@what-the-git repo_folder % git checkout branch" + self.cmd)
+                if self.cmd == "1":
+                    self.humanIcon.move(self.nodedict["21"].pos())
+                    self.currIconLocation = "branch 1"
+                    self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                                                "border-radius: 5px; \n"
+                                                "padding-left:5px")
+                elif self.cmd == "2":
+                    self.humanIcon.move(self.nodedict["24"].pos())
+                    self.currIconLocation = "branch 2"
+                elif self.cmd == "head" or self.cmd == "HEAD":
+                    self.humanIcon.move(self.nodedict["5"].pos())
+                    self.currIconLocation = "head"
                 self.unhideCard()
-
             elif card_type == 5:
                 print("\nuser@what-the-git repo_folder % git checkout head" + self.cmd)
+                self.humanIcon.move(self.nodedict[self.cmd].pos())
+                if self.cmd == "23":
+                    self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                                                "border-radius: 5px; \n"
+                                                "padding-left:5px")
                 self.unhideCard()
 
     def hideCards(self):

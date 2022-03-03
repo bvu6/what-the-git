@@ -876,7 +876,7 @@ class ui_chaptertwo_window(object):
     def create_cards(self, num):
         card_list = []
         for i in range(num):
-            card_list.append(DraggableCardImages("cards/rm.png", self.main_chapter_frame, None, 0 + 150 * i, i, self))
+            card_list.append(DraggableCardImages(self.main_chapter_frame, None, 0 + 150 * i, i, self))
 
     def showCard(self, card_type, valid):
         if valid:

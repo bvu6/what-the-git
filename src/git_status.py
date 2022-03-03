@@ -6,8 +6,7 @@ class git_status:
         # if self.lastMove == card_type - 1:
         #     self.lastMove = card_type
         #     return True
-        print("Last", self.lastMove, "type", card_type)
-        if card_type == 0:
+        if card_type == 0 or card_type == 3 or card_type == 4 or card_type == 5:
             self.lastMove = card_type
             return True
 

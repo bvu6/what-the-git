@@ -8,12 +8,19 @@ from cards import DraggableCardImages
 import sys
 import os
 
+from src.git_status import git_status
+
 
 class ui_chaptertwo_window(object):
     def __init__(self, window):
+        self.git = git_status()
+        self.valid = False
         self.lastMove = -1
         self.chapterTwo_num = 2
-
+        self.cmd = ""
+        self.card_list = []
+        self.prompt = False
+        self.prompt2 = False
         window.setObjectName("window")
         window.resize(1280, 720)
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -725,12 +732,12 @@ class ui_chaptertwo_window(object):
         self.card_holder_frame.setObjectName("frame")
 
         self.create_cards(3)
+        self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
+                                           "white")
         self.file_img1.mousePressEvent = lambda a: self.file_stacked_widget.setCurrentIndex(
             self.file_stacked_widget.currentIndex() + 1)
        # self.file1_save_button.clicked.connect(lambda: self.save_file(1))
-        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command())
-
-        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command())
+        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command(-1))
 
         window.setCentralWidget(self.main_chapter_central_widget)
 
@@ -859,10 +866,37 @@ class ui_chaptertwo_window(object):
                                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
                                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
 
-    def execute_command(self):
+    def execute_command(self, type):
         self.cmd = self.cmd_user_input_box.text()
         self.cmd_user_input_box.clear()
-        print(self.cmd)
+        if self.cmd == "git branch" and not self.prompt or type == 3:
+            self.valid = self.git.check_move(3)
+            self.showCard(3, self.valid)
+        elif self.cmd == "git checkout branch" and not self.prompt or type == 4:
+            self.valid = self.git.check_move(4)
+            if self.valid:
+                self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Which branch\n")
+                self.hideCards()
+                self.prompt = True
+                self.cmd = None
+        elif self.prompt and (self.cmd == "head" or self.cmd == "1" or self.cmd == "2"):
+            self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
+            self.prompt = False
+            self.showCard(4, self.valid)
+        elif self.cmd == "git checkout head" and not self.prompt or type == 5:
+            self.valid = self.git.check_move(5)
+            if self.valid:
+                self.add_cmd_text("git commit \nuser@what-the-git repo_folder % Enter the head ID\n")
+                self.hideCards()
+                self.prompt2 = True
+                self.cmd = None
+        elif self.prompt2:
+            self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
+            self.prompt = False
+            self.showCard(5, self.valid)
+        else:
+            print("Invalid move")
+    # print(self.cmd)
 
 
     # def save_file(self, file_num):
@@ -874,50 +908,30 @@ class ui_chaptertwo_window(object):
     #     self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
 
     def create_cards(self, num):
-        card_list = []
-        for i in range(num):
-            card_list.append(DraggableCardImages(self.main_chapter_frame, None, 0 + 150 * i, i, self))
+        self.card_list = []
+        for i in range(num, num+num, 1):
+            self.card_list.append(DraggableCardImages(self.main_chapter_frame, None, 100 + (150 * (i-3)), i, self))
 
     def showCard(self, card_type, valid):
         if valid:
-            if card_type == 0:
-                self.head_state_widget.show()
-                self.head_label.show()
-                self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
-                                            "border-radius: 5px; \n"
-                                            "padding-left:5px")
-
-                self.cmd_output_text.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
-                                                   "white")
-                self.add_cmd_text("git add a.txt\nuser@what-the-git repo_folder % ")
-
-            elif card_type == 1:
-                self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);\n"
-                                            "border-radius: 5px; \n"
-                                            "padding-left:5px")
-                self.add_cmd_text("git commit -m \"first commit\")\n[main 431c953] first commit\n")
-                self.add_cmd_text(" 1 file changed, 0 insertions(+), 0 deletions(-)\n")
-                self.add_cmd_text(" create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
-
-            elif card_type == 2:
-                self.commit_state_widget.show()
-                self.first_commit_label.show()
-                self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);\n"
-                                              "border-radius: 5px; \n"
-                                              "padding-left:5px")
-                self.add_cmd_text("git push\nEnumerating objects: 4, done.\n")
-                self.add_cmd_text("Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")
-                self.add_cmd_text("Compressing objects: 100% (2/2), done.\n")
-                self.add_cmd_text("Writing objects: 100% (3/3), 287 bytes | 287.00 KiB/s, done.\n")
-                self.add_cmd_text("Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\n")
-                self.add_cmd_text("To https://github.com/git/wtg.git\n")
-                self.add_cmd_text("   197bb24..431c953  main -> main\nuser@what-the-git repo_folder % ")
-
-            elif card_type == 3:
+            if card_type == 3:
                 print("git branch")
 
             elif card_type == 4:
-                print("git checkout")
+                self.add_cmd_text("\nuser@what-the-git repo_folder % git checkout branch" + self.cmd)
+                self.unhideCard()
+
+            elif card_type == 5:
+                print("\nuser@what-the-git repo_folder % git checkout head" + self.cmd)
+                self.unhideCard()
+
+    def hideCards(self):
+        for i in self.card_list:
+            i.hide()
+
+    def unhideCard(self):
+        for i in self.card_list:
+            i.show()
 
 
     def add_cmd_text(self, txt):

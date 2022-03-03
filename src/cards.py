@@ -9,7 +9,7 @@ class DraggableCardImages(QtWidgets.QLabel):
     def __init__(self, parent=None, wid=None, x=None, type=None, chapter=None, gitStatus=None):
         super(DraggableCardImages, self).__init__()
         self.git = gitStatus
-        self.cardType = ["git add", "git commit", "git push", "git branch", "git checkout"]
+        self.cardType = ["git add", "git commit", "git push", "git branch", "git checkout \nbranch", "git checkout \nhead"]
         self.chapter = chapter
         self.type = type
         self.setParent(parent)
@@ -22,10 +22,7 @@ class DraggableCardImages(QtWidgets.QLabel):
         self.drag_start_pos = None
         self.wid = wid
         self.setText(self.cardType[type])
-        if self.type == 4:
-            self.setFont(QFont("Montserrat", 13))
-        else:
-            self.setFont(QFont("Montserrat", 15))
+        self.setFont(QFont("Montserrat", 13))
         self.setAlignment(QtCore.Qt.AlignHCenter)
 
     def mousePressEvent(self, event):

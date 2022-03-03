@@ -95,12 +95,19 @@ cd src
 * [x] Implemented Command Line output based on user's interaction with the cards
 * [x] Developed logic for git commands
 * [x] Added ability for users to edit text file and automatically save the changes in a real text file outside
+* [x] Updated UI for Main Menu and Chapter 1
+* [x] All buttons are operatable and functionable to use
+* [x] Change of colors to the cards and added text for instructions
 
 ### Sprint 3
 * [x] Added ability for users to use Command line input
 * [x] Implemented a common logic that manages and tracks changes in git repo
 * [x] Added ability for the program to actually do a git add, commit, and push in a real-world repo
 * [x] Added chapter 2 that challenges users to reach a specific commit state using git commands
+* [x] Track file changes
+* [x] Execute git command lines to reflect realistic changes in the repository
+* [x] Added a "Drag Card Here" label so the user knows where to drag the cards
+* [x] Chapter 2 updates to UI: card setup, command line input/output, and creating a tree branch
 
 <!-- LICENSE -->
 ## License

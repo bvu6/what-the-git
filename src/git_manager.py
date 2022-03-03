@@ -9,7 +9,8 @@ class git_manager:
         self.push = False
         self.lastMove = -1
         self.branch = 'main'
-        self.file_add_list =[]
+        self.file_add_list = []
+        self.chbase = ''
 
         self.cmd = ''
         self.file_dict = {}
@@ -38,9 +39,10 @@ class git_manager:
         return self.cmd + output + self.new_cmd
 
     # handle commands entered by the user
-    def handle_commands(self, cmd, file_dict):
+    def handle_commands(self, chbase, cmd, file_dict):
         self.file_dict = file_dict
         self.cmd = cmd
+        self.chbase = chbase
 
         # check for blank and empty string
         if not cmd or cmd.isspace():
@@ -94,8 +96,6 @@ class git_manager:
             return False
 
     def modify_file_status(self, file):
-        print(f'mfs {file}')
-        print(f'mfs {self.file_dict[file].get_file_modified_status()}')
         if self.file_dict[file].get_file_modified_status():
             print(f'modify init pass file {self.file_dict[file].get_file_modified_status()}')
             print(f'modify init pass add {self.add}')

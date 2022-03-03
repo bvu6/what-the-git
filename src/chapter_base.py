@@ -24,6 +24,7 @@ class ui_chapter_window(QMainWindow):
         self.command_list = []
         self.cmd_list_pos = 1
         self.file_dict = {'a.txt': file('a.txt')}
+        self.task_done_list = []
 
         window.setObjectName("window")
         window.resize(1280, 720)
@@ -405,6 +406,7 @@ class ui_chapter_window(QMainWindow):
         self.task_vert_layout.setContentsMargins(0, 7, 0, 7)
         self.task_vert_layout.setSpacing(6)
         self.task_vert_layout.setObjectName("task_vert_layout")
+
         self.task_one = QtWidgets.QLabel(self.layoutWidget)
 
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -431,6 +433,7 @@ class ui_chapter_window(QMainWindow):
         self.task_one.setObjectName("task_one")
 
         self.task_vert_layout.addWidget(self.task_one)
+
         self.task_two = QtWidgets.QLabel(self.layoutWidget)
 
         size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -455,6 +458,7 @@ class ui_chapter_window(QMainWindow):
                                     "font: 13pt \"Montserrat\";")
         self.task_two.setAlignment(QtCore.Qt.AlignCenter)
         self.task_two.setObjectName("task_two")
+
         self.task_vert_layout.addWidget(self.task_two)
 
         self.task_three = QtWidgets.QLabel(self.layoutWidget)
@@ -467,10 +471,12 @@ class ui_chapter_window(QMainWindow):
         self.task_three.setSizePolicy(size_policy)
         self.task_three.setMinimumSize(QtCore.QSize(0, 20))
         self.task_three.setMaximumSize(QtCore.QSize(1280, 36))
+
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(False)
         font.setItalic(False)
+
         self.task_three.setFont(font)
         self.task_three.setStyleSheet("background-color: rgb(138, 0, 1);\n"
                                       "border-radius: 5px; \n"
@@ -479,8 +485,32 @@ class ui_chapter_window(QMainWindow):
                                       "font: 13pt \"Montserrat\";")
         self.task_three.setAlignment(QtCore.Qt.AlignCenter)
         self.task_three.setObjectName("task_three")
-
         self.task_vert_layout.addWidget(self.task_three)
+
+        self.task_four = QtWidgets.QLabel(self.layoutWidget)
+
+        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.task_four.sizePolicy().hasHeightForWidth())
+
+        self.task_four.setSizePolicy(size_policy)
+        self.task_four.setMinimumSize(QtCore.QSize(0, 20))
+        self.task_four.setMaximumSize(QtCore.QSize(1280, 36))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        font.setBold(False)
+        font.setItalic(False)
+        self.task_four.setFont(font)
+        self.task_four.setStyleSheet("background-color: rgb(138, 0, 1);\n"
+                                     "border-radius: 5px; \n"
+                                     "padding-left:5px;\n"
+                                     "color: white;\n"
+                                     "font: 13pt \"Montserrat\";")
+        self.task_four.setAlignment(QtCore.Qt.AlignCenter)
+        self.task_four.setObjectName("task_four")
+
+        self.task_vert_layout.addWidget(self.task_four)
         self.title_label = QtWidgets.QLabel(self.main_chapter_frame)
         self.title_label.setGeometry(QtCore.QRect(830, 8, 439, 61))
 
@@ -687,9 +717,10 @@ class ui_chapter_window(QMainWindow):
                                           "font-family:\'Montserrat\'; font-size:13pt; color:#ffffff;\"> "
                                           "a.txt</span></p></body></html>"))
         self.file1_save_button.setText(_translate("window", "Save"))
-        self.task_one.setText(_translate("window", "Add a.txt"))
-        self.task_two.setText(_translate("window", "Commit the change!"))
-        self.task_three.setText(_translate("window", "Push!"))
+        self.task_one.setText(_translate("window", "Modify a.txt"))
+        self.task_two.setText(_translate("window", "Add a.txt"))
+        self.task_three.setText(_translate("window", "Commit the change!"))
+        self.task_four.setText(_translate("window", "Push!"))
         self.title_label.setText(_translate("window", "CH1: First Commit"))
         self.drag_label.setText(_translate("window", "DRAG CARDS HERE"))
         self.head_label.setHtml(_translate("window",
@@ -728,9 +759,7 @@ class ui_chapter_window(QMainWindow):
                                                    "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                                    "text-indent:0px;\"><span style=\" font-weight:500; "
                                                    "color:#ffffff;\">Commit!</span></p></body></html>"))
-        self.head_label.hide()
-        self.first_commit_label.hide()
-        self.head_state_widget.hide()
+        self.head_state_widget.show()
         self.commit_state_widget.hide()
         self.commit_connect_line.hide()
 
@@ -755,6 +784,7 @@ class ui_chapter_window(QMainWindow):
 
         return super().eventFilter(obj, event)
 
+
     # handle commands entered by the user
     def execute_command(self, card_type=-1):
 
@@ -773,31 +803,32 @@ class ui_chapter_window(QMainWindow):
             if len(self.command_list) > 1:
                 self.cmd_list_pos = len(self.command_list)
 
-            console_output = self.git_manager.handle_commands(cmd, self.file_dict)  # handle command
+            console_output = self.git_manager.handle_commands(self, cmd, self.file_dict)  # handle command
+
             self.add_text_to_console(console_output)  # show output in console
 
         elif self.take_commit_msg:
             msg = self.cmd_user_input_box.text()  # get user input
             self.cmd_user_input_box.clear()  # clear text from input box
-            console_output = self.git_manager.handle_commands(f'git commit -m "{msg}"',
+            console_output = self.git_manager.handle_commands(self, f'git commit -m "{msg}"',
                                                               self.file_dict)  # handle command
             self.add_text_to_console(console_output)  # show output in console
-            self.showCard(0, self.valid)
+            # self.add_state_images(0, self.valid)
             self.take_commit_msg = False
 
         # handle card drag/drop
         else:
             if card_type == 0:
-                console_output = self.git_manager.handle_commands('git add .', self.file_dict)  # handle command
+                console_output = self.git_manager.handle_commands(self, 'git add .', self.file_dict)  # handle command
                 self.add_text_to_console(console_output)  # show output in console
-                self.showCard(0, self.valid)
+                # self.add_state_images(0, self.valid)
 
             elif card_type == 1:
                 self.add_text_to_console('\nwhat_the_git: Enter commit message: ')
                 self.take_commit_msg = True
 
             elif card_type == 2:
-                console_output = self.git_manager.handle_commands('git push', self.file_dict)  # handle command
+                console_output = self.git_manager.handle_commands(self, 'git push', self.file_dict)  # handle command
                 self.add_text_to_console(console_output)  # show output in console
 
     def save_file(self, file_name):
@@ -811,6 +842,7 @@ class ui_chapter_window(QMainWindow):
                 print('replacing')
                 f.write(self.file1_qplaintextedit.toPlainText())
                 self.file_dict[file_name].set_file_modified_status_true()
+                self.set_task_done(1)
 
         self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
 
@@ -819,13 +851,36 @@ class ui_chapter_window(QMainWindow):
             self.card_list.append(
                 DraggableCardImages(self.main_chapter_frame, None, 100 + 200 * i, i, self, self.git_manager))
 
-    def showCard(self, card_type, valid):
+    def set_task_done(self, task_num):
+
+        if task_num == 1 and 1 not in self.task_done_list:
+            self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                                        "border-radius: 5px; \n"
+                                        "padding-left:5px")
+        elif task_num == 2 and 2 not in self.task_done_list:
+            self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                                        "border-radius: 5px; \n"
+                                        "padding-left:5px")
+
+        elif task_num == 3 and 3 not in self.task_done_list:
+            self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                                          "border-radius: 5px; \n"
+                                          "padding-left:5px")
+
+        elif task_num == 4 and 4 not in self.task_done_list:
+            self.task_four.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                                         "border-radius: 5px; \n"
+                                         "padding-left:5px")
+
+        self.task_done_list.append(task_num)
+
+    def add_state_images(self, card_type, valid):
         if valid:
             if card_type == 0:
                 self.head_state_widget.show()
                 self.commit_connect_line.show()
                 self.head_label.show()
-                self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
+                self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
                                             "border-radius: 5px; \n"
                                             "padding-left:5px")
 
@@ -834,9 +889,9 @@ class ui_chapter_window(QMainWindow):
                 self.add_text_to_console("git add .\nuser@what-the-git repo_folder % ")
 
             elif card_type == 1:
-                self.task_two.setStyleSheet("background-color: rgb(32, 167, 21);\n"
-                                            "border-radius: 5px; \n"
-                                            "padding-left:5px")
+                self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);\n"
+                                              "border-radius: 5px; \n"
+                                              "padding-left:5px")
                 self.add_text_to_console("\nuser@what-the-git repo_folder % [main 431c953] " + self.cmd)
                 self.add_text_to_console(" 1 file changed, 1 insertions(+), 0 deletions(-)\n")
                 self.add_text_to_console("create mode 100644 a.txt\nuser@what-the-git repo_folder % ")
@@ -845,9 +900,9 @@ class ui_chapter_window(QMainWindow):
             elif card_type == 2:
                 self.commit_state_widget.show()
                 self.first_commit_label.show()
-                self.task_three.setStyleSheet("background-color: rgb(32, 167, 21);\n"
-                                              "border-radius: 5px; \n"
-                                              "padding-left:5px")
+                self.task_four.setStyleSheet("background-color: rgb(32, 167, 21);\n"
+                                             "border-radius: 5px; \n"
+                                             "padding-left:5px")
                 self.add_text_to_console("git push\nEnumerating objects: 4, done.\n")
                 self.add_text_to_console(
                     "Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")

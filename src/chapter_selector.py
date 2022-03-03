@@ -208,7 +208,6 @@ class ui_chapter_selection_window(object):
         _translate = QtCore.QCoreApplication.translate
         window.setWindowTitle(_translate("chapter_selection_window", "MainWindow"))
         self.toggle_music_button.setText(_translate("chapter_selection_window", "Toggle Music"))
-        self.chapter_three_start_button.setText(_translate("chapter_selection_window", "Chapter 3: Working Together"))
         self.chapter_two_start_button.setText(_translate("chapter_selection_window", "Chapter 2: Branching"))
         self.chapter_one_start_button.setText(_translate("chapter_selection_window", "Chapter 1: First Commit"))
         self.select_chapter_label.setText(_translate("chapter_selection_window", "Select Chapter"))

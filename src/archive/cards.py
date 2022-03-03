@@ -45,7 +45,7 @@ class DraggableCardImages(QtWidgets.QLabel):
         # else:
         #print("Doing", self.cardType[self.type])
         valid = self.chapter.validCheck(self.type)
-        self.chapter.showCard(self.type, valid)
+        self.chapter.add_state_images(self.type, valid)
         self.move(self.ogX, self.ogY)
 
     def getType(self):

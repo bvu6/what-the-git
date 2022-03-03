@@ -908,7 +908,7 @@ class ui_chaptertwo_window(object):
                 self.hideCards()
                 self.prompt = True
                 self.cmd = None
-        elif self.prompt and (self.cmd == "head" or self.cmd == "HEAD" or self.cmd == "1" or self.cmd == "2"):
+        elif self.prompt and (self.cmd == "main" or self.cmd == "Main" or self.cmd == "1" or self.cmd == "2"):
             self.add_cmd_text("user@what-the-git repo_folder % " + self.cmd)
             self.prompt = False
             self.showCard(4, self.valid)
@@ -924,7 +924,7 @@ class ui_chaptertwo_window(object):
             flag = False
             print(self.cmd in self.headList)
             print(self.currIconLocation)
-            if self.cmd in self.headList and self.currIconLocation == "head":
+            if self.cmd in self.headList and self.currIconLocation == "main":
                 print(self.cmd)
                 flag = True
             elif self.cmd in self.branch1List and self.currIconLocation == "branch 1":
@@ -957,7 +957,7 @@ class ui_chaptertwo_window(object):
 
         if valid:
             if card_type == 3:
-                self.add_cmd_text("\nuser@what-the-git repo_folder % Git Branch \nhead \nbranch 1 \nbranch 2")
+                self.add_cmd_text("\nuser@what-the-git repo_folder % Git Branch \nmain \nbranch 1 \nbranch 2")
                 self.add_cmd_text("\nCurrent Branch: " + self.currIconLocation)
                 print("Current Branch:", self.currIconLocation)
                 self.task_one.setStyleSheet("background-color: rgb(32, 167, 21);;\n"
@@ -978,13 +978,13 @@ class ui_chaptertwo_window(object):
                     self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout Branch 2 \nSwitching to branch 2")
                     self.currIconLocation = "branch 2"
 
-                elif self.cmd == "head" or self.cmd == "HEAD":
+                elif self.cmd == "main" or self.cmd == "Main":
                     self.humanIcon.move(self.nodedict["5"].pos())
-                    self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout head \nSwitching to head")
-                    self.currIconLocation = "head"
+                    self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout Main \nSwitching to Main")
+                    self.currIconLocation = "main"
                 self.unhideCard()
             elif card_type == 5:
-                print("\nuser@what-the-git repo_folder % git checkout head" + self.cmd)
+                print("\nuser@what-the-git repo_folder % git checkout main" + self.cmd)
                 self.add_cmd_text("\nuser@what-the-git repo_folder % Git Checkout " + self.cmd)
                 self.add_cmd_text("\n" + self.cmd + "\n you are in 'detached HEAD' state. You can look around, make experimental changes \n and commit them, and you can discard any commits you make in this state without impacting any branches by performing another checkout.")
                 self.add_cmd_text("\n user@what-the-git repo_folder " + self.cmd + "% ")

@@ -10,7 +10,7 @@ class DraggableCardImages(QtWidgets.QLabel):
         super(DraggableCardImages, self).__init__()
         self.git = gitStatus
         self.cardType = ["git add", "git commit", "git push", "git branch", "git checkout \nbranch", "git checkout "
-                                                                                                     "\nhead"]
+                                                                                                     "\nhead (ID)"]
         self.chapter = chapter
         self.type = type
         self.setParent(parent)

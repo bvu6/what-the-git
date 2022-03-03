@@ -157,39 +157,39 @@ class ui_chapter_selection_window(object):
                                                     "}")
         self.chapter_two_start_button.setObjectName("chapter_two_start_button")
 
-        self.chapter_three_start_button = QtWidgets.QPushButton(self.chapter_selection_screen_frame)
-        self.chapter_three_start_button.setGeometry(QtCore.QRect(470, 480, 331, 61))
-        size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        size_policy.setHorizontalStretch(0)
-        size_policy.setVerticalStretch(0)
-        size_policy.setHeightForWidth(self.chapter_three_start_button.sizePolicy().hasHeightForWidth())
-        self.chapter_three_start_button.setSizePolicy(size_policy)
-        self.chapter_three_start_button.setMinimumSize(QtCore.QSize(0, 0))
-        font = QtGui.QFont()
-        font.setFamily("Montserrat")
-        font.setPointSize(18)
-        font.setBold(False)
-        font.setItalic(False)
-        self.chapter_three_start_button.setFont(font)
-        self.chapter_three_start_button.setStyleSheet("QPushButton {\n"
-                                                      "    border: 1px solid #F4D780;\n"
-                                                      "       font: 18pt \"Montserrat\";\n"
-                                                      "    color: white;\n"
-                                                      "    padding: 1px;\n"
-                                                      "    border-radius:20px;\n"
-                                                      "    background: black\n"
-                                                      "}\n"
-                                                      "\n"
-                                                      "QPushButton:hover {\n"
-                                                      "    background: #F4D780;\n"
-                                                      "    color: black\n"
-                                                      "}\n"
-                                                      "\n"
-                                                      "QPushButton:pressed {\n"
-                                                      "    background-color: rgb(255, 210, 103);\n"
-                                                      "    color: black\n"
-                                                      "}")
-        self.chapter_three_start_button.setObjectName("chapter_three_start_button")
+        # self.chapter_three_start_button = QtWidgets.QPushButton(self.chapter_selection_screen_frame)
+        # self.chapter_three_start_button.setGeometry(QtCore.QRect(470, 480, 331, 61))
+        # size_policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        # size_policy.setHorizontalStretch(0)
+        # size_policy.setVerticalStretch(0)
+        # size_policy.setHeightForWidth(self.chapter_three_start_button.sizePolicy().hasHeightForWidth())
+        # self.chapter_three_start_button.setSizePolicy(size_policy)
+        # self.chapter_three_start_button.setMinimumSize(QtCore.QSize(0, 0))
+        # font = QtGui.QFont()
+        # font.setFamily("Montserrat")
+        # font.setPointSize(18)
+        # font.setBold(False)
+        # font.setItalic(False)
+        # self.chapter_three_start_button.setFont(font)
+        # self.chapter_three_start_button.setStyleSheet("QPushButton {\n"
+        #                                               "    border: 1px solid #F4D780;\n"
+        #                                               "       font: 18pt \"Montserrat\";\n"
+        #                                               "    color: white;\n"
+        #                                               "    padding: 1px;\n"
+        #                                               "    border-radius:20px;\n"
+        #                                               "    background: black\n"
+        #                                               "}\n"
+        #                                               "\n"
+        #                                               "QPushButton:hover {\n"
+        #                                               "    background: #F4D780;\n"
+        #                                               "    color: black\n"
+        #                                               "}\n"
+        #                                               "\n"
+        #                                               "QPushButton:pressed {\n"
+        #                                               "    background-color: rgb(255, 210, 103);\n"
+        #                                               "    color: black\n"
+        #                                               "}")
+        # self.chapter_three_start_button.setObjectName("chapter_three_start_button")
 
         self.select_chapter_label = QtWidgets.QLabel(self.chapter_selection_screen_frame)
         self.select_chapter_label.setGeometry(QtCore.QRect(450, 30, 371, 151))

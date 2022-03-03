@@ -137,10 +137,23 @@ class git_manager:
             return self.generate_output('')
 
     def git_commit_cmd(self, cmd_list):
+        msg = ''
         cmd_list.pop(0)  # remove "commit" from list
 
         # check for valid git add command
-        if len(cmd_list) != 2 or cmd_list[0] != '-m' or len(cmd_list[1]) < 2 or cmd_list[1][0] != "\"" or cmd_list[1][-1] != "\"":
+        if len(cmd_list) < 2 or cmd_list[0] != '-m':
+            return self.generate_output(self.commit_error)
+
+        cmd_list.pop(0)  # remove "-m" from list
+
+        # concatenate msg
+        for cmd in cmd_list:
+            msg = msg + cmd + ' '
+
+        msg = msg.strip()
+        if len(msg) < 2 or msg[0] != "\"" or msg[-1] != "\"":
+            print('err2')
+            print(msg)
             return self.generate_output(self.commit_error)
 
         # commit only if user has added files

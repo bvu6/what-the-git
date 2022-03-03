@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Made By Thicc Juice
 # What The Git!
+from PyQt5.QtWidgets import QMainWindow
+
 
 class git_manager:
     def __init__(self):
@@ -10,7 +12,7 @@ class git_manager:
         self.lastMove = -1
         self.branch = 'main'
         self.file_add_list = []
-        self.chbase = ''
+        self.chbase = QMainWindow
 
         self.cmd = ''
         self.file_dict = {}
@@ -107,6 +109,9 @@ class git_manager:
 
             self.add = True
 
+            if 1 in self.chbase.task_done_list:
+                self.chbase.set_task_done(2)
+
     def git_add_cmd(self, cmd_list):
         cmd_list.pop(0)  # remove "add" from list
 
@@ -167,6 +172,10 @@ class git_manager:
         self.file_add_list.clear()
         self.number_files_changed = 0
         self.commit = True
+
+        if 2 in self.chbase.task_done_list:
+            self.chbase.set_task_done(3)
+
         return self.generate_output(output)
 
     def git_push_cmd(self, cmd_list):
@@ -179,6 +188,10 @@ class git_manager:
         # push only is user has committed
         if self.commit:
             self.commit = False
+
+            if 3 in self.chbase.task_done_list:
+                self.chbase.set_task_done(4)
+
             return self.generate_output(self.push_msg)
 
         # if user has not committed, indicate that everything is up-to-date

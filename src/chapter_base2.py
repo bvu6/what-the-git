@@ -730,7 +730,7 @@ class ui_chaptertwo_window(object):
        # self.file1_save_button.clicked.connect(lambda: self.save_file(1))
         self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command())
 
-
+        self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command())
 
         window.setCentralWidget(self.main_chapter_central_widget)
 
@@ -854,6 +854,12 @@ class ui_chaptertwo_window(object):
                                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Branch 1</span></p>\n"
                                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Third</span></p>\n"
                                                       "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:13pt; font-weight:496; color:#ffffff;\">Commit!</span></p></body></html>"))
+
+    def execute_command(self):
+        self.cmd = self.cmd_user_input_box.text()
+        self.cmd_user_input_box.clear()
+        print(self.cmd)
+
 
     # def save_file(self, file_num):
     #     file = os.listdir(f'wtg/CH{self.chapterTwo_num}')[file_num - 1]

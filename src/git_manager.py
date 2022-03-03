@@ -9,6 +9,7 @@ class git_manager:
         self.push = False
         self.lastMove = -1
         self.branch = 'main'
+        self.file_add_list =[]
 
         self.cmd = ''
         self.file_dict = {}
@@ -26,13 +27,16 @@ class git_manager:
                         "Resolving deltas: 100%, done.\nTo https://github.com/wtg/what_the_git\n   62e827a..4b1d808  " \
                         "main -> main "
 
-        self.up_to_date = "\nEverything up-to-date"
+        self.up_to_date = "\nEverything already up-to-date"
         self.commit_no_changes = f"\nOn branch {self.branch}\nYour branch is up to date with 'origin/{self.branch}'." \
                                  f"\n\nnothing to commit, working tree clean"
         self.commit_error = "\nerror: please enter 'git commit -m \"msg\"' to make a commit"
         self.push_error = "\nerror: please enter 'git push' to push all your changes"
 
         # generate output string for console to display
+
+    def set_add_false(self):
+        self.add = False
 
     def generate_output(self, output):
         return self.cmd + output + self.new_cmd
@@ -44,29 +48,23 @@ class git_manager:
 
         # check for blank and empty string
         if not cmd or cmd.isspace():
-            print('1')
             return self.new_cmd  # returns output for console to display
 
         cmd_list = cmd.split()
 
         if cmd_list[0] == 'git':
-            print('2')
             if len(cmd_list) == 1:
-                print('3')
                 return self.generate_output(self.git_enter_valid_cmd)
 
             cmd_list.pop(0)  # remove "git" from list
 
             if cmd_list[0] == 'add':
-                print('4')
                 return self.git_add_cmd(cmd_list)
 
             elif cmd_list[0] == 'commit':
-                print('5')
                 return self.git_commit_cmd(cmd_list)
 
             elif cmd_list[0] == 'push':
-                print('6')
                 return self.git_push_cmd(cmd_list)
 
             else:
@@ -96,7 +94,6 @@ class git_manager:
             return True
 
         else:
-            # print(card_type, self.lastMove)
             print("Invalid move")
             return False
 
@@ -111,6 +108,9 @@ class git_manager:
 
         if len(cmd_list) == 0:
             return self.generate_output(self.git_add_error)
+
+        # check cmd from the end
+        cmd_list.reverse()
 
         # iterate through files in list and check what has been modified
         for file in cmd_list:
@@ -135,23 +135,32 @@ class git_manager:
     def git_commit_cmd(self, cmd_list):
         cmd_list.pop(0)  # remove "commit" from list
 
+        # check for valid git add command
         if len(cmd_list) != 2 or cmd_list[0] != '-m' or len(cmd_list[1]) < 2 or cmd_list[1][0] != "\"" or cmd_list[1][-1] != "\"":
             return self.generate_output(self.commit_error)
 
-        print(self.add)
+        # commit only if user has added files
         if not self.add:
-            print('d')
             return self.generate_output(self.commit_no_changes)
 
+        # perform git commit
         output = self.commit_msg
         output = output.replace('x', str(self.number_files_changed))
         self.number_files_changed = 0
+        self.commit = True
         return self.generate_output(output)
 
     def git_push_cmd(self, cmd_list):
         cmd_list.pop(0)  # remove "push" from list
 
+        # check for valid git push command
         if len(cmd_list) > 0:
             return self.generate_output(self.push_error)
 
-        return self.generate_output(self.push_msg)
+        # push only is user has committed
+        if self.commit:
+            self.commit = False
+            return self.generate_output(self.push_msg)
+
+        # if user has not committed, indicate that everything is up-to-date
+        return self.generate_output(self.up_to_date)

@@ -2,6 +2,7 @@
 # Made By Thicc-Juice
 # What The Git!
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMainWindow
 from cards import DraggableCardImages
 from git_manager import git_manager
 from file import file
@@ -9,8 +10,9 @@ import sys
 import os
 
 
-class ui_chapter_window(object):
+class ui_chapter_window(QMainWindow):
     def __init__(self, window):
+        super(ui_chapter_window, self).__init__()
         self.current_directory = os.path.dirname(os.path.realpath(__file__))
         self.git_manager = git_manager()
         self.valid = False
@@ -18,6 +20,8 @@ class ui_chapter_window(object):
         self.chapter_num = 1
         self.card_list = []
         self.prompt = False
+        self.command_list = []
+        self.cmd_list_pos = 1
         self.file_dict = {'a.txt': file('a.txt')}
 
         window.setObjectName("window")
@@ -593,6 +597,7 @@ class ui_chapter_window(object):
             self.file_stacked_widget.currentIndex() + 1)
         self.file1_save_button.clicked.connect(lambda: self.save_file(1))
 
+        self.cmd_user_input_box.installEventFilter(self)
         self.cmd_user_input_box.returnPressed.connect(lambda: self.execute_command(-1))
 
         window.setCentralWidget(self.main_chapter_central_widget)
@@ -651,17 +656,17 @@ class ui_chapter_window(object):
                                                           "push. What steps should you take to push the modified file?"
                                                           "</span></p></body></html>"))
         self.console.setHtml(_translate("window",
-                                                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
-                                                "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
-                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
-                                                "charset=\"utf-8\" /><style type=\"text/css\">\n "
-                                                "p, li { white-space: pre-wrap; }\n"
-                                                "</style></head><body style=\" font-family:\'Menlo\'; font-size:11pt; "
-                                                "font-weight:400; font-style:normal;\">\n "
-                                                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
-                                                "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
-                                                "style=\" font-size:11pt; color:#ffffff;\">user@what-the-git "
-                                                "repo_folder % </span></p></body></html>"))
+                                        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                        "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta "
+                                        "charset=\"utf-8\" /><style type=\"text/css\">\n "
+                                        "p, li { white-space: pre-wrap; }\n"
+                                        "</style></head><body style=\" font-family:\'Menlo\'; font-size:11pt; "
+                                        "font-weight:400; font-style:normal;\">\n "
+                                        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                                        "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
+                                        "style=\" font-size:11pt; color:#ffffff;\">user@what-the-git "
+                                        "repo_folder % </span></p></body></html>"))
         self.back_button.setText(_translate("window", "Back"))
         self.toggle_music_button.setText(_translate("window", "Toggle Music"))
         self.reload_button.setText(_translate("window", "Reload"))
@@ -728,14 +733,44 @@ class ui_chapter_window(object):
         self.commit_state_widget.hide()
         self.commit_connect_line.hide()
 
+    def eventFilter(self, obj, event):
+        if obj is self.cmd_user_input_box and event.type() == QtCore.QEvent.KeyPress:
+            if event.key() == QtCore.Qt.Key_Up and self.command_list:
+                if self.cmd_list_pos > 0:
+                    if not self.command_list[-1].isspace() and self.command_list[-1]:
+                        self.command_list.append(self.cmd_user_input_box.text())
+
+                    self.cmd_list_pos -= 1
+                    command = self.command_list[self.cmd_list_pos]
+                    self.cmd_user_input_box.setText(command)
+                    self.cmd_user_input_box.setCursorPosition(-1)
+
+            if event.key() == QtCore.Qt.Key_Down and self.command_list:
+                if self.cmd_list_pos < len(self.command_list) - 1:
+                    self.cmd_list_pos += 1
+                    command = self.command_list[self.cmd_list_pos]
+                    self.cmd_user_input_box.setText(self.command_list[self.cmd_list_pos])
+                    self.cmd_user_input_box.setCursorPosition(-1)
+
+        return super().eventFilter(obj, event)
+
     # handle commands entered by the user
     def execute_command(self, type):
-        cmd = ''
-        cmd = self.cmd_user_input_box.text()    # get user input
-        self.cmd_user_input_box.clear()     # clear text from input box
+        cmd = self.cmd_user_input_box.text()  # get user input
+        self.cmd_user_input_box.clear()  # clear text from input box
 
-        console_output = self.git_manager.handle_commands(cmd, self.file_dict)   # handle command
-        self.add_text_to_console(console_output)    # show output in console
+        if self.command_list and (self.command_list[-1].isspace() or not self.command_list[-1]):
+            self.command_list.pop(-1)
+
+        # append cmd only if valid
+        if not cmd.isspace() and cmd:
+            self.command_list.append(cmd)
+
+        if len(self.command_list) > 1:
+            self.cmd_list_pos = len(self.command_list)
+
+        console_output = self.git_manager.handle_commands(cmd, self.file_dict)  # handle command
+        self.add_text_to_console(console_output)  # show output in console
 
         # if self.cmd == "git add ." and not self.prompt or type == 0:
         #     self.valid = self.git.check_move(0)
@@ -762,14 +797,16 @@ class ui_chapter_window(object):
         file = os.listdir(f'{self.current_directory}/wtg/CH{self.chapter_num}')[file_num - 1]
         with open(f'{self.current_directory}/wtg/CH{self.chapter_num}/{file}', 'w') as f:
             if file_num == 1:
-
-                f.write(self.file1_qplaintextedit.toPlainText())
+                if f.read() != self.file1_qplaintextedit.toPlainText():
+                    f.write(self.file1_qplaintextedit.toPlainText())
+                    git_manager.
 
         self.file_stacked_widget.setCurrentIndex(self.file_stacked_widget.currentIndex() - 1)
 
     def create_cards(self, num):
         for i in range(num):
-            self.card_list.append(DraggableCardImages(self.main_chapter_frame, None, 100 + 200 * i, i, self, self.git_manager))
+            self.card_list.append(
+                DraggableCardImages(self.main_chapter_frame, None, 100 + 200 * i, i, self, self.git_manager))
 
     def showCard(self, card_type, valid):
         if valid:
@@ -782,7 +819,7 @@ class ui_chapter_window(object):
                                             "padding-left:5px")
 
                 self.console.setStyleSheet("background-color: rgb(30, 30, 30); font: 11pt \"Menlo\"; color: "
-                                                   "white")
+                                           "white")
                 self.add_text_to_console("git add .\nuser@what-the-git repo_folder % ")
 
             elif card_type == 1:
@@ -801,7 +838,8 @@ class ui_chapter_window(object):
                                               "border-radius: 5px; \n"
                                               "padding-left:5px")
                 self.add_text_to_console("git push\nEnumerating objects: 4, done.\n")
-                self.add_text_to_console("Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")
+                self.add_text_to_console(
+                    "Counting objects: 100% (4/4), done.\nDelta compression using up to 10 threads\n")
                 self.add_text_to_console("Compressing objects: 100% (2/2), done.\n")
                 self.add_text_to_console("Writing objects: 100% (3/3), 287 bytes | 287.00 KiB/s, done.\n")
                 self.add_text_to_console("Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\n")

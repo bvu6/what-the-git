@@ -13,6 +13,7 @@ class ui_chapter_window(object):
     def __init__(self, window):
         self.lastMove = -1
         self.chapter_num = 1
+        self.cmd = ""
 
         window.setObjectName("window")
         window.resize(1280, 720)
@@ -707,9 +708,9 @@ class ui_chapter_window(object):
         self.commit_connect_line.hide()
 
     def execute_command(self):
-        cmd = self.cmd_user_input_box.text()
+        self.cmd = self.cmd_user_input_box.text()
         self.cmd_user_input_box.clear()
-        print(cmd)
+        print(self.cmd)
 
     def save_file(self, file_num):
         file = os.listdir(f'wtg/CH{self.chapter_num}')[file_num - 1]
